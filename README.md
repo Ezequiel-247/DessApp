@@ -10,6 +10,7 @@ Proyecto desarrollado para la materia **Desarrollo de Aplicaciones** (Tecnicatur
 - Lautaro Olivera
 - Martín Lubris
 - Ezequiel Ortiz
+- Leandro Cantero
 
 ## Capturas
 

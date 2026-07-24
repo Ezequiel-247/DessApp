@@ -4,6 +4,13 @@ Plataforma de gestión académica para estudiantes universitarios. Permite armar
 
 Proyecto desarrollado para la materia **Desarrollo de Aplicaciones** (Tecnicatura Universitaria).
 
+## Integrantes
+
+- Kevin Caria
+- Lautaro Olivera
+- Martín Lubris
+- Ezequiel Ortiz
+
 ## Funcionalidades principales
 
 - **Planes de estudio**: carreras, materias, correlatividades y bloques (electivas, créditos, optativas).

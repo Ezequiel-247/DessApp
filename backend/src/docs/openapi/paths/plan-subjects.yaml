@@ -1,0 +1,169 @@
+paths:
+  /api/plan-subjects:
+    get:
+      tags:
+        - PlanSubjects
+      summary: Listar plan-subjects
+      parameters:
+        - in: query
+          name: planId
+          schema:
+            type: integer
+        - in: query
+          name: subjectId
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Lista de plan-subjects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlanSubjectListResponse'
+
+    post:
+      tags:
+        - PlanSubjects
+      summary: Crear plan-subject
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlanSubjectRequest'
+      responses:
+        '201':
+          description: Plan-subject creado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '400':
+          description: Datos invalidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: No autenticado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Sin permisos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/plan-subjects/{id}:
+    get:
+      tags:
+        - PlanSubjects
+      summary: Obtener plan-subject por ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Plan-subject encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/PlanSubjectData'
+        '404':
+          description: No encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      tags:
+        - PlanSubjects
+      summary: Actualizar plan-subject
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlanSubjectUpdateRequest'
+      responses:
+        '200':
+          description: Plan-subject actualizado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+    patch:
+      tags:
+        - PlanSubjects
+      summary: Actualizacion parcial de plan-subject
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlanSubjectUpdateRequest'
+      responses:
+        '200':
+          description: Plan-subject actualizado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+    delete:
+      tags:
+        - PlanSubjects
+      summary: Eliminar plan-subject
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Plan-subject eliminado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'
+        '404':
+          description: No encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'

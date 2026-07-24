@@ -1,0 +1,14 @@
+paths:
+  /api/health:
+    get:
+      tags:
+        - Health
+      summary: Health check del backend
+      description: Retorna el estado del servidor para verificar disponibilidad.
+      responses:
+        '200':
+          description: Backend operativo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'

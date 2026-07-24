@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AcademiaPro - Mobile Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-bright": "#f8f9ff",
+                        "on-secondary-fixed": "#002113",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-tertiary-fixed-variant": "#643e14",
+                        "on-surface": "#0b1c30",
+                        "on-surface-variant": "#40484b",
+                        "inverse-surface": "#213145",
+                        "on-tertiary-container": "#dda975",
+                        "primary-container": "#0f4c5c",
+                        "inverse-primary": "#9acee1",
+                        "primary-fixed-dim": "#9acee1",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-variant": "#d3e4fe",
+                        "on-primary-fixed-variant": "#114d5d",
+                        "on-secondary-container": "#00714d",
+                        "surface-dim": "#cbdbf5",
+                        "background": "#f8f9ff",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#f3bc87",
+                        "tertiary-fixed": "#ffdcbe",
+                        "on-primary-container": "#87bbce",
+                        "surface-tint": "#306576",
+                        "outline-variant": "#c0c8cb",
+                        "on-secondary-fixed-variant": "#005236",
+                        "primary": "#003441",
+                        "on-tertiary-fixed": "#2c1600",
+                        "surface": "#f8f9ff",
+                        "surface-container-high": "#dce9ff",
+                        "tertiary": "#482700",
+                        "error": "#ba1a1a",
+                        "outline": "#70787c",
+                        "primary-fixed": "#b6ebfe",
+                        "on-background": "#0b1c30",
+                        "tertiary-container": "#623d13",
+                        "on-primary-fixed": "#001f28",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#e5eeff",
+                        "secondary": "#006c49",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#6cf8bb"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "xs": "8px",
+                        "sm": "16px",
+                        "margin": "32px",
+                        "md": "24px",
+                        "base": "4px",
+                        "lg": "32px",
+                        "gutter": "24px",
+                        "xl": "48px"
+                    },
+                    fontFamily: {
+                        "display-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "title-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    fontSize: {
+                        "display-lg": ["36px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+                        "title-sm": ["18px", { lineHeight: "28px", fontWeight: "600" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "label-caps": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for horizontal sections */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md text-body-md min-h-screen flex flex-col antialiased">
+<!-- Top Navigation Area (Mobile Optimized JSON Component) -->
+<header class="bg-white/95 dark:bg-slate-950/95 backdrop-blur-md shadow-sm border-b border-slate-200 dark:border-slate-800 flex justify-between items-center w-full px-sm md:px-8 h-16 sticky top-0 z-40">
+<div class="flex items-center gap-xs">
+<span class="text-xl font-bold tracking-tight text-[#0F4C5C] dark:text-teal-500">AcademiaPro</span>
+</div>
+<div class="flex items-center gap-sm">
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-slate-500 hover:bg-slate-50 transition-colors duration-200 ease-in-out relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="Avatar del estudiante" class="w-full h-full object-cover" data-alt="Portrait of a young smiling female student with natural light and soft blurred background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApy74TmKUB9mpaYjWqmNAZUg-XjpLmmjTbduYXlm-yW1BMFdAuRTaAYEEfA8lSTGBXNR5uU2bbVoFHWWXeGgwvVGNqlvTXdruW_hG-zsKxNnNnvGj2Aw5dHtBplbT4SaI0hDZqr0y4-f9lXNyeXyXDZy5uTUs30mDEArWE0zWHyoCw3Ez4eFAN-CLbo0S3SQdn44RnS-PgqVyQ7Cm5e0sw7OFi8hR4G92h5lKPwuS4d-Unx6YPZ-504_sTN19YQjUqi-anPBvlpdA"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto px-sm pt-md pb-xl">
+<!-- Greeting -->
+<h1 class="font-headline-md text-headline-md text-on-surface mb-lg">Hola, Sofía</h1>
+<!-- Career Progress Widget (Bento Style) -->
+<section class="bg-surface-container-lowest rounded-xl shadow-[0_4px_20px_rgba(15,76,92,0.04)] border border-surface-container p-md mb-lg">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest mb-sm">Progreso de Carrera</h2>
+<div class="flex items-center gap-md">
+<!-- Circular Progress -->
+<div class="relative w-24 h-24 flex-shrink-0">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle class="text-surface-container-highest" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-width="10"></circle>
+<circle class="text-primary-container" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="87.92" stroke-linecap="round" stroke-width="10"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center flex-col">
+<span class="font-title-sm text-title-sm text-primary-container font-bold">65%</span>
+</div>
+</div>
+<!-- Stats -->
+<div class="flex flex-col gap-xs w-full">
+<div class="flex justify-between items-center border-b border-surface-container-highest pb-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Créditos</span>
+<span class="font-title-sm text-title-sm text-on-surface">110/170</span>
+</div>
+<div class="flex justify-between items-center border-b border-surface-container-highest py-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Pendientes</span>
+<span class="font-title-sm text-title-sm text-on-surface">18</span>
+</div>
+<div class="pt-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">Próxima Meta</span>
+<span class="font-body-sm text-body-sm text-primary-container font-semibold bg-surface-container-high px-2 py-1 rounded-md inline-block">Seminario Grado</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Próximas Sesiones Widget (Horizontal Scroll) -->
+<section class="mb-lg">
+<h2 class="font-title-sm text-title-sm text-on-surface mb-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" data-icon="event_note" style="font-variation-settings: 'FILL' 1;">event_note</span>
+                Próximas Sesiones
+            </h2>
+<div class="flex gap-sm overflow-x-auto hide-scrollbar snap-x pb-2 -mx-sm px-sm">
+<!-- Session Card 1 (Urgent/Today) -->
+<div class="bg-primary-container text-on-primary-container min-w-[240px] snap-center rounded-xl p-md shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="absolute -right-4 -top-4 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
+<div>
+<div class="font-label-caps text-label-caps bg-white/20 text-white px-2 py-1 rounded inline-block mb-xs">HOY • 14:00</div>
+<h3 class="font-title-sm text-title-sm text-white leading-tight">Tutoría Cálculo III</h3>
+</div>
+<div class="flex items-center gap-2 mt-md text-inverse-primary font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-sm" data-icon="videocam">videocam</span>
+<span>Sala Virtual A</span>
+</div>
+</div>
+<!-- Session Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant text-on-surface min-w-[240px] snap-center rounded-xl p-md shadow-sm flex flex-col justify-between">
+<div>
+<div class="font-label-caps text-label-caps text-primary-container bg-surface-container px-2 py-1 rounded inline-block mb-xs">MIÉ • 16:00</div>
+<h3 class="font-title-sm text-title-sm text-on-surface leading-tight">Grupo Estudio Bases de Datos</h3>
+</div>
+<div class="flex items-center gap-2 mt-md text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+<span>Biblioteca Central</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Materias en Curso List -->
+<section class="mb-xl">
+<h2 class="font-title-sm text-title-sm text-on-surface mb-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" data-icon="menu_book" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+                Materias en Curso
+            </h2>
+<div class="flex flex-col gap-sm">
+<!-- Subject Card 1: Excellent -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm relative">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-title-sm text-title-sm text-on-surface">Algoritmos Avanzados</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Prof. A. Gómez</p>
+</div>
+<span class="bg-[#e6f4ea] text-[#137333] px-2 py-1 rounded-full font-label-caps text-label-caps">Excelente</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 mt-sm">
+<div class="bg-[#137333] h-1.5 rounded-full" style="width: 92%"></div>
+</div>
+</div>
+<!-- Subject Card 2: At Risk -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm relative">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-title-sm text-title-sm text-on-surface">Física Cuántica</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Prof. M. Silva</p>
+</div>
+<span class="bg-error-container text-on-error-container px-2 py-1 rounded-full font-label-caps text-label-caps">En Riesgo</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 mt-sm">
+<div class="bg-error h-1.5 rounded-full" style="width: 45%"></div>
+</div>
+</div>
+<!-- Subject Card 3: Good -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm relative">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-title-sm text-title-sm text-on-surface">Ética Profesional</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Prof. L. Ruiz</p>
+</div>
+<span class="bg-surface-container-high text-primary-container px-2 py-1 rounded-full font-label-caps text-label-caps">Bueno</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 mt-sm">
+<div class="bg-primary-container h-1.5 rounded-full" style="width: 78%"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile Shell) -->
+<nav class="fixed bottom-0 left-0 w-full bg-surface-container-lowest shadow-[0_-4px_20px_rgba(15,76,92,0.08)] z-50 px-2 py-xs pb-4 md:hidden">
+<ul class="flex justify-around items-center h-14">
+<!-- Dashboard (Active) -->
+<li class="flex-1 flex justify-center">
+<a class="flex flex-col items-center gap-1 text-primary-container" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-caps text-[10px] font-semibold">Dashboard</span>
+</a>
+</li>
+<!-- Progreso (Inactive) -->
+<li class="flex-1 flex justify-center">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary-container transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-caps text-[10px]">Progreso</span>
+</a>
+</li>
+<!-- Planificador (Inactive) -->
+<li class="flex-1 flex justify-center">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary-container transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+<span class="font-label-caps text-[10px]">Planificador</span>
+</a>
+</li>
+<!-- Perfil (Inactive) -->
+<li class="flex-1 flex justify-center">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary-container transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-label-caps text-[10px]">Perfil</span>
+</a>
+</li>
+</ul>
+</nav>
+</body></html>

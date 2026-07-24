@@ -1,0 +1,522 @@
+paths:
+  /api/plans/{planId}/unahur-blocks:
+    get:
+      tags:
+        - PlanBlocks
+      summary: Listar bloques UNAHUR por plan
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Bloques UNAHUR
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+    post:
+      tags:
+        - PlanBlocks
+      summary: Crear bloque UNAHUR
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - suggested_year
+              properties:
+                suggested_year:
+                  type: integer
+                suggested_term:
+                  type: integer
+                sort_order:
+                  type: integer
+      responses:
+        '201':
+          description: Bloque creado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+  /api/plans/{planId}/unahur-blocks/{id}:
+    get:
+      tags:
+        - PlanBlocks
+      summary: Obtener bloque UNAHUR por ID
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Bloque encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+    put:
+      tags:
+        - PlanBlocks
+      summary: Actualizar bloque UNAHUR
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: Bloque actualizado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+    delete:
+      tags:
+        - PlanBlocks
+      summary: Eliminar bloque UNAHUR
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Bloque eliminado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'
+
+  /api/plans/{planId}/elective-blocks:
+    get:
+      tags:
+        - PlanBlocks
+      summary: Listar bloques electivos por plan
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Bloques electivos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+    post:
+      tags:
+        - PlanBlocks
+      summary: Crear bloque electivo
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                min_required:
+                  type: integer
+                requires_approved_mandatory_count:
+                  type: integer
+                suggested_year:
+                  type: integer
+                sort_order:
+                  type: integer
+      responses:
+        '201':
+          description: Bloque electivo creado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+  /api/plans/{planId}/elective-blocks/{id}:
+    get:
+      tags:
+        - PlanBlocks
+      summary: Obtener bloque electivo por ID
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Bloque encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+    put:
+      tags:
+        - PlanBlocks
+      summary: Actualizar bloque electivo
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: Bloque actualizado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+    delete:
+      tags:
+        - PlanBlocks
+      summary: Eliminar bloque electivo
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Bloque eliminado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'
+
+  /api/plans/{planId}/elective-blocks/{blockId}/subjects:
+    get:
+      tags:
+        - PlanBlocks
+      summary: Listar materias de bloque electivo
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: blockId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Materias del bloque
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+    post:
+      tags:
+        - PlanBlocks
+      summary: Agregar materia al bloque electivo
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: blockId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id_subject
+              properties:
+                id_subject:
+                  type: integer
+      responses:
+        '201':
+          description: Materia agregada
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+  /api/plans/{planId}/elective-blocks/{blockId}/subjects/{subjectId}:
+    delete:
+      tags:
+        - PlanBlocks
+      summary: Quitar materia del bloque electivo
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: blockId
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: subjectId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Materia removida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'
+
+  /api/plans/{planId}/credit-blocks:
+    get:
+      tags:
+        - PlanBlocks
+      summary: Listar bloques de creditos por plan
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Bloques de creditos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+    post:
+      tags:
+        - PlanBlocks
+      summary: Crear bloque de creditos
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                min_credits_required:
+                  type: integer
+                max_credits_allowed:
+                  type: integer
+                sort_order:
+                  type: integer
+      responses:
+        '201':
+          description: Bloque creado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+  /api/plans/{planId}/credit-blocks/{id}:
+    get:
+      tags:
+        - PlanBlocks
+      summary: Obtener bloque de creditos por ID
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Bloque encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+    put:
+      tags:
+        - PlanBlocks
+      summary: Actualizar bloque de creditos
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: Bloque actualizado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+    delete:
+      tags:
+        - PlanBlocks
+      summary: Eliminar bloque de creditos
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Bloque eliminado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'
+
+  /api/plan-credit-block-items:
+    get:
+      tags:
+        - PlanBlocks
+      summary: Listar items de bloques de creditos
+      responses:
+        '200':
+          description: Lista de items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'

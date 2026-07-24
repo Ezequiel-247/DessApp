@@ -1,0 +1,143 @@
+paths:
+  /api/instance-subjects:
+    get:
+      tags:
+        - InstanceSubjects
+      summary: Listar instancias de materia
+      parameters:
+        - in: query
+          name: subjectId
+          schema:
+            type: integer
+        - in: query
+          name: term
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lista de instancias
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstanceSubjectListResponse'
+
+    post:
+      tags:
+        - InstanceSubjects
+      summary: Crear instancia de materia
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InstanceSubjectRequest'
+      responses:
+        '201':
+          description: Instancia creada
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '400':
+          description: Datos invalidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/instance-subjects/{id}:
+    get:
+      tags:
+        - InstanceSubjects
+      summary: Obtener instancia por ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Instancia encontrada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/InstanceSubjectData'
+        '404':
+          description: No encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      tags:
+        - InstanceSubjects
+      summary: Actualizar instancia
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InstanceSubjectUpdateRequest'
+      responses:
+        '200':
+          description: Instancia actualizada
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+    patch:
+      tags:
+        - InstanceSubjects
+      summary: Actualizacion parcial de instancia
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InstanceSubjectUpdateRequest'
+      responses:
+        '200':
+          description: Instancia actualizada
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+    delete:
+      tags:
+        - InstanceSubjects
+      summary: Eliminar instancia
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Instancia eliminada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'

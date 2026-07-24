@@ -1,0 +1,255 @@
+paths:
+  /api/academic-records:
+    get:
+      tags:
+        - AcademicRecords
+      summary: Listar registros academicos
+      parameters:
+        - in: query
+          name: studentId
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Lista de registros academicos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcademicRecordListResponse'
+
+    post:
+      tags:
+        - AcademicRecords
+      summary: Crear registro academico
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AcademicRecordRequest'
+      responses:
+        '201':
+          description: Registro academico creado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '400':
+          description: Datos invalidos o violacion de regla de negocio
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Registro duplicado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Regla academica no satisfecha
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/academic-records/student/{student_id}:
+    get:
+      tags:
+        - AcademicRecords
+      summary: Obtener registro academico por estudiante
+      parameters:
+        - in: path
+          name: student_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Registro del estudiante
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+        '404':
+          description: No encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      tags:
+        - AcademicRecords
+      summary: Actualizar registro academico por estudiante
+      parameters:
+        - in: path
+          name: student_id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AcademicRecordUpdateRequest'
+      responses:
+        '200':
+          description: Registro actualizado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '400':
+          description: Datos invalidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: No encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    patch:
+      tags:
+        - AcademicRecords
+      summary: Actualizacion parcial por estudiante
+      parameters:
+        - in: path
+          name: student_id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AcademicRecordUpdateRequest'
+      responses:
+        '200':
+          description: Registro actualizado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+    delete:
+      tags:
+        - AcademicRecords
+      summary: Eliminar registros academicos por estudiante
+      parameters:
+        - in: path
+          name: student_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Registros eliminados
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'
+        '404':
+          description: No encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/academic-records/{id}:
+    put:
+      tags:
+        - AcademicRecords
+      summary: Actualizar registro academico por ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AcademicRecordUpdateRequest'
+      responses:
+        '200':
+          description: Registro actualizado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '404':
+          description: No encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    patch:
+      tags:
+        - AcademicRecords
+      summary: Actualizacion parcial por ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AcademicRecordUpdateRequest'
+      responses:
+        '200':
+          description: Registro actualizado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+    delete:
+      tags:
+        - AcademicRecords
+      summary: Eliminar registro academico por ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Registro eliminado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '422':
+          description: Regla de dominio impide eliminacion
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'

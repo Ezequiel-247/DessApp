@@ -1,0 +1,54 @@
+paths:
+  /api/votes:
+    post:
+      tags:
+        - Votes
+      summary: Crear/actualizar/remover voto
+      description: Si ya existe voto igual se elimina, si existe distinto se actualiza.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoteRequest'
+      responses:
+        '200':
+          description: Voto actualizado o removido
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '201':
+          description: Voto creado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '400':
+          description: Datos invalidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: No autenticado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: No puede votar contenido propio
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Target inexistente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'

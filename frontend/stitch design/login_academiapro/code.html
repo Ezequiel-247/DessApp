@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login - AcademiaPro</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#f3bc87",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#d3e4fe",
+                    "surface-tint": "#306576",
+                    "secondary": "#006c49",
+                    "tertiary": "#482700",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#114d5d",
+                    "on-secondary-fixed-variant": "#005236",
+                    "surface": "#f8f9ff",
+                    "surface-dim": "#cbdbf5",
+                    "on-background": "#0b1c30",
+                    "tertiary-container": "#623d13",
+                    "surface-container-low": "#eff4ff",
+                    "outline-variant": "#c0c8cb",
+                    "surface-bright": "#f8f9ff",
+                    "inverse-primary": "#9acee1",
+                    "on-tertiary-fixed-variant": "#643e14",
+                    "surface-container-high": "#dce9ff",
+                    "surface-container-highest": "#d3e4fe",
+                    "secondary-fixed-dim": "#4edea3",
+                    "primary": "#003441",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed": "#6ffbbe",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#213145",
+                    "primary-fixed-dim": "#9acee1",
+                    "on-tertiary-fixed": "#2c1600",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#0f4c5c",
+                    "secondary-container": "#6cf8bb",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#ffdcbe",
+                    "on-surface": "#0b1c30",
+                    "on-surface-variant": "#40484b",
+                    "surface-container": "#e5eeff",
+                    "on-primary": "#ffffff",
+                    "background": "#f8f9ff",
+                    "on-secondary-container": "#00714d",
+                    "outline": "#70787c",
+                    "on-secondary-fixed": "#002113",
+                    "on-tertiary-container": "#dda975",
+                    "primary-fixed": "#b6ebfe",
+                    "on-primary-fixed": "#001f28",
+                    "on-primary-container": "#87bbce",
+                    "inverse-on-surface": "#eaf1ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin": "32px",
+                    "gutter": "24px",
+                    "sm": "16px",
+                    "xs": "8px",
+                    "lg": "32px",
+                    "base": "4px",
+                    "md": "24px",
+                    "xl": "48px"
+            },
+            "fontFamily": {
+                    "body-sm": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "title-sm": [
+                            "Inter"
+                    ],
+                    "display-lg": [
+                            "Inter"
+                    ],
+                    "label-caps": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "title-sm": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg": [
+                            "36px",
+                            {
+                                    "lineHeight": "44px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col md:flex-row">
+<!-- Left Column: Login Form Canvas -->
+<main class="flex-1 flex flex-col justify-center px-lg py-xl md:px-margin md:py-margin bg-surface-container-lowest md:max-w-xl z-10 shadow-xl shadow-primary/5">
+<div class="w-full max-w-sm mx-auto">
+<!-- Brand Anchor -->
+<header class="mb-xl flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">
+                    school
+                </span>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">AcademiaPro</h1>
+</header>
+<!-- Greeting -->
+<div class="mb-lg">
+<h2 class="font-display-lg text-display-lg text-on-surface mb-base">Bienvenido.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Ingresa a tu portal de acompañamiento académico.</p>
+</div>
+<!-- Form -->
+<form action="#" class="flex flex-col gap-md">
+<!-- Email Input -->
+<div class="flex flex-col gap-base">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="email">
+                        Correo Electrónico
+                    </label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline-variant">
+                            mail
+                        </span>
+<input class="w-full bg-surface-bright border border-outline-variant rounded-DEFAULT py-sm pl-[44px] pr-sm font-body-md text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-colors placeholder:text-outline" id="email" name="email" placeholder="estudiante@universidad.edu" required="" type="email"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="flex flex-col gap-base">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="password">
+                        Contraseña
+                    </label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline-variant">
+                            lock
+                        </span>
+<input class="w-full bg-surface-bright border border-outline-variant rounded-DEFAULT py-sm pl-[44px] pr-sm font-body-md text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-colors placeholder:text-outline" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<!-- Options Row -->
+<div class="flex items-center justify-between mt-base">
+<label class="flex items-center gap-xs cursor-pointer group">
+<input class="w-4 h-4 rounded-sm border-outline-variant text-primary focus:ring-primary focus:ring-offset-surface-container-lowest" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Recordarme</span>
+</label>
+<a class="font-body-sm text-body-sm text-primary hover:text-primary-container font-medium transition-colors" href="#">
+                        ¿Olvidé mi contraseña?
+                    </a>
+</div>
+<!-- Submit Button -->
+<button class="mt-xs w-full bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container transition-colors rounded-DEFAULT py-sm font-title-sm text-title-sm flex justify-center items-center gap-xs shadow-sm shadow-primary/20" type="submit">
+                    Acceder al Portal
+                    <span class="material-symbols-outlined text-[20px]">
+                        arrow_forward
+                    </span>
+</button>
+</form>
+<!-- Registration Link -->
+<div class="mt-lg pt-lg border-t border-surface-variant text-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    ¿Nuevo en la plataforma? 
+                    <a class="text-primary font-semibold hover:underline decoration-2 underline-offset-4" href="#">Regístrate aquí</a>
+</p>
+</div>
+</div>
+</main>
+<!-- Right Column: Institutional Atmosphere Image (Hidden on Mobile) -->
+<aside class="hidden md:block flex-1 relative bg-surface-variant overflow-hidden">
+<!-- Soft background image overlaying brand color -->
+<div class="absolute inset-0 bg-primary/80 mix-blend-multiply z-10 pointer-events-none"></div>
+<div class="absolute inset-0 bg-gradient-to-tr from-primary via-primary/50 to-transparent z-10 pointer-events-none opacity-90"></div>
+<img alt="Estudiantes universitarios" class="absolute inset-0 w-full h-full object-cover grayscale-[20%]" data-alt="soft focus view of modern university campus architecture at dawn with minimal students walking, calm and inspiring scholarly atmosphere, deep teal tint" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqCvLmMVHRtnHRvPjFHBXQEXNdEp0f0xE9Wi4in6IfPubS255muQPGwR1DLGWJa5R5ZNyl2g4ZWT0LQcb4uXhusXC193nku5O2AEkgsHVGjWI4zkSe3sPgQO_H0ANp2an50iAhfyS6pzbNEm1xeYRy57bjIbx6U2OUOwUettWfZiuRCTNyTXRmcGhNOjpAW9HuDPGtRXoy92S1bhoaX-1_Hz4eynv27qYtJr2GOJYuqrDeuvBQzzaqTOTvYZh6HVr0dia3RDJHFHk"/>
+<!-- Optional Decorative/Brand Element over Image -->
+<div class="relative z-20 h-full p-margin flex flex-col justify-end text-on-primary max-w-lg">
+<div class="bg-surface-container-lowest/10 backdrop-blur-md p-lg rounded-xl border border-white/10">
+<span class="material-symbols-outlined text-[48px] mb-sm opacity-80" style="font-variation-settings: 'wght' 300;">
+                    auto_graph
+                </span>
+<blockquote class="font-title-sm text-title-sm text-inverse-on-surface leading-relaxed mb-sm">
+                    "El éxito académico no es un destino, es un proceso continuo de acompañamiento y dedicación."
+                </blockquote>
+<p class="font-body-sm text-body-sm text-inverse-on-surface/70 uppercase tracking-widest">
+                    Dirección Académica
+                </p>
+</div>
+</div>
+</aside>
+</body></html>

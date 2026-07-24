@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Panel de Administración - AcademiaPro</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#f3bc87",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#d3e4fe",
+                    "surface-tint": "#306576",
+                    "secondary": "#006c49",
+                    "tertiary": "#482700",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#114d5d",
+                    "on-secondary-fixed-variant": "#005236",
+                    "surface": "#f8f9ff",
+                    "surface-dim": "#cbdbf5",
+                    "on-background": "#0b1c30",
+                    "tertiary-container": "#623d13",
+                    "surface-container-low": "#eff4ff",
+                    "outline-variant": "#c0c8cb",
+                    "surface-bright": "#f8f9ff",
+                    "inverse-primary": "#9acee1",
+                    "on-tertiary-fixed-variant": "#643e14",
+                    "surface-container-high": "#dce9ff",
+                    "surface-container-highest": "#d3e4fe",
+                    "secondary-fixed-dim": "#4edea3",
+                    "primary": "#003441",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed": "#6ffbbe",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#213145",
+                    "primary-fixed-dim": "#9acee1",
+                    "on-tertiary-fixed": "#2c1600",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#0f4c5c",
+                    "secondary-container": "#6cf8bb",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#ffdcbe",
+                    "on-surface": "#0b1c30",
+                    "on-surface-variant": "#40484b",
+                    "surface-container": "#e5eeff",
+                    "on-primary": "#ffffff",
+                    "background": "#f8f9ff",
+                    "on-secondary-container": "#00714d",
+                    "outline": "#70787c",
+                    "on-secondary-fixed": "#002113",
+                    "on-tertiary-container": "#dda975",
+                    "primary-fixed": "#b6ebfe",
+                    "on-primary-fixed": "#001f28",
+                    "on-primary-container": "#87bbce",
+                    "inverse-on-surface": "#eaf1ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin": "32px",
+                    "gutter": "24px",
+                    "sm": "16px",
+                    "xs": "8px",
+                    "lg": "32px",
+                    "base": "4px",
+                    "md": "24px",
+                    "xl": "48px"
+            },
+            "fontFamily": {
+                    "body-sm": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "title-sm": [
+                            "Inter"
+                    ],
+                    "display-lg": [
+                            "Inter"
+                    ],
+                    "label-caps": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "title-sm": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg": [
+                            "36px",
+                            {
+                                    "lineHeight": "44px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md min-h-screen flex">
+<!-- SideNavBar (Shared Component) -->
+<aside class="bg-[#0F4C5C] dark:bg-slate-900 text-white font-sans text-sm font-medium tracking-wide fixed left-0 top-0 h-screen w-64 rounded-none border-r border-teal-800 dark:border-slate-800 shadow-xl flex flex-col h-full py-6 z-50">
+<!-- Header -->
+<div class="px-6 mb-8 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center shrink-0 overflow-hidden">
+<img alt="Logo Universidad" class="w-full h-full object-cover opacity-80" data-alt="clean minimal university crest logo in white on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOhx_8LNki1J4H-w-U88pq8igOMBodIvHkdRx2B5lBgFBLjNR3DujggFizaVGKVKQ1fYMiakHXwq6Rus99QHnd8y0TGpSrxsXdmOHQWJLryfCiKyi1OJir6oU897tLGsphL5q3FnBXiTokMWK7TfAvV_LkiSmmo_RiYNIYGgdjy3ypFSqwAVJWIP41nBjEu0wmtGf1vKywVal0VzansYQ3g3pUgBtAqbu0i3jn-z8XN_2Q96qJhWuyB1DCnA3EP67TQPjic1ptPUk"/>
+</div>
+<div>
+<h1 class="text-lg font-black text-white uppercase tracking-widest leading-tight">Portal Académico</h1>
+<p class="text-teal-100/70 text-xs mt-1">Gestión de Acompañamiento</p>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex-1 overflow-y-auto">
+<ul class="flex flex-col gap-1">
+<li>
+<a class="bg-white/10 text-white border-l-4 border-white py-3 px-6 flex items-center gap-3 active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                        Dashboard
+                    </a>
+</li>
+<li>
+<a class="text-teal-100/70 hover:text-white py-3 px-6 flex items-center gap-3 transition-all hover:bg-white/5 active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+                        Perfil
+                    </a>
+</li>
+<li>
+<a class="text-teal-100/70 hover:text-white py-3 px-6 flex items-center gap-3 transition-all hover:bg-white/5 active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                        Progreso
+                    </a>
+</li>
+<li>
+<a class="text-teal-100/70 hover:text-white py-3 px-6 flex items-center gap-3 transition-all hover:bg-white/5 active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+                        Planificador
+                    </a>
+</li>
+<li>
+<a class="text-teal-100/70 hover:text-white py-3 px-6 flex items-center gap-3 transition-all hover:bg-white/5 active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+                        Materiales
+                    </a>
+</li>
+<li>
+<a class="text-teal-100/70 hover:text-white py-3 px-6 flex items-center gap-3 transition-all hover:bg-white/5 active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+                        Sesiones
+                    </a>
+</li>
+<li>
+<a class="text-teal-100/70 hover:text-white py-3 px-6 flex items-center gap-3 transition-all hover:bg-white/5 active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+                        Red Social
+                    </a>
+</li>
+</ul>
+</nav>
+<!-- Footer -->
+<div class="mt-auto pt-4 border-t border-teal-800/50">
+<a class="text-teal-100/70 hover:text-white py-3 px-6 flex items-center gap-3 transition-all hover:bg-white/5 active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Cerrar Sesión
+            </a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="ml-64 flex-1 flex flex-col min-h-screen">
+<!-- TopNavBar (Shared Component) -->
+<nav class="bg-white/95 dark:bg-slate-950/95 backdrop-blur-md text-[#0F4C5C] dark:text-teal-400 font-sans antialiased text-sm border-b border-slate-200 dark:border-slate-800 shadow-sm flex justify-between items-center w-full px-8 h-16 sticky top-0 z-40 transition-colors duration-200 ease-in-out">
+<!-- Left: Brand & Search -->
+<div class="flex items-center gap-6">
+<span class="text-xl font-bold tracking-tight text-[#0F4C5C] dark:text-teal-500">AcademiaPro</span>
+<div class="relative hidden md:block w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-full py-1.5 pl-10 pr-4 text-sm focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" placeholder="Buscar..." type="text"/>
+</div>
+</div>
+<!-- Right: Actions & Profile -->
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors duration-200 ease-in-out">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors duration-200 ease-in-out">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors duration-200 ease-in-out">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="h-6 w-px bg-outline-variant mx-1"></div>
+<div class="w-8 h-8 rounded-full overflow-hidden ml-2 border border-outline-variant cursor-pointer">
+<img alt="Avatar del estudiante" class="w-full h-full object-cover" data-alt="professional headshot of young man in corporate attire on neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaQbTSutc2SI0KnUQTQ-6IMUtT7a5Li5ayJ4QGU4ZGhd3XrsP3-5SmR44WIjKCtfYfFGsI0sx7LS9qkuSwb1VckQizlDvpgX3_cDPKnjtWBop6SbLzEm_DpZIWVVzbtcZfW3wSn0nLz_j-u9M0qfqYvER1PjODaE1It59AwjRSmLYd25d2I6kIigmhD1fMFIdIPlW-T30dyP0a4AJ1i4sWg--hi23ZdrdI5QQi_R-6hhNQLFfuw74at9OIZ9Vf2PbMDKiL4do5420"/>
+</div>
+</div>
+</nav>
+<!-- Main Canvas -->
+<main class="flex-1 p-margin">
+<!-- Page Header -->
+<header class="mb-lg">
+<h2 class="font-display-lg text-display-lg text-on-background mb-xs">Panel de Administración</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Gestión de moderación, control de usuarios y contenido reportado.</p>
+</header>
+<!-- Bento Grid: Key Metrics -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-xl">
+<!-- Metric Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between mb-4">
+<h3 class="font-title-sm text-title-sm text-on-surface">Usuarios Activos</h3>
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+</div>
+</div>
+<div>
+<p class="font-display-lg text-display-lg text-on-background">2,450</p>
+<p class="font-body-sm text-body-sm text-secondary flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span> +12% este mes
+                        </p>
+</div>
+</div>
+<!-- Metric Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-tertiary-fixed-dim/10 rounded-bl-full -mr-8 -mt-8"></div>
+<div class="flex items-start justify-between mb-4 relative z-10">
+<h3 class="font-title-sm text-title-sm text-on-surface">Reportes Pendientes</h3>
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed-dim/20 flex items-center justify-center text-tertiary-container">
+<span class="material-symbols-outlined" data-icon="flag">flag</span>
+</div>
+</div>
+<div class="relative z-10">
+<p class="font-display-lg text-display-lg text-on-background">18</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Requieren atención inmediata</p>
+</div>
+</div>
+<!-- Metric Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between mb-4">
+<h3 class="font-title-sm text-title-sm text-on-surface">Cuentas Bloqueadas</h3>
+<div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined" data-icon="block">block</span>
+</div>
+</div>
+<div>
+<p class="font-display-lg text-display-lg text-on-background">42</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Histórico total</p>
+</div>
+</div>
+</section>
+<!-- Grid Layout for Tables -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter">
+<!-- Contenido Denunciado (Spans 8 cols on large screens) -->
+<section class="xl:col-span-12 bg-surface-container-lowest border border-outline-variant rounded-lg shadow-sm overflow-hidden mb-xl">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center bg-surface-bright">
+<div>
+<h3 class="font-title-sm text-title-sm text-on-background">Contenido Denunciado</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Revisión de materiales y sesiones reportadas por la comunidad.</p>
+</div>
+<button class="text-primary-container font-label-caps text-label-caps hover:underline flex items-center gap-1">
+                            Ver historial completo
+                            <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface">
+<th class="font-label-caps text-label-caps text-on-surface-variant py-4 px-6 border-b border-outline-variant font-semibold">Tipo</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant py-4 px-6 border-b border-outline-variant font-semibold">Referencia</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant py-4 px-6 border-b border-outline-variant font-semibold">Motivo Reporte</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant py-4 px-6 border-b border-outline-variant font-semibold">Estado</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant py-4 px-6 border-b border-outline-variant font-semibold text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/50">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container/50 transition-colors">
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline" data-icon="menu_book">menu_book</span>
+<span class="font-body-sm text-body-sm text-on-surface">Material</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<p class="font-body-sm text-body-sm text-on-background font-medium">Guía Avanzada de Física Cuántica.pdf</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-xs mt-0.5">Subido por: User_8472</p>
+</td>
+<td class="py-4 px-6 font-body-sm text-body-sm text-on-surface">Plagio de fuente externa sin citar</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-caps text-label-caps bg-tertiary-fixed-dim/20 text-tertiary-container border border-tertiary-fixed-dim/30">Pendiente</span>
+</td>
+<td class="py-4 px-6 text-right space-x-2 whitespace-nowrap">
+<button class="inline-flex items-center justify-center px-3 py-1.5 border border-outline text-on-surface hover:bg-surface-container rounded font-label-caps text-label-caps transition-colors">
+                                            Desestimar
+                                        </button>
+<button class="inline-flex items-center justify-center px-3 py-1.5 bg-error text-on-error hover:bg-on-error-container hover:text-white rounded font-label-caps text-label-caps transition-colors shadow-sm">
+                                            Eliminar
+                                        </button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-surface hover:bg-surface-container/50 transition-colors">
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline" data-icon="groups">groups</span>
+<span class="font-body-sm text-body-sm text-on-surface">Sesión</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<p class="font-body-sm text-body-sm text-on-background font-medium">Grupo de Estudio: Cálculo III</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-xs mt-0.5">Moderador: Alex_T</p>
+</td>
+<td class="py-4 px-6 font-body-sm text-body-sm text-on-surface">Comportamiento inapropiado / Spam en chat</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-caps text-label-caps bg-tertiary-fixed-dim/20 text-tertiary-container border border-tertiary-fixed-dim/30">Pendiente</span>
+</td>
+<td class="py-4 px-6 text-right space-x-2 whitespace-nowrap">
+<button class="inline-flex items-center justify-center px-3 py-1.5 border border-outline text-on-surface hover:bg-surface-container rounded font-label-caps text-label-caps transition-colors">
+                                            Desestimar
+                                        </button>
+<button class="inline-flex items-center justify-center px-3 py-1.5 bg-error text-on-error hover:bg-on-error-container hover:text-white rounded font-label-caps text-label-caps transition-colors shadow-sm">
+                                            Cancelar Sesión
+                                        </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Usuarios Registrados -->
+<section class="xl:col-span-12 bg-surface-container-lowest border border-outline-variant rounded-lg shadow-sm overflow-hidden">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center bg-surface-bright">
+<div>
+<h3 class="font-title-sm text-title-sm text-on-background">Usuarios Registrados</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Directorio y control de acceso de la plataforma.</p>
+</div>
+<div class="flex gap-2">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm" data-icon="search">search</span>
+<input class="w-64 bg-surface border border-outline-variant rounded py-1.5 pl-9 pr-3 text-sm focus:outline-none focus:border-primary-container" placeholder="Filtrar por nombre..." type="text"/>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface">
+<th class="font-label-caps text-label-caps text-on-surface-variant py-4 px-6 border-b border-outline-variant font-semibold">Usuario</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant py-4 px-6 border-b border-outline-variant font-semibold">Rol</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant py-4 px-6 border-b border-outline-variant font-semibold">Estado</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant py-4 px-6 border-b border-outline-variant font-semibold">Último Acceso</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant py-4 px-6 border-b border-outline-variant font-semibold text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/50">
+<!-- User Row 1 -->
+<tr class="hover:bg-surface-container/50 transition-colors">
+<td class="py-3 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-fixed-dim text-on-primary-fixed flex items-center justify-center font-title-sm font-bold text-sm">
+                                                MR
+                                            </div>
+<div>
+<p class="font-body-sm text-body-sm text-on-background font-medium">María Rodríguez</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-xs mt-0.5">m.rodriguez@univ.edu</p>
+</div>
+</div>
+</td>
+<td class="py-3 px-6 font-body-sm text-body-sm text-on-surface">Estudiante</td>
+<td class="py-3 px-6">
+<span class="inline-flex items-center px-2 py-0.5 rounded font-body-sm text-body-sm bg-secondary/10 text-secondary border border-secondary/20">Activo</span>
+</td>
+<td class="py-3 px-6 font-body-sm text-body-sm text-on-surface-variant">Hace 2 horas</td>
+<td class="py-3 px-6 text-right">
+<button class="p-1.5 text-outline hover:text-error transition-colors rounded hover:bg-surface-container" title="Bloquear Usuario">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+</button>
+<button class="p-1.5 text-outline hover:text-primary-container transition-colors rounded hover:bg-surface-container ml-1" title="Editar Perfil">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+</td>
+</tr>
+<!-- User Row 2 -->
+<tr class="bg-surface hover:bg-surface-container/50 transition-colors">
+<td class="py-3 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-fixed-dim text-on-primary-fixed flex items-center justify-center font-title-sm font-bold text-sm">
+                                                JP
+                                            </div>
+<div>
+<p class="font-body-sm text-body-sm text-on-background font-medium">Juan Pérez</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-xs mt-0.5">j.perez@univ.edu</p>
+</div>
+</div>
+</td>
+<td class="py-3 px-6 font-body-sm text-body-sm text-on-surface">Tutor</td>
+<td class="py-3 px-6">
+<span class="inline-flex items-center px-2 py-0.5 rounded font-body-sm text-body-sm bg-error/10 text-error border border-error/20">Bloqueado</span>
+</td>
+<td class="py-3 px-6 font-body-sm text-body-sm text-on-surface-variant">Hace 3 días</td>
+<td class="py-3 px-6 text-right">
+<button class="p-1.5 text-outline hover:text-secondary transition-colors rounded hover:bg-surface-container" title="Desbloquear Usuario">
+<span class="material-symbols-outlined" data-icon="lock_open">lock_open</span>
+</button>
+<button class="p-1.5 text-outline hover:text-primary-container transition-colors rounded hover:bg-surface-container ml-1" title="Editar Perfil">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+</div>
+</body></html>

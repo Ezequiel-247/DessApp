@@ -1,0 +1,220 @@
+paths:
+  /api/custom-study-plans:
+    get:
+      tags:
+        - CustomStudyPlans
+      summary: Listar planes personalizados
+      parameters:
+        - in: query
+          name: studentId
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Lista de planes personalizados
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomStudyPlanListResponse'
+
+    post:
+      tags:
+        - CustomStudyPlans
+      summary: Crear plan personalizado
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomStudyPlanRequest'
+      responses:
+        '201':
+          description: Plan creado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '400':
+          description: Datos invalidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/custom-study-plans/clone/{id}:
+    post:
+      tags:
+        - CustomStudyPlans
+      summary: Clonar plan personalizado
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id_student:
+                  type: integer
+                name:
+                  type: string
+                weekly_hours:
+                  type: integer
+      responses:
+        '201':
+          description: Plan clonado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '404':
+          description: Plan origen no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/custom-study-plans/{id}:
+    get:
+      tags:
+        - CustomStudyPlans
+      summary: Obtener plan personalizado por ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Plan encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/CustomStudyPlanData'
+        '404':
+          description: No encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      tags:
+        - CustomStudyPlans
+      summary: Actualizar plan personalizado
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomStudyPlanUpdateRequest'
+      responses:
+        '200':
+          description: Plan actualizado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+    patch:
+      tags:
+        - CustomStudyPlans
+      summary: Actualizacion parcial de plan personalizado
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomStudyPlanUpdateRequest'
+      responses:
+        '200':
+          description: Plan actualizado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+    delete:
+      tags:
+        - CustomStudyPlans
+      summary: Eliminar plan personalizado
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Plan eliminado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'
+
+  /api/custom-study-plans/{id}/deviation:
+    get:
+      tags:
+        - CustomStudyPlans
+      summary: Obtener metricas de desvio del plan
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+        - in: query
+          name: studentId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Metricas de desvio
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+        '400':
+          description: Falta studentId
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Plan no pertenece al estudiante
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Plan no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'

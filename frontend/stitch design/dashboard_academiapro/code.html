@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard del Estudiante - AcademiaPro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#f3bc87",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#d3e4fe",
+                        "surface-tint": "#306576",
+                        "secondary": "#006c49",
+                        "tertiary": "#482700",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#114d5d",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface": "#f8f9ff",
+                        "surface-dim": "#cbdbf5",
+                        "on-background": "#0b1c30",
+                        "tertiary-container": "#623d13",
+                        "surface-container-low": "#eff4ff",
+                        "outline-variant": "#c0c8cb",
+                        "surface-bright": "#f8f9ff",
+                        "inverse-primary": "#9acee1",
+                        "on-tertiary-fixed-variant": "#643e14",
+                        "surface-container-high": "#dce9ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "secondary-fixed-dim": "#4edea3",
+                        "primary": "#003441",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#6ffbbe",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "primary-fixed-dim": "#9acee1",
+                        "on-tertiary-fixed": "#2c1600",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#0f4c5c",
+                        "secondary-container": "#6cf8bb",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffdcbe",
+                        "on-surface": "#0b1c30",
+                        "on-surface-variant": "#40484b",
+                        "surface-container": "#e5eeff",
+                        "on-primary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "on-secondary-container": "#00714d",
+                        "outline": "#70787c",
+                        "on-secondary-fixed": "#002113",
+                        "on-tertiary-container": "#dda975",
+                        "primary-fixed": "#b6ebfe",
+                        "on-primary-fixed": "#001f28",
+                        "on-primary-container": "#87bbce",
+                        "inverse-on-surface": "#eaf1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin": "32px",
+                        "gutter": "24px",
+                        "sm": "16px",
+                        "xs": "8px",
+                        "lg": "32px",
+                        "base": "4px",
+                        "md": "24px",
+                        "xl": "48px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "title-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "title-sm": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="hidden md:flex bg-[#0F4C5C] dark:bg-slate-900 font-sans text-sm font-medium tracking-wide fixed left-0 top-0 h-screen w-64 rounded-none border-r border-teal-800 dark:border-slate-800 shadow-xl flex-col h-full py-6 z-50">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center overflow-hidden">
+<img alt="Logo Universidad" class="w-full h-full object-cover opacity-80" data-alt="minimalist modern university shield logo white outline on transparent background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2zifa3hxXg18P-Wa1gj67wviQdCk1FApe4Bdld6uvjbBvOxy8H-zAEF8kpX_9ExX2Wv5X3RG9CDOcpzkWsl2IZeQI4VAcrNpnt99vfbjRRL9SYrQSeDQ2agNET0YLYnb9cE3lwYlr9Fpvh1ExNX1dbCzvglpbWwrOXO-sXPOZp2-DjRZftA7Ielf3oEJW81Ed7oPIFqgGgxENiEMno5MBhrbLu_oDrJCbiThTOUN-if3Be-_bAz1ELsswolKA8AFsYVzP63VcgNo"/>
+</div>
+<div>
+<h1 class="text-lg font-black text-white uppercase tracking-widest leading-tight">Portal Académico</h1>
+<p class="text-teal-100/70 text-xs">Gestión de Acompañamiento</p>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto flex flex-col gap-1">
+<a class="bg-white/10 text-white border-l-4 border-white py-3 px-6 flex items-center gap-3 active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined icon-fill" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="text-teal-100/70 hover:text-white py-3 px-6 flex items-center gap-3 transition-all hover:bg-white/5 active:scale-95 duration-150 border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+                Perfil
+            </a>
+<a class="text-teal-100/70 hover:text-white py-3 px-6 flex items-center gap-3 transition-all hover:bg-white/5 active:scale-95 duration-150 border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                Progreso
+            </a>
+<a class="text-teal-100/70 hover:text-white py-3 px-6 flex items-center gap-3 transition-all hover:bg-white/5 active:scale-95 duration-150 border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+                Planificador
+            </a>
+<a class="text-teal-100/70 hover:text-white py-3 px-6 flex items-center gap-3 transition-all hover:bg-white/5 active:scale-95 duration-150 border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+                Materiales
+            </a>
+<a class="text-teal-100/70 hover:text-white py-3 px-6 flex items-center gap-3 transition-all hover:bg-white/5 active:scale-95 duration-150 border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+                Sesiones
+            </a>
+<a class="text-teal-100/70 hover:text-white py-3 px-6 flex items-center gap-3 transition-all hover:bg-white/5 active:scale-95 duration-150 border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+                Red Social
+            </a>
+</div>
+<div class="mt-auto px-0 pt-4">
+<a class="text-teal-100/70 hover:text-white py-3 px-6 flex items-center gap-3 transition-all hover:bg-white/5 active:scale-95 duration-150 border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Cerrar Sesión
+            </a>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col md:ml-64 w-full min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-white/95 dark:bg-slate-950/95 backdrop-blur-md font-sans antialiased text-sm border-b border-slate-200 dark:border-slate-800 shadow-sm flex justify-between items-center w-full px-8 h-16 sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-slate-500 hover:text-[#0F4C5C]">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="text-xl font-bold tracking-tight text-[#0F4C5C] dark:text-teal-500 md:hidden">
+                    AcademiaPro
+                </div>
+<div class="hidden md:flex items-center bg-surface-container-low rounded-full px-4 py-2 border border-outline-variant focus-within:border-[#0F4C5C] focus-within:ring-1 focus-within:ring-[#0F4C5C] transition-all">
+<span class="material-symbols-outlined text-outline mr-2 text-sm" data-icon="search">search</span>
+<input class="bg-transparent border-none outline-none focus:ring-0 text-body-sm w-64 placeholder:text-outline" placeholder="Buscar cursos, documentos..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors duration-200 ease-in-out p-2 rounded-full relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors duration-200 ease-in-out p-2 rounded-full hidden sm:block">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<button class="text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors duration-200 ease-in-out p-2 rounded-full hidden sm:block">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant ml-2 cursor-pointer hover:ring-2 ring-[#0F4C5C] transition-all">
+<img alt="Avatar del estudiante" class="w-full h-full object-cover" data-alt="professional headshot of a young female university student smiling gently against a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWIOZtddH5RVc8Mj6hqAGOUo8ZsTcZWNnlmlBP6Cb0eGqPQI9b68YSbPtufvZ8R6Wv1VUuA-siDyi1d6-CEBLAfQJeb0D9f5uxId40kwuYuewf3by6thvjr3hqovi230xNebXzlnV-ThY2ndUlJiCp3rCyZ83Ih0bXRO3wMvbWZBut06AmG-f5nDueySUln6zMjI9j8zjkSBUUq6IkxTBFfwu-rZqunw4DC2Xa0Y4FABk2gQRKtDOprkl1feyJkMpE30aDz4mQq6w"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<main class="flex-1 p-gutter md:p-margin max-w-7xl mx-auto w-full">
+<div class="mb-gutter">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-1">Hola, Sofía</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Aquí tienes el resumen de tu actividad académica.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Progreso Académico (Bento Main) -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-xl border border-outline-variant p-gutter shadow-[0_4px_20px_rgba(15,76,92,0.03)] flex flex-col justify-between">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="font-title-sm text-title-sm text-on-surface">Progreso de Carrera</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Ingeniería de Sistemas - 6to Semestre</p>
+</div>
+<span class="bg-surface-container px-3 py-1 rounded-full font-label-caps text-label-caps text-primary-container">EN CURSO</span>
+</div>
+<div class="flex flex-col md:flex-row items-center gap-8 mb-4">
+<div class="relative w-32 h-32 flex-shrink-0">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-variant" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-primary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="65, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center flex-col">
+<span class="font-display-lg text-display-lg text-primary-container leading-none">65%</span>
+</div>
+</div>
+<div class="flex-1 grid grid-cols-2 gap-4 w-full">
+<div class="bg-surface-container-low p-4 rounded-lg">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">CRÉDITOS APROBADOS</div>
+<div class="font-title-sm text-title-sm text-on-surface">110 / 170</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">PROMEDIO ACTUAL</div>
+<div class="font-title-sm text-title-sm text-on-surface">4.2 / 5.0</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">MATERIAS PENDIENTES</div>
+<div class="font-title-sm text-title-sm text-on-surface">18</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">PRÓXIMA META</div>
+<div class="font-title-sm text-title-sm text-on-surface">Seminario Grado</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Próximas Sesiones -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-xl border border-outline-variant p-gutter shadow-[0_4px_20px_rgba(15,76,92,0.03)] flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-title-sm text-title-sm text-on-surface">Próximas Sesiones</h3>
+<button class="text-primary-container hover:bg-surface-container p-1 rounded transition-colors">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+<div class="flex flex-col gap-4 flex-1">
+<div class="flex gap-4 p-3 rounded-lg border border-outline-variant hover:border-primary-container transition-colors cursor-pointer group">
+<div class="flex flex-col items-center justify-center bg-surface-container-low rounded-lg p-2 min-w-[50px] group-hover:bg-primary-container group-hover:text-on-primary transition-colors">
+<span class="font-label-caps text-label-caps">HOY</span>
+<span class="font-title-sm text-title-sm">14:00</span>
+</div>
+<div>
+<h4 class="font-body-sm text-body-sm font-semibold text-on-surface">Tutoría: Cálculo III</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-xs flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="videocam">videocam</span> Sala Virtual B
+                                </p>
+</div>
+</div>
+<div class="flex gap-4 p-3 rounded-lg border border-outline-variant hover:border-primary-container transition-colors cursor-pointer group">
+<div class="flex flex-col items-center justify-center bg-surface-container-low rounded-lg p-2 min-w-[50px] group-hover:bg-primary-container group-hover:text-on-primary transition-colors">
+<span class="font-label-caps text-label-caps text-on-surface-variant group-hover:text-on-primary/80">MIE</span>
+<span class="font-title-sm text-title-sm">09:30</span>
+</div>
+<div>
+<h4 class="font-body-sm text-body-sm font-semibold text-on-surface">Grupo Estudio: Bases Datos</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-xs flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span> Biblioteca Central
+                                </p>
+</div>
+</div>
+</div>
+<button class="mt-4 w-full py-2 font-label-caps text-label-caps text-primary-container border border-primary-container rounded hover:bg-primary-container hover:text-on-primary transition-colors">
+                        VER CALENDARIO
+                    </button>
+</div>
+<!-- Materias en Curso (Tabla) -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0_4px_20px_rgba(15,76,92,0.03)] overflow-hidden">
+<div class="p-gutter border-b border-outline-variant flex justify-between items-center bg-surface-bright">
+<h3 class="font-title-sm text-title-sm text-on-surface">Materias en Curso</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Semestre 2024-1</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low font-label-caps text-label-caps text-on-surface-variant">
+<th class="py-3 px-6 font-semibold">MATERIA</th>
+<th class="py-3 px-6 font-semibold">PROFESOR</th>
+<th class="py-3 px-6 font-semibold">NOTA ACTUAL</th>
+<th class="py-3 px-6 font-semibold">ESTADO</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface">
+<tr class="border-b border-outline-variant/50 hover:bg-surface transition-colors">
+<td class="py-4 px-6 font-medium">Arquitectura de Software</td>
+<td class="py-4 px-6 text-on-surface-variant">Dr. Carlos Méndez</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<span>4.5</span>
+<div class="w-16 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-secondary-fixed-dim h-full w-[90%]"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2 py-1 rounded bg-[#006c49]/10 text-[#006c49] text-xs font-semibold">Excelente</span>
+</td>
+</tr>
+<tr class="border-b border-outline-variant/50 hover:bg-surface transition-colors bg-surface/30">
+<td class="py-4 px-6 font-medium">Cálculo Multivariado</td>
+<td class="py-4 px-6 text-on-surface-variant">Dra. Elena Rivas</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<span>3.2</span>
+<div class="w-16 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-[#f3bc87] h-full w-[64%]"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2 py-1 rounded bg-[#623d13]/10 text-[#623d13] text-xs font-semibold">En Riesgo</span>
+</td>
+</tr>
+<tr class="hover:bg-surface transition-colors">
+<td class="py-4 px-6 font-medium">Inteligencia Artificial</td>
+<td class="py-4 px-6 text-on-surface-variant">Ing. Roberto Gómez</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<span>4.0</span>
+<div class="w-16 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-secondary-fixed-dim h-full w-[80%]"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2 py-1 rounded bg-[#006c49]/10 text-[#006c49] text-xs font-semibold">Bueno</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Actividad de Contactos -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-xl border border-outline-variant p-gutter shadow-[0_4px_20px_rgba(15,76,92,0.03)]">
+<h3 class="font-title-sm text-title-sm text-on-surface mb-6">Actividad de Contactos</h3>
+<div class="flex flex-col gap-5">
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-outline-variant">
+<img alt="User" class="w-full h-full object-cover" data-alt="headshot of young male student looking confident with natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCdkTZexYWmYcqMJX6rcYcrO3qqLO4TIlbbuf871WgYpEAZKcB1a106muFFaxOMsDhJV200xPyER0B9XwNM1Gu9GpFzo5go3qMDkGlIX9pVceoHUJR6uW2YnyyrbpCGtzbQbeZd8zA-YZgz_JiJM8zobL4F1GhGFVOXa5v-OPpACRmDJGNywkFXflcTpuKoaYXa2_ZoQP2FLTIZ7EdJPhDiJPoL5sa2dOAC-ZurgIWUF7U5ONpP7FD8Amp0BYAwQC8321ZHYKI1Uc"/>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface"><span class="font-semibold">Mateo Silva</span> compartió un apunte en <span class="font-medium text-primary-container">Arquitectura de Software</span></p>
+<p class="font-body-sm text-body-sm text-xs text-on-surface-variant mt-1">Hace 2 horas</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-outline-variant">
+<img alt="User" class="w-full h-full object-cover" data-alt="portrait of a young female student with glasses studying in a library setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuzMnVD4n9LNojasMy9bmv-BY9MM-G2Y0MZag2OP_pwX5pWORbY4Ic3krsHxni91ToX2kXb6vjOE1A3ff_N-em6_bzESZm31v_ENWumJ7MZcT7JrVP63JG9BEjg6wOlm0my8smgzfCZxy0IEwWf0f6GNpX5ZMFMWd12Ubo0BeTTe8zoH6mp79QPMDYfSX8RLuTMnBcGibk7CTaEnUwrfE1gqy120y_oW9zhi_e5YL9gFmWPmxzjrAkbJryW46YMWpMK43T8iKffoE"/>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface"><span class="font-semibold">Valentina Ríos</span> te invitó a un grupo de estudio para <span class="font-medium text-primary-container">Cálculo</span></p>
+<div class="mt-2 flex gap-2">
+<button class="px-3 py-1 bg-primary-container text-on-primary font-label-caps text-[10px] rounded hover:bg-primary transition-colors">ACEPTAR</button>
+<button class="px-3 py-1 border border-outline-variant text-on-surface font-label-caps text-[10px] rounded hover:bg-surface-container transition-colors">IGNORAR</button>
+</div>
+<p class="font-body-sm text-body-sm text-xs text-on-surface-variant mt-2">Hace 5 horas</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center flex-shrink-0 text-primary-container">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface">Nuevo mensaje en el foro de <span class="font-medium text-primary-container">IA</span> por <span class="font-semibold">Prof. Roberto</span></p>
+<p class="font-body-sm text-body-sm text-xs text-on-surface-variant mt-1">Ayer</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

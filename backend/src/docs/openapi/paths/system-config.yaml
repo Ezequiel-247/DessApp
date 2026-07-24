@@ -1,0 +1,160 @@
+paths:
+  /api/system-config:
+    get:
+      tags:
+        - SystemConfig
+      summary: Listar configuraciones del sistema
+      responses:
+        '200':
+          description: Lista de configuraciones
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemConfigListResponse'
+
+    post:
+      tags:
+        - SystemConfig
+      summary: Crear configuracion
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SystemConfigRequest'
+      responses:
+        '201':
+          description: Configuracion creada
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '400':
+          description: Datos invalidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: No autenticado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Solo admin
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/system-config/{key}:
+    get:
+      tags:
+        - SystemConfig
+      summary: Obtener configuracion por key
+      parameters:
+        - in: path
+          name: key
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Configuracion encontrada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/SystemConfigData'
+        '404':
+          description: Key no encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      tags:
+        - SystemConfig
+      summary: Actualizar configuracion
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: key
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SystemConfigUpdateRequest'
+      responses:
+        '200':
+          description: Configuracion actualizada
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+    patch:
+      tags:
+        - SystemConfig
+      summary: Actualizacion parcial de configuracion
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: key
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SystemConfigUpdateRequest'
+      responses:
+        '200':
+          description: Configuracion actualizada
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+    delete:
+      tags:
+        - SystemConfig
+      summary: Eliminar configuracion
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: key
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Configuracion eliminada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'
+        '404':
+          description: Key no encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'

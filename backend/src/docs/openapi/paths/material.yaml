@@ -1,0 +1,284 @@
+paths:
+  /api/material:
+    get:
+      tags:
+        - Materials
+      summary: Listar materiales
+      parameters:
+        - in: query
+          name: career_id
+          schema:
+            type: integer
+        - in: query
+          name: subject_id
+          schema:
+            type: integer
+        - in: query
+          name: sort
+          schema:
+            type: string
+        - in: query
+          name: q
+          schema:
+            type: string
+        - in: query
+          name: student_id
+          schema:
+            type: integer
+        - in: query
+          name: show_suspended
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Lista de materiales
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MaterialListResponse'
+
+    post:
+      tags:
+        - Materials
+      summary: Crear material
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MaterialRequest'
+      responses:
+        '201':
+          description: Material creado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '400':
+          description: Datos invalidos o materia fuera de plan del estudiante
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/material/admin/reported:
+    get:
+      tags:
+        - Materials
+      summary: Listar materiales reportados (moderacion)
+      parameters:
+        - in: query
+          name: sort
+          schema:
+            type: string
+        - in: query
+          name: status_filter
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Materiales reportados
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+  /api/material/admin/{id}/resolve-report:
+    patch:
+      tags:
+        - Materials
+      summary: Resolver reporte de material
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - action
+              properties:
+                action:
+                  type: string
+                  enum: [confirm, reject]
+                resolved_by_id:
+                  type: integer
+      responses:
+        '200':
+          description: Reporte resuelto
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '404':
+          description: Reporte no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/material/student/{student_id}:
+    get:
+      tags:
+        - Materials
+      summary: Listar materiales por estudiante
+      parameters:
+        - in: path
+          name: student_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Materiales del estudiante
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MaterialListResponse'
+        '404':
+          description: Sin materiales
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/material/{id}:
+    get:
+      tags:
+        - Materials
+      summary: Obtener material por ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Material encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/MaterialData'
+        '404':
+          description: No encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      tags:
+        - Materials
+      summary: Actualizar material
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MaterialRequest'
+      responses:
+        '200':
+          description: Material actualizado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+    patch:
+      tags:
+        - Materials
+      summary: Actualizacion parcial de material
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MaterialRequest'
+      responses:
+        '200':
+          description: Material actualizado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+    delete:
+      tags:
+        - Materials
+      summary: Eliminar material
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Material eliminado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'
+        '404':
+          description: No encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/material/{id}/report:
+    post:
+      tags:
+        - Materials
+      summary: Reportar material
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MaterialReportRequest'
+      responses:
+        '201':
+          description: Reporte creado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '400':
+          description: Material suspendido o body invalido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'

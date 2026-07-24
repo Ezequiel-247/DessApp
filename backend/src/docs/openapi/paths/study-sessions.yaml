@@ -1,0 +1,303 @@
+paths:
+  /api/study-sessions:
+    post:
+      tags:
+        - StudySessions
+      summary: Crear sesion de estudio
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StudySessionRequest'
+      responses:
+        '201':
+          description: Sesion creada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudySessionData'
+        '400':
+          description: Datos invalidos o fecha en pasado
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/Error'
+                  - $ref: '#/components/schemas/ValidationErrorsResponse'
+        '401':
+          description: No autenticado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    get:
+      tags:
+        - StudySessions
+      summary: Listar sesiones visibles
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: subject_id
+          schema:
+            type: integer
+        - in: query
+          name: query
+          schema:
+            type: string
+        - in: query
+          name: type
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lista de sesiones
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StudySessionData'
+
+  /api/study-sessions/{id}:
+    get:
+      tags:
+        - StudySessions
+      summary: Obtener sesion por ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Sesion encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudySessionData'
+        '404':
+          description: No encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      tags:
+        - StudySessions
+      summary: Actualizar sesion
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StudySessionRequest'
+      responses:
+        '200':
+          description: Sesion actualizada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudySessionData'
+        '403':
+          description: Solo host
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: No encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/study-sessions/{id}/cancel:
+    delete:
+      tags:
+        - StudySessions
+      summary: Cancelar sesion
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Sesion cancelada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'
+        '403':
+          description: Solo host
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/study-sessions/{id}/join:
+    post:
+      tags:
+        - StudySessions
+      summary: Unirse a sesion
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          description: Solicitud/inscripcion creada
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '400':
+          description: Sin cupos, ya inscripto o sesion invalida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/study-sessions/{id}/leave:
+    post:
+      tags:
+        - StudySessions
+      summary: Darse de baja de sesion
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Baja exitosa
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'
+        '404':
+          description: Inscripcion no encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/study-sessions/{id}/registrations/{registrationId}/approve:
+    patch:
+      tags:
+        - StudySessions
+      summary: Aprobar participante
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: registrationId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Participante aprobado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '403':
+          description: Solo host
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/study-sessions/{id}/registrations/{registrationId}/reject:
+    patch:
+      tags:
+        - StudySessions
+      summary: Rechazar participante
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: registrationId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Participante rechazado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+  /api/study-sessions/{id}/registrations/{registrationId}:
+    delete:
+      tags:
+        - StudySessions
+      summary: Eliminar participante de sesion
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: registrationId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Participante eliminado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'
+        '403':
+          description: Solo organizador
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'

@@ -1,0 +1,39 @@
+paths:
+  /api/upload/post-images:
+    post:
+      tags:
+        - Uploads
+      summary: Subir imagenes para posteos
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                images:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+      responses:
+        '200':
+          description: URLs de imagenes subidas
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+        '400':
+          description: Sin archivos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: No autenticado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'

@@ -1,0 +1,448 @@
+paths:
+  /api/reports:
+    get:
+      tags:
+        - Reports
+      summary: Listar reportes
+      parameters:
+        - in: query
+          name: status
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: reporterId
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Lista de reportes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportListResponse'
+
+    post:
+      tags:
+        - Reports
+      summary: Crear reporte
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportRequest'
+      responses:
+        '201':
+          description: Reporte creado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '400':
+          description: Datos invalidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Reporte duplicado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/reports/summary:
+    get:
+      tags:
+        - Reports
+      summary: Resumen administrativo
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Resumen general
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+        '401':
+          description: No autenticado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Solo admin
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/reports/moderation-stats:
+    get:
+      tags:
+        - Reports
+      summary: Estadisticas de moderacion
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Metricas de moderacion
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+  /api/reports/materials-by-subject:
+    get:
+      tags:
+        - Reports
+      summary: Materiales por materia
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: career_id
+          schema:
+            type: integer
+        - in: query
+          name: career_name
+          schema:
+            type: string
+        - in: query
+          name: search
+          schema:
+            type: string
+        - in: query
+          name: page
+          schema:
+            type: integer
+        - in: query
+          name: limit
+          schema:
+            type: integer
+        - in: query
+          name: sort_key
+          schema:
+            type: string
+        - in: query
+          name: sort_dir
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Agregado de materiales por materia
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+  /api/reports/materials-top-rated:
+    get:
+      tags:
+        - Reports
+      summary: Materiales mejor valorados
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: subject_id
+          schema:
+            type: integer
+        - in: query
+          name: sort
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Top materiales
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+  /api/reports/active-users:
+    get:
+      tags:
+        - Reports
+      summary: Usuarios activos
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Metricas de actividad de usuarios
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+  /api/reports/subjects-approved-by-student:
+    get:
+      tags:
+        - Reports
+      summary: Materias aprobadas por estudiante
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Agregado de aprobadas por estudiante
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+  /api/reports/students-by-approved-count:
+    get:
+      tags:
+        - Reports
+      summary: Ranking de estudiantes por aprobadas
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Ranking de aprobadas
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+  /api/reports/subjects-by-career:
+    get:
+      tags:
+        - Reports
+      summary: Materias por carrera
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Materias por carrera
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+  /api/reports/subjects-approved-by-career:
+    get:
+      tags:
+        - Reports
+      summary: Materias aprobadas por carrera
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Aprobadas por carrera
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+  /api/reports/subjects-by-student:
+    get:
+      tags:
+        - Reports
+      summary: Materias por estudiante
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Materias por estudiante
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+  /api/reports/students-by-cursada-count:
+    get:
+      tags:
+        - Reports
+      summary: Ranking de estudiantes por cursadas
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Ranking de cursadas
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+  /api/reports/most-active-careers:
+    get:
+      tags:
+        - Reports
+      summary: Carreras mas activas
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: limit
+          schema:
+            type: integer
+        - in: query
+          name: start_date
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: end_date
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Ranking de carreras activas
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+  /api/reports/study-sessions-usage:
+    get:
+      tags:
+        - Reports
+      summary: Uso de sesiones de estudio
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Metricas de sesiones
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+  /api/reports/social-connections:
+    get:
+      tags:
+        - Reports
+      summary: Metricas de conexiones sociales
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Metricas de conexiones
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+  /api/reports/students-by-connections-count:
+    get:
+      tags:
+        - Reports
+      summary: Ranking de estudiantes por conexiones
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Ranking por conexiones
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+  /api/reports/{id}:
+    get:
+      tags:
+        - Reports
+      summary: Obtener reporte por ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Reporte encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ReportData'
+        '404':
+          description: No encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      tags:
+        - Reports
+      summary: Actualizar reporte
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportUpdateRequest'
+      responses:
+        '200':
+          description: Reporte actualizado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+    patch:
+      tags:
+        - Reports
+      summary: Actualizacion parcial de reporte
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportUpdateRequest'
+      responses:
+        '200':
+          description: Reporte actualizado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+    delete:
+      tags:
+        - Reports
+      summary: Eliminar reporte
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Reporte eliminado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'
+        '404':
+          description: No encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'

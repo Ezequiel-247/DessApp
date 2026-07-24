@@ -1,0 +1,21 @@
+node_modules/
+.env
+.env.local
+*.log
+.DS_Store
+
+# Jest coverage reports (generated, not committed)
+coverage/
+
+# Runtime uploads (avatars, etc.)
+uploads/
+
+# Docker
+postgres_data/
+.docker/
+
+.atl/
+
+# Dev debris
+backend.err
+scratch/

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Panel de Administración - Gestión Académica</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#f3bc87",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#d3e4fe",
+                        "surface-tint": "#306576",
+                        "secondary": "#006c49",
+                        "tertiary": "#482700",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#114d5d",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface": "#f8f9ff",
+                        "surface-dim": "#cbdbf5",
+                        "on-background": "#0b1c30",
+                        "tertiary-container": "#623d13",
+                        "surface-container-low": "#eff4ff",
+                        "outline-variant": "#c0c8cb",
+                        "surface-bright": "#f8f9ff",
+                        "inverse-primary": "#9acee1",
+                        "on-tertiary-fixed-variant": "#643e14",
+                        "surface-container-high": "#dce9ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "secondary-fixed-dim": "#4edea3",
+                        "primary": "#003441",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#6ffbbe",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "primary-fixed-dim": "#9acee1",
+                        "on-tertiary-fixed": "#2c1600",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#0f4c5c",
+                        "secondary-container": "#6cf8bb",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffdcbe",
+                        "on-surface": "#0b1c30",
+                        "on-surface-variant": "#40484b",
+                        "surface-container": "#e5eeff",
+                        "on-primary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "on-secondary-container": "#00714d",
+                        "outline": "#70787c",
+                        "on-secondary-fixed": "#002113",
+                        "on-tertiary-container": "#dda975",
+                        "primary-fixed": "#b6ebfe",
+                        "on-primary-fixed": "#001f28",
+                        "on-primary-container": "#87bbce",
+                        "inverse-on-surface": "#eaf1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin": "32px",
+                        "gutter": "24px",
+                        "sm": "16px",
+                        "xs": "8px",
+                        "lg": "32px",
+                        "base": "4px",
+                        "md": "24px",
+                        "xl": "48px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "title-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "title-sm": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background flex h-screen overflow-hidden">
+<!-- SideNavBar (Shared Component) -->
+<nav class="fixed left-0 top-0 h-screen w-64 rounded-none border-r border-teal-800 dark:border-slate-800 shadow-xl bg-[#0F4C5C] dark:bg-slate-900 font-sans text-sm font-medium tracking-wide flex flex-col py-6 z-50">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-white text-2xl" data-icon="school">school</span>
+</div>
+<div>
+<h1 class="text-lg font-black text-white uppercase tracking-widest">Portal Académico</h1>
+<p class="text-xs text-teal-200/80">Gestión de Acompañamiento</p>
+</div>
+</div>
+<ul class="flex flex-col gap-1 flex-1 px-4">
+<li>
+<a class="bg-white/10 text-white border-l-4 border-white py-3 px-6 flex items-center gap-3 active:scale-95 duration-150 hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="text-teal-100/70 hover:text-white py-3 px-6 flex items-center gap-3 transition-all active:scale-95 duration-150 hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+                    Perfil
+                </a>
+</li>
+<li>
+<a class="text-teal-100/70 hover:text-white py-3 px-6 flex items-center gap-3 transition-all active:scale-95 duration-150 hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                    Progreso
+                </a>
+</li>
+<li>
+<a class="text-teal-100/70 hover:text-white py-3 px-6 flex items-center gap-3 transition-all active:scale-95 duration-150 hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+                    Planificador
+                </a>
+</li>
+<li>
+<a class="text-teal-100/70 hover:text-white py-3 px-6 flex items-center gap-3 transition-all active:scale-95 duration-150 hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+                    Materiales
+                </a>
+</li>
+<li>
+<a class="text-teal-100/70 hover:text-white py-3 px-6 flex items-center gap-3 transition-all active:scale-95 duration-150 hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+                    Sesiones
+                </a>
+</li>
+<li>
+<a class="text-teal-100/70 hover:text-white py-3 px-6 flex items-center gap-3 transition-all active:scale-95 duration-150 hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+                    Red Social
+                </a>
+</li>
+</ul>
+<div class="px-4 mt-auto">
+<a class="text-teal-100/70 hover:text-white py-3 px-6 flex items-center gap-3 transition-all active:scale-95 duration-150 hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Cerrar Sesión
+            </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="ml-64 flex-1 flex flex-col h-full overflow-y-auto">
+<!-- TopNavBar (Shared Component) -->
+<header class="flex justify-between items-center w-full px-8 h-16 sticky top-0 z-40 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm font-sans antialiased text-sm">
+<!-- Brand / Logo Area -->
+<div class="flex items-center gap-4">
+<span class="text-xl font-bold tracking-tight text-[#0F4C5C] dark:text-teal-500">AcademiaPro</span>
+</div>
+<!-- Search Bar -->
+<div class="flex-1 max-w-md mx-8">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" data-icon="search">search</span>
+<input class="w-full bg-slate-100 border-none rounded-full py-2 pl-10 pr-4 focus:ring-2 focus:ring-primary-container focus:bg-white transition-all text-slate-700" placeholder="Buscar..." type="text"/>
+</div>
+</div>
+<!-- Actions & Profile -->
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors duration-200 ease-in-out rounded-full">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors duration-200 ease-in-out rounded-full">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<button class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors duration-200 ease-in-out rounded-full">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="ml-4 h-8 w-8 rounded-full bg-surface-variant overflow-hidden border border-outline-variant flex-shrink-0">
+<img alt="Avatar del estudiante" class="w-full h-full object-cover" data-alt="close-up portrait of a male student with short hair, warm lighting, professional headshot style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWGs3VxuS71KCDgolz6WrWLVVRay0-Z9vlqMqi_ArVm1oRjdIzhGoki5_DXTD4xfesqNOnYQPch8cq7-vO8eZAovubyNCwnste-JApszsgKFHz75L4xDaZVr8FgYcKEoLFM_eZZ-hQcx8nMAhjM9Wzyx4y3zObXZl2XYfqRXGoP51pwbMSfthpP0dhGx2RlLIt7aqNDmfqjaWi2K1IOfHAAENugIxLKHaY_KGSUncf5uIWcfZ5jJDucXiMD9KqNe89_2sk2Hm5tlM"/>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<main class="p-margin flex-1">
+<div class="flex justify-between items-end mb-margin">
+<div>
+<h2 class="font-display-lg text-on-background">Panel de Control General</h2>
+<p class="font-body-md text-on-surface-variant mt-1">Visión general del estado académico e institucional.</p>
+</div>
+<div class="flex gap-sm">
+<button class="px-4 py-2 border border-outline text-on-surface rounded-DEFAULT hover:bg-surface-variant transition-colors font-label-caps flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+                        Exportar Reporte
+                    </button>
+<button class="px-4 py-2 bg-primary-container text-on-primary-container rounded-DEFAULT hover:opacity-90 transition-opacity font-label-caps flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                        Nueva Entidad
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Dashboard -->
+<div class="grid grid-cols-12 gap-gutter mb-xl">
+<!-- Stat Card 1 -->
+<div class="col-span-3 bg-surface-container-lowest border border-[#E2E8F0] p-md rounded-lg flex flex-col gap-sm">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-on-surface-variant uppercase">Estudiantes Activos</span>
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container text-[18px]" data-icon="groups">groups</span>
+</div>
+</div>
+<div>
+<span class="font-display-lg text-on-background">12,450</span>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-secondary text-[14px]" data-icon="trending_up">trending_up</span>
+<span class="font-body-sm text-secondary">+4.2% vs mes anterior</span>
+</div>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="col-span-3 bg-surface-container-lowest border border-[#E2E8F0] p-md rounded-lg flex flex-col gap-sm">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-on-surface-variant uppercase">Carreras Impartidas</span>
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container text-[18px]" data-icon="school">school</span>
+</div>
+</div>
+<div>
+<span class="font-display-lg text-on-background">48</span>
+<div class="flex items-center gap-1 mt-1">
+<span class="font-body-sm text-on-surface-variant">3 en revisión académica</span>
+</div>
+</div>
+</div>
+<!-- Active Sessions Area Chart (Placeholder) -->
+<div class="col-span-6 bg-surface-container-lowest border border-[#E2E8F0] p-md rounded-lg flex flex-col">
+<div class="flex justify-between items-center mb-4">
+<span class="font-title-sm text-on-background">Participación en Sesiones</span>
+<button class="text-primary hover:text-primary-container">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+<div class="flex-1 w-full bg-surface-container-low rounded relative overflow-hidden flex items-end">
+<!-- Simulated Chart -->
+<div class="w-full h-full absolute inset-0 bg-gradient-to-t from-primary-fixed/20 to-transparent"></div>
+<svg class="w-full h-full text-primary-fixed-dim" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0,100 L0,50 Q20,20 40,60 T80,40 T100,20 L100,100 Z" fill="currentColor" opacity="0.3"></path>
+<path d="M0,50 Q20,20 40,60 T80,40 T100,20" fill="none" stroke="currentColor" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Content Area: Tables & Forms -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Main Data Table: Gestión de Materias -->
+<div class="col-span-8 bg-surface-container-lowest border border-[#E2E8F0] rounded-lg flex flex-col">
+<div class="p-md border-b border-[#E2E8F0] flex justify-between items-center">
+<div>
+<h3 class="font-title-sm text-on-background">Gestión de Materias</h3>
+<p class="font-body-sm text-on-surface-variant">Administración de asignaturas del plan 2024</p>
+</div>
+<div class="flex gap-2">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]" data-icon="search">search</span>
+<input class="pl-9 pr-4 py-1.5 border border-outline-variant rounded-DEFAULT font-body-sm focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none w-64 bg-surface" placeholder="Filtrar materias..." type="text"/>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="p-4 font-label-caps text-on-surface-variant uppercase border-b border-[#E2E8F0] w-12">ID</th>
+<th class="p-4 font-label-caps text-on-surface-variant uppercase border-b border-[#E2E8F0]">Nombre de la Materia</th>
+<th class="p-4 font-label-caps text-on-surface-variant uppercase border-b border-[#E2E8F0]">Carrera</th>
+<th class="p-4 font-label-caps text-on-surface-variant uppercase border-b border-[#E2E8F0]">Estado</th>
+<th class="p-4 font-label-caps text-on-surface-variant uppercase border-b border-[#E2E8F0] text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-on-background">
+<tr class="border-b border-[#E2E8F0] hover:bg-surface-container-lowest transition-colors">
+<td class="p-4 text-on-surface-variant">MAT101</td>
+<td class="p-4 font-medium">Análisis Matemático I</td>
+<td class="p-4">Ingeniería en Sistemas</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-secondary/10 text-secondary font-label-caps">Activa</span>
+</td>
+<td class="p-4 text-right">
+<div class="flex justify-end gap-2 text-outline">
+<button class="hover:text-primary-container" title="Editar"><span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span></button>
+<button class="hover:text-primary-container" title="Correlatividades"><span class="material-symbols-outlined text-[20px]" data-icon="account_tree">account_tree</span></button>
+<button class="hover:text-error" title="Borrar"><span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span></button>
+</div>
+</td>
+</tr>
+<tr class="border-b border-[#E2E8F0] hover:bg-surface-container-lowest transition-colors bg-surface-container-low/30">
+<td class="p-4 text-on-surface-variant">PRG204</td>
+<td class="p-4 font-medium">Programación Avanzada</td>
+<td class="p-4">Ciencias de la Computación</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-secondary/10 text-secondary font-label-caps">Activa</span>
+</td>
+<td class="p-4 text-right">
+<div class="flex justify-end gap-2 text-outline">
+<button class="hover:text-primary-container" title="Editar"><span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span></button>
+<button class="hover:text-primary-container" title="Correlatividades"><span class="material-symbols-outlined text-[20px]" data-icon="account_tree">account_tree</span></button>
+<button class="hover:text-error" title="Borrar"><span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span></button>
+</div>
+</td>
+</tr>
+<tr class="border-b border-[#E2E8F0] hover:bg-surface-container-lowest transition-colors">
+<td class="p-4 text-on-surface-variant">FIS102</td>
+<td class="p-4 font-medium">Física Clásica</td>
+<td class="p-4">Ingeniería Electrónica</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-error/10 text-error font-label-caps">En Revisión</span>
+</td>
+<td class="p-4 text-right">
+<div class="flex justify-end gap-2 text-outline">
+<button class="hover:text-primary-container" title="Editar"><span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span></button>
+<button class="hover:text-primary-container" title="Correlatividades"><span class="material-symbols-outlined text-[20px]" data-icon="account_tree">account_tree</span></button>
+<button class="hover:text-error" title="Borrar"><span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span></button>
+</div>
+</td>
+</tr>
+<tr class="border-b border-[#E2E8F0] hover:bg-surface-container-lowest transition-colors bg-surface-container-low/30">
+<td class="p-4 text-on-surface-variant">DAT301</td>
+<td class="p-4 font-medium">Bases de Datos Relacionales</td>
+<td class="p-4">Ingeniería en Sistemas</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-secondary/10 text-secondary font-label-caps">Activa</span>
+</td>
+<td class="p-4 text-right">
+<div class="flex justify-end gap-2 text-outline">
+<button class="hover:text-primary-container" title="Editar"><span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span></button>
+<button class="hover:text-primary-container" title="Correlatividades"><span class="material-symbols-outlined text-[20px]" data-icon="account_tree">account_tree</span></button>
+<button class="hover:text-error" title="Borrar"><span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-[#E2E8F0] flex justify-between items-center font-body-sm text-on-surface-variant">
+<span>Mostrando 1 a 4 de 128 materias</span>
+<div class="flex gap-1">
+<button class="p-1 border border-[#E2E8F0] rounded bg-surface hover:bg-surface-variant disabled:opacity-50"><span class="material-symbols-outlined text-[18px]" data-icon="chevron_left">chevron_left</span></button>
+<button class="px-3 py-1 border border-[#E2E8F0] rounded bg-primary-container text-on-primary-container">1</button>
+<button class="px-3 py-1 border border-[#E2E8F0] rounded bg-surface hover:bg-surface-variant">2</button>
+<button class="px-3 py-1 border border-[#E2E8F0] rounded bg-surface hover:bg-surface-variant">3</button>
+<button class="p-1 border border-[#E2E8F0] rounded bg-surface hover:bg-surface-variant"><span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span></button>
+</div>
+</div>
+</div>
+<!-- Form: Definir Correlatividades -->
+<div class="col-span-4 bg-surface-container-lowest border border-[#E2E8F0] rounded-lg p-md shadow-[0px_4px_20px_rgba(15,76,92,0.08)]">
+<div class="mb-6">
+<h3 class="font-title-sm text-on-background flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" data-icon="account_tree">account_tree</span>
+                            Definir Correlativas
+                        </h3>
+<p class="font-body-sm text-on-surface-variant mt-1">Configuración para: <strong class="text-on-background">Bases de Datos Relacionales (DAT301)</strong></p>
+</div>
+<form class="flex flex-col gap-4">
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-on-surface-variant uppercase">Tipo de Requisito</label>
+<select class="border border-outline-variant rounded-DEFAULT p-2 font-body-sm bg-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none">
+<option>Aprobada para Cursar</option>
+<option>Regularizada para Cursar</option>
+<option>Aprobada para Rendir Final</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-on-surface-variant uppercase">Materia Previa Requerida</label>
+<div class="relative">
+<input class="w-full border border-outline-variant rounded-DEFAULT p-2 pl-3 pr-10 font-body-sm bg-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none" placeholder="Buscar materia por nombre o ID..." type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline text-[18px]" data-icon="search">search</span>
+</div>
+</div>
+<!-- List of added requisites -->
+<div class="mt-2 border border-[#E2E8F0] rounded bg-surface p-3 flex flex-col gap-2">
+<span class="font-label-caps text-on-surface-variant">Requisitos Actuales</span>
+<div class="flex justify-between items-center bg-white p-2 border border-[#E2E8F0] rounded-sm">
+<div>
+<p class="font-body-sm font-medium text-on-background">PRG204 - Programación Avanzada</p>
+<p class="font-body-sm text-xs text-on-surface-variant">Regularizada para Cursar</p>
+</div>
+<button class="text-outline hover:text-error" type="button"><span class="material-symbols-outlined text-[18px]" data-icon="close">close</span></button>
+</div>
+<div class="flex justify-between items-center bg-white p-2 border border-[#E2E8F0] rounded-sm">
+<div>
+<p class="font-body-sm font-medium text-on-background">MAT101 - Análisis Matemático I</p>
+<p class="font-body-sm text-xs text-on-surface-variant">Aprobada para Rendir Final</p>
+</div>
+<button class="text-outline hover:text-error" type="button"><span class="material-symbols-outlined text-[18px]" data-icon="close">close</span></button>
+</div>
+</div>
+<div class="mt-4 flex justify-end gap-3 pt-4 border-t border-[#E2E8F0]">
+<button class="px-4 py-2 border border-outline text-on-surface rounded-DEFAULT hover:bg-surface-variant transition-colors font-label-caps" type="button">Cancelar</button>
+<button class="px-4 py-2 bg-primary-container text-on-primary-container rounded-DEFAULT hover:opacity-90 transition-opacity font-label-caps" type="submit">Guardar Cambios</button>
+</div>
+</form>
+</div>
+</div>
+</main>
+</div>
+</body></html>

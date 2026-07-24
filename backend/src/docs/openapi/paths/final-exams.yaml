@@ -1,0 +1,161 @@
+paths:
+  /api/final-exams:
+    get:
+      tags:
+        - FinalExams
+      summary: Listar examenes finales
+      parameters:
+        - in: query
+          name: studentId
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Lista de examenes finales
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FinalExamListResponse'
+
+    post:
+      tags:
+        - FinalExams
+      summary: Registrar examen final
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FinalExamRequest'
+      responses:
+        '201':
+          description: Examen final registrado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '400':
+          description: Datos invalidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Examen duplicado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/final-exams/{id}:
+    get:
+      tags:
+        - FinalExams
+      summary: Obtener examen final por ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Examen encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FinalExamItemResponse'
+        '404':
+          description: No encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      tags:
+        - FinalExams
+      summary: Actualizar examen final
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FinalExamUpdateRequest'
+      responses:
+        '200':
+          description: Examen actualizado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '400':
+          description: Datos invalidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: No encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    patch:
+      tags:
+        - FinalExams
+      summary: Actualizacion parcial de examen final
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FinalExamUpdateRequest'
+      responses:
+        '200':
+          description: Examen actualizado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+    delete:
+      tags:
+        - FinalExams
+      summary: Eliminar examen final
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Examen eliminado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'
+        '404':
+          description: No encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'

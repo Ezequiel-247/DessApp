@@ -1,0 +1,30 @@
+const express = require('express');
+const router = express.Router();
+const reportController = require('../controllers/reportController');
+const { validateReportData, validateReportUpdateData } = require('../middlewares/reportMiddleware');
+const authenticate = require('../middlewares/authMiddleware');
+const requireRole = require('../middlewares/roleMiddleware');
+
+router.get('/', reportController.getAll);
+router.get('/summary', authenticate, requireRole('admin'), reportController.summary);
+router.get('/moderation-stats', authenticate, requireRole('admin'), reportController.moderationStats);
+router.get('/materials-by-subject', authenticate, requireRole('admin'), reportController.materialsBySubject);
+router.get('/materials-top-rated', authenticate, requireRole('admin'), reportController.topRatedMaterials);
+router.get('/active-users', authenticate, requireRole('admin'), reportController.activeUsers);
+router.get('/subjects-approved-by-student', authenticate, requireRole('admin'), reportController.subjectsApprovedByStudent);
+router.get('/students-by-approved-count', authenticate, requireRole('admin'), reportController.getStudentsByApprovedCount);
+router.get('/subjects-by-career', authenticate, requireRole('admin'), reportController.subjectsByCareer);
+router.get('/subjects-approved-by-career', authenticate, requireRole('admin'), reportController.subjectsApprovedByCareer);
+router.get('/subjects-by-student', authenticate, requireRole('admin'), reportController.subjectsByStudent);
+router.get('/students-by-cursada-count', authenticate, requireRole('admin'), reportController.getStudentsByCursadaCount);
+router.get('/most-active-careers', authenticate, requireRole('admin'), reportController.mostActiveCareers);
+router.get('/study-sessions-usage', authenticate, requireRole('admin'), reportController.studySessionsUsage);
+router.get('/social-connections', authenticate, requireRole('admin'), reportController.socialConnections);
+router.get('/students-by-connections-count', authenticate, requireRole('admin'), reportController.getStudentsByConnectionsCount);
+router.get('/:id', reportController.getById);
+router.post('/', validateReportData, reportController.create);
+router.put('/:id', validateReportUpdateData, reportController.update);
+router.patch('/:id', validateReportUpdateData, reportController.update);
+router.delete('/:id', reportController.delete);
+
+module.exports = router;

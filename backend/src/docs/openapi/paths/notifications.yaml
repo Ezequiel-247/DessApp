@@ -1,0 +1,223 @@
+paths:
+  /api/notifications:
+    get:
+      tags:
+        - Notifications
+      summary: Listar notificaciones
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: userId
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: read
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Lista de notificaciones
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationListResponse'
+        '401':
+          description: No autenticado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    post:
+      tags:
+        - Notifications
+      summary: Crear notificacion
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationRequest'
+      responses:
+        '201':
+          description: Notificacion creada
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '400':
+          description: Datos invalidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: No autenticado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/notifications/unread-count:
+    get:
+      tags:
+        - Notifications
+      summary: Obtener cantidad no leida
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: userId
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Cantidad de no leidas
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+  /api/notifications/mark-all-read:
+    post:
+      tags:
+        - Notifications
+      summary: Marcar todas como leidas
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                id_user:
+                  type: integer
+      responses:
+        '200':
+          description: Notificaciones marcadas como leidas
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+  /api/notifications/{id}:
+    get:
+      tags:
+        - Notifications
+      summary: Obtener notificacion por ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Notificacion encontrada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/NotificationData'
+        '404':
+          description: No encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      tags:
+        - Notifications
+      summary: Actualizar notificacion
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationUpdateRequest'
+      responses:
+        '200':
+          description: Notificacion actualizada
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+    patch:
+      tags:
+        - Notifications
+      summary: Actualizacion parcial de notificacion
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationUpdateRequest'
+      responses:
+        '200':
+          description: Notificacion actualizada
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+    delete:
+      tags:
+        - Notifications
+      summary: Eliminar notificacion
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Notificacion eliminada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'
+        '404':
+          description: No encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'

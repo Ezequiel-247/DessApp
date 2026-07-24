@@ -1,0 +1,261 @@
+paths:
+  /api/custom-study-plans/{planId}/sabbaticals:
+    get:
+      tags:
+        - CustomStudyPlans
+      summary: Listar periodos sabaticos
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Periodos sabaticos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+    post:
+      tags:
+        - CustomStudyPlans
+      summary: Crear periodo sabatico
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SabbaticalRequest'
+      responses:
+        '201':
+          description: Periodo sabatico creado
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '400':
+          description: Body invalido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Plan no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    delete:
+      tags:
+        - CustomStudyPlans
+      summary: Eliminar periodo(s) sabatico(s)
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+        - in: query
+          name: year
+          required: true
+          schema:
+            type: integer
+        - in: query
+          name: term
+          required: false
+          schema:
+            type: integer
+            enum: [1, 2]
+      responses:
+        '200':
+          description: Periodo(s) eliminado(s)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'
+        '404':
+          description: No encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/custom-study-plans/{planId}/elective-choices:
+    get:
+      tags:
+        - CustomStudyPlans
+      summary: Listar elecciones electivas
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Elecciones electivas
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+    post:
+      tags:
+        - CustomStudyPlans
+      summary: Crear eleccion electiva
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ElectiveChoiceRequest'
+      responses:
+        '201':
+          description: Eleccion creada
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '400':
+          description: Datos invalidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Plan/bloque no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Limite alcanzado o duplicado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    delete:
+      tags:
+        - CustomStudyPlans
+      summary: Eliminar eleccion electiva
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+        - in: query
+          name: plan_subject_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Eleccion eliminada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'
+
+  /api/custom-study-plans/{planId}/unahur-choices:
+    get:
+      tags:
+        - CustomStudyPlans
+      summary: Listar elecciones UNAHUR
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Elecciones UNAHUR
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGeneric'
+
+    post:
+      tags:
+        - CustomStudyPlans
+      summary: Crear eleccion UNAHUR
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnahurChoiceRequest'
+      responses:
+        '201':
+          description: Eleccion creada
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '400':
+          description: Datos invalidos o materia no UNAHUR
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Plan/bloque no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Ya existe eleccion para el bloque
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    delete:
+      tags:
+        - CustomStudyPlans
+      summary: Eliminar eleccion UNAHUR
+      parameters:
+        - in: path
+          name: planId
+          required: true
+          schema:
+            type: integer
+        - in: query
+          name: plan_subject_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Eleccion eliminada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'

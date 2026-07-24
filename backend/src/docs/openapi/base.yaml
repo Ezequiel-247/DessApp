@@ -1,0 +1,1488 @@
+openapi: 3.0.3
+info:
+  title: DesApp Backend API
+  version: 1.0.0
+  description: |
+    Documentacion de la API del backend de DesApp.
+    Esta especificacion se organiza por recurso para facilitar mantenimiento.
+servers:
+  - url: http://localhost:3001
+    description: Local development
+tags:
+  - name: Health
+    description: Health check del servicio
+  - name: Auth
+    description: Autenticacion y sesion de usuario
+  - name: Admins
+    description: Gestion de administradores
+  - name: Careers
+    description: Gestion de carreras
+  - name: Institutes
+    description: Gestion de institutos
+  - name: Subjects
+    description: Gestion de materias
+  - name: Plans
+    description: Gestion de planes de estudio
+  - name: Students
+    description: Gestion de estudiantes y su planificacion academica
+  - name: AcademicRecords
+    description: Historial academico de cursadas
+  - name: FinalExams
+    description: Examenes finales asociados a historial academico
+  - name: Correlativities
+    description: Correlatividades entre materias del plan
+  - name: Connections
+    description: Conexiones entre usuarios y flujo de invitaciones
+  - name: Notifications
+    description: Notificaciones de usuario
+  - name: Sessions
+    description: Sesiones de autenticacion/persistencia
+  - name: Reports
+    description: Reportes y metricas administrativas
+  - name: ReportReasons
+    description: Motivos de denuncia/reportes
+  - name: Posts
+    description: Publicaciones sociales
+  - name: Comments
+    description: Comentarios sobre publicaciones y eventos academicos
+  - name: Materials
+    description: Materiales de estudio y moderacion
+  - name: Votes
+    description: Votaciones sobre contenido
+  - name: Users
+    description: Administracion de usuarios
+  - name: SystemConfig
+    description: Configuracion global del sistema
+  - name: Novelties
+    description: Feed de novedades sociales y academicas
+  - name: Uploads
+    description: Subida de archivos
+  - name: StudySessions
+    description: Sesiones de estudio colaborativas
+  - name: PlanSubjects
+    description: Materias dentro de planes de estudio
+  - name: CustomStudyPlans
+    description: Planes personalizados por estudiante
+  - name: InstanceSubjects
+    description: Instancias de cursada/examen por materia
+  - name: PlanBlocks
+    description: Bloques UNAHUR, electivos y de creditos
+  - name: Activities
+    description: Catalogo de actividades acreditables
+  - name: ActivityRecords
+    description: Historial de actividades por estudiante
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Bad Request
+        message:
+          type: string
+          example: Validation failed
+        details:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: object
+      additionalProperties: true
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+          example: OK
+        message:
+          type: string
+          example: Server is running
+      required:
+        - status
+        - message
+    UserSafe:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 12
+        email:
+          type: string
+          format: email
+          example: admin@desapp.com
+        name:
+          type: string
+          example: Juan
+        lastname:
+          type: string
+          example: Perez
+        role:
+          type: string
+          example: admin
+        is_active:
+          type: boolean
+          example: true
+      additionalProperties: true
+    AuthLoginRequest:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+          example: admin@desapp.com
+        password:
+          type: string
+          example: secret123
+    AuthRegisterRequest:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          minLength: 6
+        name:
+          type: string
+        lastname:
+          type: string
+        role:
+          type: string
+          description: Solo se permite student para auto-registro.
+          example: student
+        legajo:
+          type: string
+        enrollments:
+          type: array
+          items:
+            type: object
+            properties:
+              career_id:
+                type: integer
+              study_plan_id:
+                type: integer
+                nullable: true
+              enrolled_at:
+                type: string
+                format: date-time
+    AuthResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Login successful
+        user:
+          $ref: '#/components/schemas/UserSafe'
+        token:
+          type: string
+          example: eyJhbGciOi...
+    DataResponseUser:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/UserSafe'
+    ValidationErrorsResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              msg:
+                type: string
+              path:
+                type: string
+              location:
+                type: string
+    AdminCreateRequest:
+      type: object
+      required:
+        - email
+        - password
+        - name
+        - lastname
+        - cuil
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+        name:
+          type: string
+        lastname:
+          type: string
+        cuil:
+          type: string
+        role:
+          type: string
+          example: superadmin
+        is_active:
+          type: boolean
+          default: true
+        id_of_creator:
+          type: integer
+          nullable: true
+    AdminUpdateRequest:
+      type: object
+      properties:
+        cuil:
+          type: string
+        role:
+          type: string
+    AdminData:
+      type: object
+      properties:
+        id:
+          type: integer
+        id_users:
+          type: integer
+        cuil:
+          type: string
+        role:
+          type: string
+        id_of_creator:
+          type: integer
+          nullable: true
+        User:
+          $ref: '#/components/schemas/UserSafe'
+      additionalProperties: true
+    AdminListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdminData'
+    AdminItemResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AdminData'
+    AdminCreateResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Admin created successfully
+        data:
+          type: object
+          additionalProperties: true
+    SuccessMessage:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Deleted successfully
+    CareerRequest:
+      type: object
+      required:
+        - name
+        - id_institute
+        - degree_title
+        - duration
+        - code
+      properties:
+        name:
+          type: string
+        id_institute:
+          type: integer
+        degree_title:
+          type: string
+        duration:
+          type: integer
+        code:
+          type: string
+        description:
+          type: string
+    CareerUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        id_institute:
+          type: integer
+        degree_title:
+          type: string
+        duration:
+          type: integer
+        code:
+          type: string
+        description:
+          type: string
+    CareerData:
+      type: object
+      additionalProperties: true
+    CareerListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CareerData'
+    CareerItemResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/CareerData'
+    InstituteRequest:
+      type: object
+      required:
+        - name
+        - short_name
+        - responsible
+        - status
+        - email
+        - tel
+        - address
+      properties:
+        name:
+          type: string
+        short_name:
+          type: string
+        responsible:
+          type: string
+        status:
+          type: string
+        email:
+          type: string
+          format: email
+        tel:
+          type: string
+        address:
+          type: string
+    InstituteUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        short_name:
+          type: string
+        responsible:
+          type: string
+        status:
+          type: string
+        email:
+          type: string
+          format: email
+        tel:
+          type: string
+        address:
+          type: string
+    InstituteData:
+      type: object
+      additionalProperties: true
+    InstituteListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/InstituteData'
+    SubjectRequest:
+      type: object
+      required:
+        - name
+        - code
+        - is_unahur
+      properties:
+        name:
+          type: string
+        code:
+          type: string
+        is_unahur:
+          type: boolean
+        weekly_hours:
+          type: integer
+          nullable: true
+    SubjectUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        code:
+          type: string
+        is_unahur:
+          type: boolean
+        weekly_hours:
+          type: integer
+          nullable: true
+    SubjectData:
+      type: object
+      additionalProperties: true
+    SubjectListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubjectData'
+    SubjectItemResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/SubjectData'
+    StudyPlanRequest:
+      type: object
+      required:
+        - id_career
+        - name
+        - status
+      properties:
+        id_career:
+          type: integer
+        name:
+          type: string
+        status:
+          type: string
+        years_duration:
+          type: integer
+          nullable: true
+        course_type:
+          type: string
+          nullable: true
+        default_term:
+          type: integer
+          nullable: true
+        min_total_credits:
+          type: integer
+          nullable: true
+    StudyPlanUpdateRequest:
+      type: object
+      properties:
+        id_career:
+          type: integer
+        name:
+          type: string
+        status:
+          type: string
+        years_duration:
+          type: integer
+          nullable: true
+        course_type:
+          type: string
+          nullable: true
+        default_term:
+          type: integer
+          nullable: true
+        min_total_credits:
+          type: integer
+          nullable: true
+    StudyPlanData:
+      type: object
+      additionalProperties: true
+    StudyPlanListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/StudyPlanData'
+    StudyPlanItemResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/StudyPlanData'
+    StudentCreateRequest:
+      type: object
+      required:
+        - email
+        - password
+        - name
+        - lastname
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          minLength: 6
+        name:
+          type: string
+        lastname:
+          type: string
+        is_active:
+          type: boolean
+        legajo:
+          type: string
+        public_profile:
+          type: boolean
+        show_email:
+          type: boolean
+        show_academic_info:
+          type: boolean
+        publish_approvals:
+          type: boolean
+        enrollments:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrollmentRequest'
+    StudentUpdateRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+        name:
+          type: string
+        lastname:
+          type: string
+        is_active:
+          type: boolean
+        legajo:
+          type: string
+        public_profile:
+          type: boolean
+        show_email:
+          type: boolean
+        show_academic_info:
+          type: boolean
+        publish_approvals:
+          type: boolean
+    StudentData:
+      type: object
+      additionalProperties: true
+    StudentListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/StudentData'
+    StudentItemResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/StudentData'
+    EnrollmentRequest:
+      type: object
+      required:
+        - career_id
+      properties:
+        career_id:
+          type: integer
+        study_plan_id:
+          type: integer
+          nullable: true
+        enrolled_at:
+          type: string
+          format: date
+        completed_at:
+          type: string
+          format: date
+          nullable: true
+        status:
+          type: string
+        is_active:
+          type: boolean
+    EnrollmentUpdateRequest:
+      type: object
+      properties:
+        career_id:
+          type: integer
+        study_plan_id:
+          type: integer
+          nullable: true
+        enrolled_at:
+          type: string
+          format: date
+        completed_at:
+          type: string
+          format: date
+          nullable: true
+        status:
+          type: string
+        is_active:
+          type: boolean
+    EnrollmentData:
+      type: object
+      additionalProperties: true
+    EnrollmentListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrollmentData'
+    SavePlanRequest:
+      type: object
+      required:
+        - name
+        - plan
+      properties:
+        name:
+          type: string
+        weekly_hours_limit:
+          type: integer
+          nullable: true
+        plan:
+          type: array
+          items:
+            type: object
+            properties:
+              academic_year:
+                type: integer
+              term:
+                type: integer
+              subjects:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    plan_subject_id:
+                      type: integer
+                    target_year:
+                      type: integer
+                    target_term:
+                      type: integer
+                    order:
+                      type: integer
+    DataResponseGeneric:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties: true
+    AcademicRecordRequest:
+      type: object
+      required:
+        - id_student
+        - id_subject
+        - status
+      properties:
+        id_student:
+          type: integer
+        id_subject:
+          type: integer
+        status:
+          type: string
+        year:
+          type: integer
+        semester:
+          type: integer
+        grade:
+          oneOf:
+            - type: number
+            - type: string
+        regularity_expires_at:
+          type: string
+          format: date
+          nullable: true
+        course_id:
+          type: integer
+          nullable: true
+    AcademicRecordUpdateRequest:
+      type: object
+      properties:
+        id_student:
+          type: integer
+        id_subject:
+          type: integer
+        status:
+          type: string
+        year:
+          type: integer
+        semester:
+          type: integer
+        grade:
+          oneOf:
+            - type: number
+            - type: string
+        regularity_expires_at:
+          type: string
+          format: date
+          nullable: true
+    AcademicRecordData:
+      type: object
+      additionalProperties: true
+    AcademicRecordListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AcademicRecordData'
+    FinalExamRequest:
+      type: object
+      required:
+        - id_academic_record
+        - status
+      properties:
+        id_academic_record:
+          type: integer
+        grade:
+          type: string
+        year:
+          type: integer
+        semester:
+          type: integer
+          enum: [1, 2]
+        status:
+          type: string
+    FinalExamUpdateRequest:
+      type: object
+      properties:
+        id_academic_record:
+          type: integer
+        grade:
+          type: string
+        year:
+          type: integer
+        semester:
+          type: integer
+          enum: [1, 2]
+        status:
+          type: string
+    FinalExamData:
+      type: object
+      additionalProperties: true
+    FinalExamListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FinalExamData'
+    FinalExamItemResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/FinalExamData'
+    CorrelativityRequest:
+      type: object
+      required:
+        - id_plan_subject_target
+        - id_required_plan_subject
+      properties:
+        id_plan_subject_target:
+          type: integer
+        id_required_plan_subject:
+          type: integer
+        type:
+          type: string
+    CorrelativityUpdateRequest:
+      type: object
+      properties:
+        id_plan_subject_target:
+          type: integer
+        id_required_plan_subject:
+          type: integer
+        type:
+          type: string
+    CorrelativityData:
+      type: object
+      additionalProperties: true
+    CorrelativityListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CorrelativityData'
+    CorrelativityItemResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/CorrelativityData'
+    ConnectionRequest:
+      type: object
+      required:
+        - id_user
+        - id_connected_user
+      properties:
+        id_user:
+          type: integer
+        id_connected_user:
+          type: integer
+        status:
+          type: string
+          example: pending
+    ConnectionUpdateRequest:
+      type: object
+      properties:
+        status:
+          type: string
+          example: accepted
+    ConnectionInviteRequest:
+      type: object
+      required:
+        - email
+      properties:
+        email:
+          type: string
+          format: email
+    InvitationResponseRequest:
+      type: object
+      required:
+        - action
+      properties:
+        action:
+          type: string
+          enum: [accept, reject]
+    ConnectionData:
+      type: object
+      additionalProperties: true
+    ConnectionListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConnectionData'
+    NotificationRequest:
+      type: object
+      required:
+        - id_user
+        - type
+        - title
+        - message
+      properties:
+        id_user:
+          type: integer
+        type:
+          type: string
+        title:
+          type: string
+        message:
+          type: string
+        read:
+          type: boolean
+          default: false
+    NotificationUpdateRequest:
+      type: object
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        message:
+          type: string
+        read:
+          type: boolean
+    NotificationData:
+      type: object
+      additionalProperties: true
+    NotificationListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationData'
+    SessionRequest:
+      type: object
+      required:
+        - id_user
+      properties:
+        id_user:
+          type: integer
+        token:
+          type: string
+        expires_at:
+          type: string
+          format: date-time
+          nullable: true
+    SessionUpdateRequest:
+      type: object
+      properties:
+        token:
+          type: string
+        expires_at:
+          type: string
+          format: date-time
+          nullable: true
+    SessionData:
+      type: object
+      additionalProperties: true
+    SessionListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SessionData'
+    ReportRequest:
+      type: object
+      required:
+        - id_reporter
+      properties:
+        id_reporter:
+          type: integer
+        id_content:
+          type: integer
+          nullable: true
+        content_type:
+          type: string
+          nullable: true
+        id_reason:
+          type: integer
+          nullable: true
+        status:
+          type: string
+          default: pending
+        resolved_by_id:
+          type: integer
+          nullable: true
+    ReportUpdateRequest:
+      type: object
+      properties:
+        status:
+          type: string
+        resolved_by_id:
+          type: integer
+          nullable: true
+    ReportData:
+      type: object
+      additionalProperties: true
+    ReportListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportData'
+    ReportReasonRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+    ReportReasonUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+    ReportReasonData:
+      type: object
+      additionalProperties: true
+    ReportReasonListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportReasonData'
+    PostRequest:
+      type: object
+      required:
+        - title
+        - content
+      properties:
+        id_author:
+          type: integer
+          description: Opcional si se toma desde token
+        title:
+          type: string
+        content:
+          type: string
+        images:
+          type: array
+          items:
+            type: string
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+    PostUpdateRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        content:
+          type: string
+    PostData:
+      type: object
+      additionalProperties: true
+    PostListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PostData'
+    CommentRequest:
+      type: object
+      required:
+        - target_type
+        - target_id
+        - content
+      properties:
+        target_type:
+          type: string
+          enum: [post, academic_event]
+        target_id:
+          type: integer
+        content:
+          type: string
+    CommentData:
+      type: object
+      additionalProperties: true
+    CommentListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CommentData'
+    MaterialRequest:
+      type: object
+      required:
+        - id_author
+        - id_subject
+        - title
+        - file_url
+        - status
+      properties:
+        id_author:
+          type: integer
+        id_subject:
+          type: integer
+        title:
+          type: string
+        type:
+          type: string
+        file_url:
+          type: string
+        status:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+    MaterialData:
+      type: object
+      additionalProperties: true
+    MaterialListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MaterialData'
+    MaterialReportRequest:
+      type: object
+      required:
+        - reporter_id
+        - reason_id
+      properties:
+        reporter_id:
+          type: integer
+        reason_id:
+          type: integer
+    VoteRequest:
+      type: object
+      required:
+        - target_type
+        - target_id
+        - is_upvote
+      properties:
+        target_type:
+          type: string
+          enum: [material, post, comment, academic_event]
+        target_id:
+          type: integer
+        is_upvote:
+          type: boolean
+    UserRequest:
+      type: object
+      required:
+        - email
+        - password
+        - name
+        - lastname
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          minLength: 6
+        name:
+          type: string
+        lastname:
+          type: string
+        role:
+          type: string
+          enum: [student, admin]
+        is_active:
+          type: boolean
+    UserUpdateRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          minLength: 6
+        name:
+          type: string
+        lastname:
+          type: string
+        role:
+          type: string
+          enum: [student, admin]
+        is_active:
+          type: boolean
+    UserData:
+      type: object
+      additionalProperties: true
+    UserListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserData'
+    SystemConfigRequest:
+      type: object
+      required:
+        - key
+        - value
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+    SystemConfigUpdateRequest:
+      type: object
+      required:
+        - value
+      properties:
+        value:
+          type: string
+    SystemConfigData:
+      type: object
+      additionalProperties: true
+    SystemConfigListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SystemConfigData'
+    StudySessionRequest:
+      type: object
+      required:
+        - subject_id
+        - title
+        - type
+        - date_time
+        - duration_hours
+        - duration_minutes
+        - approval_required
+      properties:
+        subject_id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+          enum: [virtual, presencial]
+        meeting_link:
+          type: string
+          nullable: true
+        location:
+          type: string
+          nullable: true
+        date_time:
+          type: string
+          format: date-time
+        duration_hours:
+          type: integer
+        duration_minutes:
+          type: integer
+        max_slots:
+          type: integer
+          nullable: true
+        approval_required:
+          type: boolean
+    StudySessionData:
+      type: object
+      additionalProperties: true
+    PlanSubjectRequest:
+      type: object
+      required:
+        - id_study_plan
+        - id_subject
+        - suggested_year
+        - suggested_term
+      properties:
+        id_study_plan:
+          type: integer
+        id_subject:
+          type: integer
+        suggested_year:
+          type: integer
+        suggested_term:
+          type: integer
+        credits:
+          type: integer
+          minimum: 0
+        is_elective:
+          type: boolean
+        is_final_project:
+          type: boolean
+    PlanSubjectUpdateRequest:
+      type: object
+      properties:
+        id_study_plan:
+          type: integer
+        id_subject:
+          type: integer
+        suggested_year:
+          type: integer
+        suggested_term:
+          type: integer
+        credits:
+          type: integer
+          minimum: 0
+        is_elective:
+          type: boolean
+        is_final_project:
+          type: boolean
+    PlanSubjectData:
+      type: object
+      additionalProperties: true
+    PlanSubjectListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanSubjectData'
+    CustomStudyPlanRequest:
+      type: object
+      required:
+        - id_student
+        - name
+      properties:
+        id_student:
+          type: integer
+        name:
+          type: string
+        weekly_hours:
+          type: integer
+          nullable: true
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              plan_subject_id:
+                type: integer
+              target_year:
+                type: integer
+              target_term:
+                type: integer
+              order:
+                type: integer
+              status:
+                type: string
+    CustomStudyPlanUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        weekly_hours:
+          type: integer
+          nullable: true
+        items:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    CustomStudyPlanData:
+      type: object
+      additionalProperties: true
+    CustomStudyPlanListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomStudyPlanData'
+    SabbaticalRequest:
+      type: object
+      required:
+        - year
+        - terms
+      properties:
+        year:
+          type: integer
+        terms:
+          type: array
+          items:
+            type: integer
+            enum: [1, 2]
+    ElectiveChoiceRequest:
+      type: object
+      required:
+        - id_elective_block
+        - plan_subject_id
+      properties:
+        id_elective_block:
+          type: integer
+        plan_subject_id:
+          type: integer
+    UnahurChoiceRequest:
+      type: object
+      required:
+        - id_unahur_block
+        - plan_subject_id
+      properties:
+        id_unahur_block:
+          type: integer
+        plan_subject_id:
+          type: integer
+    InstanceSubjectRequest:
+      type: object
+      required:
+        - id_subject
+      properties:
+        id_subject:
+          type: integer
+        comision:
+          type: string
+        professor:
+          type: string
+        schedule:
+          type: string
+        classroom:
+          type: string
+        is_exam:
+          type: boolean
+        regularity_expires_at:
+          type: string
+          format: date
+          nullable: true
+        term:
+          type: string
+    InstanceSubjectUpdateRequest:
+      type: object
+      properties:
+        comision:
+          type: string
+        professor:
+          type: string
+        schedule:
+          type: string
+        classroom:
+          type: string
+        is_exam:
+          type: boolean
+        regularity_expires_at:
+          type: string
+          format: date
+          nullable: true
+        term:
+          type: string
+    InstanceSubjectData:
+      type: object
+      additionalProperties: true
+    InstanceSubjectListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/InstanceSubjectData'
+    ActivityRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        code:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+    ActivityData:
+      type: object
+      additionalProperties: true
+    ActivityListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivityData'
+    ActivityRecordRequest:
+      type: object
+      required:
+        - id_student
+        - id_activity
+        - status
+      properties:
+        id_student:
+          type: integer
+        id_activity:
+          type: integer
+        year:
+          type: integer
+        semester:
+          type: integer
+          enum: [1, 2]
+        status:
+          type: string
+          enum: [enrolled, approved, failed, equivalencia]
+        grade:
+          oneOf:
+            - type: number
+            - type: string
+    ActivityRecordUpdateRequest:
+      type: object
+      properties:
+        id_student:
+          type: integer
+        id_activity:
+          type: integer
+        year:
+          type: integer
+        semester:
+          type: integer
+          enum: [1, 2]
+        status:
+          type: string
+          enum: [enrolled, approved, failed, equivalencia]
+        grade:
+          oneOf:
+            - type: number
+            - type: string
+    ActivityRecordData:
+      type: object
+      additionalProperties: true
+    ActivityRecordListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivityRecordData'

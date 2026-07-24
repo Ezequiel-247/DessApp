@@ -1,0 +1,6023 @@
+{
+  "info": {
+    "name": "DesApp Backend API",
+    "description": "Coleccion Postman autogenerada desde backend/src/index.js y backend/src/routes/*.js",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Academic Record",
+      "item": [
+        {
+          "name": "DELETE /api/academic-records/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/academic-records/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "academic-records",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /api/academic-records/student/:student_id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/academic-records/student/:student_id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "academic-records",
+                "student",
+                ":student_id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/academic-records",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/academic-records",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "academic-records"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/academic-records/student/:student_id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/academic-records/student/:student_id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "academic-records",
+                "student",
+                ":student_id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/academic-records/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/academic-records/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "academic-records",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/academic-records/student/:student_id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/academic-records/student/:student_id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "academic-records",
+                "student",
+                ":student_id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/academic-records",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/academic-records",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "academic-records"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/academic-records/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/academic-records/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "academic-records",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/academic-records/student/:student_id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/academic-records/student/:student_id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "academic-records",
+                "student",
+                ":student_id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Activity",
+      "item": [
+        {
+          "name": "DELETE /api/activities/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/activities/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "activities",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/activities",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/activities",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "activities"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/activities/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/activities/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "activities",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/activities",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/activities",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "activities"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/activities/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/activities/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "activities",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Activity Record",
+      "item": [
+        {
+          "name": "DELETE /api/activity-records/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/activity-records/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "activity-records",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/activity-records",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/activity-records",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "activity-records"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/activity-records/:id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/activity-records/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "activity-records",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/activity-records/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/activity-records/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "activity-records",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/activity-records",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/activity-records",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "activity-records"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/activity-records/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/activity-records/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "activity-records",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "DELETE /api/admins/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/admins/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "admins",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/admins",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/admins",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "admins"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/admins/:id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/admins/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "admins",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/admins/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/admins/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "admins",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/admins",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/admins",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "admins"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/admins/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/admins/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "admins",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "GET /api/auth/me",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/auth/me",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/auth/login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/auth/login",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"student1@example.com\",\n  \"password\": \"password\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/auth/register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/auth/register",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"newstudent@test.com\",\n  \"password\": \"password\",\n  \"name\": \"Nuevo\",\n  \"lastname\": \"Usuario\",\n  \"role\": \"student\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Career",
+      "item": [
+        {
+          "name": "DELETE /api/careers/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/careers/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "careers",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/careers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/careers",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "careers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/careers/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/careers/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "careers",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/careers/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/careers/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "careers",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Carrera de ejemplo\",\n  \"id_institute\": 1\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/careers",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/careers",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "careers"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Carrera de ejemplo\",\n  \"id_institute\": 1\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/careers/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/careers/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "careers",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Carrera de ejemplo\",\n  \"id_institute\": 1\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Comment",
+      "item": [
+        {
+          "name": "DELETE /api/comments/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/comments/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "comments",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/comments",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/comments",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "comments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/comments",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/comments",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "comments"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id_post\": 1,\n  \"content\": \"Comentario de ejemplo\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Connection",
+      "item": [
+        {
+          "name": "DELETE /api/connections/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/connections/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "connections",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/connections",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/connections",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "connections"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/connections/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/connections/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "connections",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/connections/invitation/:token",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/connections/invitation/:token",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "connections",
+                "invitation",
+                ":token"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/connections/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/connections/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "connections",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/connections",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/connections",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "connections"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/connections/invitation/:token/respond",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/connections/invitation/:token/respond",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "connections",
+                "invitation",
+                ":token",
+                "respond"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"response\": \"accept\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/connections/invite",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/connections/invite",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "connections",
+                "invite"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"invitee@example.com\",\n  \"message\": \"Te invito a conectar\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/connections/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/connections/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "connections",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Correlativity",
+      "item": [
+        {
+          "name": "DELETE /api/correlativities/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/correlativities/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "correlativities",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/correlativities",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/correlativities",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "correlativities"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/correlativities/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/correlativities/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "correlativities",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/correlativities/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/correlativities/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "correlativities",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/correlativities",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/correlativities",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "correlativities"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/correlativities/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/correlativities/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "correlativities",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Custom Study Plan",
+      "item": [
+        {
+          "name": "DELETE /api/custom-study-plans/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/custom-study-plans/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "custom-study-plans",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/custom-study-plans",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/custom-study-plans",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "custom-study-plans"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/custom-study-plans/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/custom-study-plans/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "custom-study-plans",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/custom-study-plans/:id/deviation",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/custom-study-plans/:id/deviation",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "custom-study-plans",
+                ":id",
+                "deviation"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/custom-study-plans/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/custom-study-plans/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "custom-study-plans",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/custom-study-plans",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/custom-study-plans",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "custom-study-plans"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/custom-study-plans/clone/:id",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/custom-study-plans/clone/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "custom-study-plans",
+                "clone",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/custom-study-plans/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/custom-study-plans/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "custom-study-plans",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Custom Study Plan Elective Choice",
+      "item": [
+        {
+          "name": "DELETE /api/custom-study-plans/:planId/elective-choices",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/custom-study-plans/:planId/elective-choices",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "custom-study-plans",
+                ":planId",
+                "elective-choices"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/custom-study-plans/:planId/elective-choices",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/custom-study-plans/:planId/elective-choices",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "custom-study-plans",
+                ":planId",
+                "elective-choices"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/custom-study-plans/:planId/elective-choices",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/custom-study-plans/:planId/elective-choices",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "custom-study-plans",
+                ":planId",
+                "elective-choices"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Custom Study Plan Sabbatical",
+      "item": [
+        {
+          "name": "DELETE /api/custom-study-plans/:planId/sabbaticals",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/custom-study-plans/:planId/sabbaticals",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "custom-study-plans",
+                ":planId",
+                "sabbaticals"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/custom-study-plans/:planId/sabbaticals",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/custom-study-plans/:planId/sabbaticals",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "custom-study-plans",
+                ":planId",
+                "sabbaticals"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/custom-study-plans/:planId/sabbaticals",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/custom-study-plans/:planId/sabbaticals",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "custom-study-plans",
+                ":planId",
+                "sabbaticals"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Custom Study Plan Unahur Choice",
+      "item": [
+        {
+          "name": "DELETE /api/custom-study-plans/:planId/unahur-choices",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/custom-study-plans/:planId/unahur-choices",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "custom-study-plans",
+                ":planId",
+                "unahur-choices"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/custom-study-plans/:planId/unahur-choices",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/custom-study-plans/:planId/unahur-choices",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "custom-study-plans",
+                ":planId",
+                "unahur-choices"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/custom-study-plans/:planId/unahur-choices",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/custom-study-plans/:planId/unahur-choices",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "custom-study-plans",
+                ":planId",
+                "unahur-choices"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Final Exam",
+      "item": [
+        {
+          "name": "DELETE /api/final-exams/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/final-exams/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "final-exams",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/final-exams",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/final-exams",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "final-exams"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/final-exams/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/final-exams/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "final-exams",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/final-exams/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/final-exams/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "final-exams",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/final-exams",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/final-exams",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "final-exams"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/final-exams/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/final-exams/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "final-exams",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "GET /api/health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/health",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "health"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Instance Subject",
+      "item": [
+        {
+          "name": "DELETE /api/instance-subjects/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/instance-subjects/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "instance-subjects",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/instance-subjects",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/instance-subjects",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "instance-subjects"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/instance-subjects/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/instance-subjects/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "instance-subjects",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/instance-subjects/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/instance-subjects/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "instance-subjects",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/instance-subjects",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/instance-subjects",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "instance-subjects"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/instance-subjects/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/instance-subjects/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "instance-subjects",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Institute",
+      "item": [
+        {
+          "name": "DELETE /api/institutes/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/institutes/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "institutes",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/institutes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/institutes",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "institutes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/institutes/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/institutes/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "institutes",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Instituto de ejemplo\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/institutes",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/institutes",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "institutes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Instituto de ejemplo\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/institutes/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/institutes/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "institutes",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Instituto de ejemplo\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Material",
+      "item": [
+        {
+          "name": "DELETE /api/material/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/material/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "material",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/material",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/material",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "material"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/material/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/material/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "material",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/material/admin/reported",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/material/admin/reported",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "material",
+                "admin",
+                "reported"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/material/student/:student_id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/material/student/:student_id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "material",
+                "student",
+                ":student_id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/material/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/material/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "material",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Material de ejemplo\",\n  \"description\": \"Apunte PDF\",\n  \"id_subject\": 1\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/material/admin/:id/resolve-report",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/material/admin/:id/resolve-report",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "material",
+                "admin",
+                ":id",
+                "resolve-report"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Material de ejemplo\",\n  \"description\": \"Apunte PDF\",\n  \"id_subject\": 1\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/material",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/material",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "material"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Material de ejemplo\",\n  \"description\": \"Apunte PDF\",\n  \"id_subject\": 1\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/material/:id/report",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/material/:id/report",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "material",
+                ":id",
+                "report"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Material de ejemplo\",\n  \"description\": \"Apunte PDF\",\n  \"id_subject\": 1\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/material/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/material/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "material",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Material de ejemplo\",\n  \"description\": \"Apunte PDF\",\n  \"id_subject\": 1\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Notification",
+      "item": [
+        {
+          "name": "DELETE /api/notifications/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/notifications/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "notifications",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/notifications",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/notifications",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "notifications"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/notifications/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/notifications/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "notifications",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/notifications/unread-count",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/notifications/unread-count",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "notifications",
+                "unread-count"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/notifications/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/notifications/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "notifications",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/notifications",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/notifications",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "notifications"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/notifications/mark-all-read",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/notifications/mark-all-read",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "notifications",
+                "mark-all-read"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/notifications/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/notifications/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "notifications",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Novelty",
+      "item": [
+        {
+          "name": "GET /api/novelties",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/novelties",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "novelties"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Plan Credit Block",
+      "item": [
+        {
+          "name": "DELETE /api/plans/:planId/credit-blocks/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans/:planId/credit-blocks/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans",
+                ":planId",
+                "credit-blocks",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/plans/:planId/credit-blocks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans/:planId/credit-blocks",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans",
+                ":planId",
+                "credit-blocks"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/plans/:planId/credit-blocks/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans/:planId/credit-blocks/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans",
+                ":planId",
+                "credit-blocks",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/plans/:planId/credit-blocks",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans/:planId/credit-blocks",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans",
+                ":planId",
+                "credit-blocks"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/plans/:planId/credit-blocks/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans/:planId/credit-blocks/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans",
+                ":planId",
+                "credit-blocks",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Plan Credit Block Item",
+      "item": [
+        {
+          "name": "GET /api/plan-credit-block-items",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plan-credit-block-items",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plan-credit-block-items"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Plan Elective Block",
+      "item": [
+        {
+          "name": "DELETE /api/plans/:planId/elective-blocks/:blockId/subjects/:subjectId",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans/:planId/elective-blocks/:blockId/subjects/:subjectId",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans",
+                ":planId",
+                "elective-blocks",
+                ":blockId",
+                "subjects",
+                ":subjectId"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /api/plans/:planId/elective-blocks/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans/:planId/elective-blocks/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans",
+                ":planId",
+                "elective-blocks",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/plans/:planId/elective-blocks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans/:planId/elective-blocks",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans",
+                ":planId",
+                "elective-blocks"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/plans/:planId/elective-blocks/:blockId/subjects",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans/:planId/elective-blocks/:blockId/subjects",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans",
+                ":planId",
+                "elective-blocks",
+                ":blockId",
+                "subjects"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/plans/:planId/elective-blocks/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans/:planId/elective-blocks/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans",
+                ":planId",
+                "elective-blocks",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/plans/:planId/elective-blocks",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans/:planId/elective-blocks",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans",
+                ":planId",
+                "elective-blocks"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/plans/:planId/elective-blocks/:blockId/subjects",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans/:planId/elective-blocks/:blockId/subjects",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans",
+                ":planId",
+                "elective-blocks",
+                ":blockId",
+                "subjects"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Materia de ejemplo\",\n  \"code\": \"MAT-001\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/plans/:planId/elective-blocks/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans/:planId/elective-blocks/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans",
+                ":planId",
+                "elective-blocks",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Plan Subject",
+      "item": [
+        {
+          "name": "DELETE /api/plan-subjects/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plan-subjects/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plan-subjects",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/plan-subjects",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plan-subjects",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plan-subjects"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/plan-subjects/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plan-subjects/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plan-subjects",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/plan-subjects/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plan-subjects/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plan-subjects",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/plan-subjects",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plan-subjects",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plan-subjects"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/plan-subjects/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plan-subjects/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plan-subjects",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Plan Unahur Block",
+      "item": [
+        {
+          "name": "DELETE /api/plans/:planId/unahur-blocks/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans/:planId/unahur-blocks/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans",
+                ":planId",
+                "unahur-blocks",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/plans/:planId/unahur-blocks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans/:planId/unahur-blocks",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans",
+                ":planId",
+                "unahur-blocks"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/plans/:planId/unahur-blocks/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans/:planId/unahur-blocks/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans",
+                ":planId",
+                "unahur-blocks",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/plans/:planId/unahur-blocks",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans/:planId/unahur-blocks",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans",
+                ":planId",
+                "unahur-blocks"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/plans/:planId/unahur-blocks/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans/:planId/unahur-blocks/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans",
+                ":planId",
+                "unahur-blocks",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Post",
+      "item": [
+        {
+          "name": "DELETE /api/posts/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/posts/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/posts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/posts",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "posts"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/posts/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/posts/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/posts/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/posts/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Titulo de ejemplo\",\n  \"content\": \"Contenido de ejemplo\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/posts",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/posts",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "posts"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Titulo de ejemplo\",\n  \"content\": \"Contenido de ejemplo\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/posts/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/posts/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Titulo de ejemplo\",\n  \"content\": \"Contenido de ejemplo\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Report",
+      "item": [
+        {
+          "name": "DELETE /api/reports/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/reports/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "reports",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/reports",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/reports",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "reports"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/reports/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/reports/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "reports",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/reports/active-users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/reports/active-users",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "reports",
+                "active-users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/reports/materials-by-subject",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/reports/materials-by-subject",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "reports",
+                "materials-by-subject"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/reports/materials-top-rated",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/reports/materials-top-rated",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "reports",
+                "materials-top-rated"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/reports/moderation-stats",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/reports/moderation-stats",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "reports",
+                "moderation-stats"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/reports/most-active-careers",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/reports/most-active-careers",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "reports",
+                "most-active-careers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/reports/social-connections",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/reports/social-connections",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "reports",
+                "social-connections"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/reports/students-by-approved-count",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/reports/students-by-approved-count",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "reports",
+                "students-by-approved-count"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/reports/students-by-connections-count",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/reports/students-by-connections-count",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "reports",
+                "students-by-connections-count"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/reports/students-by-cursada-count",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/reports/students-by-cursada-count",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "reports",
+                "students-by-cursada-count"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/reports/study-sessions-usage",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/reports/study-sessions-usage",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "reports",
+                "study-sessions-usage"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/reports/subjects-approved-by-career",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/reports/subjects-approved-by-career",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "reports",
+                "subjects-approved-by-career"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/reports/subjects-approved-by-student",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/reports/subjects-approved-by-student",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "reports",
+                "subjects-approved-by-student"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/reports/subjects-by-career",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/reports/subjects-by-career",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "reports",
+                "subjects-by-career"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/reports/subjects-by-student",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/reports/subjects-by-student",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "reports",
+                "subjects-by-student"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/reports/summary",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/reports/summary",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "reports",
+                "summary"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/reports/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/reports/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "reports",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id_report_reason\": 1,\n  \"id_post\": 1,\n  \"details\": \"Contenido inapropiado\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/reports",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/reports",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "reports"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id_report_reason\": 1,\n  \"id_post\": 1,\n  \"details\": \"Contenido inapropiado\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/reports/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/reports/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "reports",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id_report_reason\": 1,\n  \"id_post\": 1,\n  \"details\": \"Contenido inapropiado\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Report Reason",
+      "item": [
+        {
+          "name": "DELETE /api/report-reasons/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/report-reasons/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "report-reasons",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/report-reasons",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/report-reasons",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "report-reasons"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/report-reasons/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/report-reasons/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "report-reasons",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/report-reasons/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/report-reasons/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "report-reasons",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/report-reasons",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/report-reasons",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "report-reasons"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/report-reasons/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/report-reasons/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "report-reasons",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Session",
+      "item": [
+        {
+          "name": "DELETE /api/sessions/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/sessions/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "sessions",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/sessions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/sessions",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "sessions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/sessions/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/sessions/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "sessions",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/sessions/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/sessions/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "sessions",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/sessions",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/sessions",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "sessions"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/sessions/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/sessions/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "sessions",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Student",
+      "item": [
+        {
+          "name": "DELETE /api/students/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/students/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /api/students/:id/enrollments/:enrollmentId",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/students/:id/enrollments/:enrollmentId",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                ":id",
+                "enrollments",
+                ":enrollmentId"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/students",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/students",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "students"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/students/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/students/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/students/:id/academic-summary",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/students/:id/academic-summary",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                ":id",
+                "academic-summary"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/students/:id/academic-year-breakdown",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/students/:id/academic-year-breakdown",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                ":id",
+                "academic-year-breakdown"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/students/:id/activity-eligibility",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/students/:id/activity-eligibility",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                ":id",
+                "activity-eligibility"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/students/:id/enrollments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/students/:id/enrollments",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                ":id",
+                "enrollments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/students/:id/exam-eligibility",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/students/:id/exam-eligibility",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                ":id",
+                "exam-eligibility"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/students/:id/pending-finals",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/students/:id/pending-finals",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                ":id",
+                "pending-finals"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/students/:id/plan-subjects",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/students/:id/plan-subjects",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                ":id",
+                "plan-subjects"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/students/:id/planner-data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/students/:id/planner-data",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                ":id",
+                "planner-data"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/students/:id/profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/students/:id/profile",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                ":id",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/students/:id/subject-eligibility",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/students/:id/subject-eligibility",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                ":id",
+                "subject-eligibility"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/students/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/students/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/students/:id/enrollments/:enrollmentId",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/students/:id/enrollments/:enrollmentId",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                ":id",
+                "enrollments",
+                ":enrollmentId"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id_plan_subject\": 1,\n  \"status\": \"ongoing\",\n  \"term\": 1,\n  \"year\": 2026\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/students",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/students",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "students"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/students/:id/avatar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/students/:id/avatar",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                ":id",
+                "avatar"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/students/:id/enrollments",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/students/:id/enrollments",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                ":id",
+                "enrollments"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id_plan_subject\": 1,\n  \"status\": \"ongoing\",\n  \"term\": 1,\n  \"year\": 2026\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/students/:id/save-plan",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/students/:id/save-plan",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                ":id",
+                "save-plan"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"selected_plan_subject_ids\": [\n    1,\n    2,\n    3\n  ]\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/students/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/students/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/students/:id/enrollments/:enrollmentId",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/students/:id/enrollments/:enrollmentId",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                ":id",
+                "enrollments",
+                ":enrollmentId"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id_plan_subject\": 1,\n  \"status\": \"ongoing\",\n  \"term\": 1,\n  \"year\": 2026\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Study Plan",
+      "item": [
+        {
+          "name": "DELETE /api/plans/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/plans",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/plans/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/plans/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/plans",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/plans/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/plans/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "plans",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Study Session",
+      "item": [
+        {
+          "name": "DELETE /api/study-sessions/:id/cancel",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/study-sessions/:id/cancel",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "study-sessions",
+                ":id",
+                "cancel"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /api/study-sessions/:id/registrations/:registrationId",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/study-sessions/:id/registrations/:registrationId",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "study-sessions",
+                ":id",
+                "registrations",
+                ":registrationId"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/study-sessions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/study-sessions",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "study-sessions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/study-sessions/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/study-sessions/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "study-sessions",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/study-sessions/:id/registrations/:registrationId/approve",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/study-sessions/:id/registrations/:registrationId/approve",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "study-sessions",
+                ":id",
+                "registrations",
+                ":registrationId",
+                "approve"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Sesion de estudio\",\n  \"topic\": \"Algebra\",\n  \"start_at\": \"2026-07-20T18:00:00.000Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/study-sessions/:id/registrations/:registrationId/reject",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/study-sessions/:id/registrations/:registrationId/reject",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "study-sessions",
+                ":id",
+                "registrations",
+                ":registrationId",
+                "reject"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"Sin cupo disponible\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/study-sessions",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/study-sessions",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "study-sessions"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Sesion de estudio\",\n  \"topic\": \"Algebra\",\n  \"start_at\": \"2026-07-20T18:00:00.000Z\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/study-sessions/:id/join",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/study-sessions/:id/join",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "study-sessions",
+                ":id",
+                "join"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"note\": \"Quiero participar\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/study-sessions/:id/leave",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/study-sessions/:id/leave",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "study-sessions",
+                ":id",
+                "leave"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"No puedo asistir\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/study-sessions/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/study-sessions/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "study-sessions",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Sesion de estudio\",\n  \"topic\": \"Algebra\",\n  \"start_at\": \"2026-07-20T18:00:00.000Z\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Subject",
+      "item": [
+        {
+          "name": "DELETE /api/subjects/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/subjects/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "subjects",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/subjects",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/subjects",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "subjects"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/subjects/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/subjects/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "subjects",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/subjects/student/:studentId",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/subjects/student/:studentId",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "subjects",
+                "student",
+                ":studentId"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/subjects/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/subjects/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "subjects",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Materia de ejemplo\",\n  \"code\": \"MAT-001\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/subjects",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/subjects",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "subjects"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Materia de ejemplo\",\n  \"code\": \"MAT-001\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/subjects/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/subjects/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "subjects",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Materia de ejemplo\",\n  \"code\": \"MAT-001\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "System Config",
+      "item": [
+        {
+          "name": "DELETE /api/system-config/:key",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/system-config/:key",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "system-config",
+                ":key"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/system-config",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/system-config",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "system-config"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/system-config/:key",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/system-config/:key",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "system-config",
+                ":key"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/system-config/:key",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/system-config/:key",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "system-config",
+                ":key"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": \"max_upload_size\",\n  \"value\": \"10MB\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/system-config",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/system-config",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "system-config"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": \"max_upload_size\",\n  \"value\": \"10MB\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/system-config/:key",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/system-config/:key",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "system-config",
+                ":key"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": \"max_upload_size\",\n  \"value\": \"10MB\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Upload",
+      "item": [
+        {
+          "name": "POST /api/upload/post-images",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/upload/post-images",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "upload",
+                "post-images"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"note\": \"multipart/form-data esperado por backend\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "DELETE /api/users/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/users/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/users",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/users/:id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/users/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                ":id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/users/me",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/users/me",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/users/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/users/:id",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/users/:id/reactivate",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/users/:id/reactivate",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                ":id",
+                "reactivate"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/users/:id/suspend",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/users/:id/suspend",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                ":id",
+                "suspend"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/users",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/users",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"example\": \"value\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Vote",
+      "item": [
+        {
+          "name": "POST /api/votes",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{BACKEND_API_URL}}/api/votes",
+              "host": [
+                "{{BACKEND_API_URL}}"
+              ],
+              "path": [
+                "api",
+                "votes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"target_type\": \"material\",\n  \"target_id\": 1,\n  \"vote_type\": \"upvote\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "if (!pm.collectionVariables.get('auth_token')) pm.collectionVariables.set('auth_token', '');"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "pm.test('Response has expected status', function () {",
+          "  pm.expect([200, 201, 204, 400, 401, 403, 404, 422]).to.include(pm.response.code);",
+          "});",
+          "var json = {};",
+          "try { json = pm.response.json(); } catch (e) {}",
+          "if (pm.info.requestName === 'POST /api/auth/login' && json && (json.token || (json.data && json.data.token))) {",
+          "  pm.collectionVariables.set('auth_token', json.token || json.data.token);",
+          "}"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "BACKEND_API_URL",
+      "value": "http://localhost:3001",
+      "type": "string"
+    },
+    {
+      "key": "auth_token",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

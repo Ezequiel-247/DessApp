@@ -29,6 +29,12 @@ const adminMoreItems = [
   { label: "Moderación", to: "/admin/moderation", icon: "gavel" },
 ];
 
+const studentMoreItems = [
+  { label: "Materiales", to: "/student/materials", icon: "menu_book" },
+  { label: "Sesiones", to: "/student/sessions", icon: "groups" },
+  { label: "Conexiones", to: "/student/connections", icon: "hub" },
+];
+
 export function MobileNav() {
   const { user, logout } = useAuth();
   const location = useLocation();
@@ -46,6 +52,7 @@ export function MobileNav() {
   };
 
   const navItems = user?.role === 'admin' ? adminMainItems : studentNavItems;
+  const moreItems = user?.role === 'admin' ? adminMoreItems : studentMoreItems;
 
   return (
     <>
@@ -107,7 +114,7 @@ export function MobileNav() {
               </button>
             </div>
             <div className="p-3 space-y-1">
-              {adminMoreItems.map((item) => {
+              {moreItems.map((item) => {
                 const isActive =
                   location.pathname === item.to ||
                   location.pathname.startsWith(item.to + "/");

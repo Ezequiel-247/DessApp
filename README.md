@@ -11,14 +11,33 @@ Proyecto desarrollado para la materia **Desarrollo de Aplicaciones** (Tecnicatur
 - Martín Lubris
 - Ezequiel Ortiz
 
-## Funcionalidades principales
+## Capturas
 
-- **Planes de estudio**: carreras, materias, correlatividades y bloques (electivas, créditos, optativas).
-- **Seguimiento académico**: registro de estado por materia (cursando, regular, aprobada) y de finales rendidos.
-- **Planificador personalizado**: el estudiante arma su propio recorrido de cursada (custom study plan) respetando correlatividades.
-- **Sesiones de estudio**: creación, inscripción y aprobación de encuentros de repaso entre estudiantes.
-- **Comunidad**: posts, comentarios, votos, conexiones entre usuarios y notificaciones.
-- **Administración**: gestión de institutos, carreras, materias, usuarios y configuración del sistema para el rol admin.
+| Login | Mi Progreso Académico | Historia Académica (mobile) |
+|---|---|---|
+| ![Login](docs/screenshots/login.png) | ![Mi Progreso](docs/screenshots/student-progreso.png) | ![Calificaciones mobile](docs/screenshots/student-calificaciones-mobile.png) |
+
+## ¿Qué se puede hacer?
+
+La app tiene dos roles con vistas y permisos distintos: **estudiante** y **admin**.
+
+### Como estudiante
+
+- Ver un **resumen** general de su situación académica.
+- Cargar y gestionar su **historia académica**: notas de exámenes, cursadas regularizadas/finalizadas, importación masiva por Excel.
+- Consultar **Mi Progreso**: avance por carrera (materias, electivas, bloques de crédito), promedio general y finales pendientes con fecha de vencimiento.
+- Armar su propio recorrido de cursada en **Mi Planificador**, respetando correlatividades.
+- Consultar **materiales** de estudio compartidos y **sesiones de estudio** (crearlas, inscribirse, aprobar inscripciones).
+- Conectarse con otros estudiantes (**conexiones**) y ver **novedades** (posts, comentarios, votos).
+- Configurar su **perfil**: privacidad (perfil público, mostrar situación académica) y datos de carrera.
+
+### Como admin
+
+- Ver un **dashboard** general de la plataforma.
+- Gestionar **institutos**, **carreras**, **planes de estudio**, **materias** y **actividades**.
+- Administrar el **directorio** de usuarios.
+- **Moderar** contenido reportado por la comunidad (posts, comentarios).
+- Configurar parámetros generales del sistema.
 
 ## Estructura del repositorio
 

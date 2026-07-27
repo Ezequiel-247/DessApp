@@ -19,12 +19,12 @@ function SemesterRowPreview({ name, semester }: { name: string; semester: Planne
     (semester.completed_subjects?.length ?? 0) === 0;
 
   return (
-    <div className="flex gap-margin">
-      <div className="w-16 flex-shrink-0 flex flex-col items-center justify-center border-r-2 border-primary/10">
-        <h3 className="font-title-sm text-primary">{name}</h3>
-        <span className="text-[10px] font-label-caps text-on-surface-variant uppercase text-center">{semester.total_hours}hs</span>
+    <div className="flex gap-sm md:gap-margin">
+      <div className="w-10 md:w-16 flex-shrink-0 flex flex-col items-center justify-center border-r-2 border-primary/10">
+        <h3 className="font-title-sm text-primary text-sm md:text-base">{name}</h3>
+        <span className="text-[9px] md:text-[10px] font-label-caps text-on-surface-variant uppercase text-center">{semester.total_hours}hs</span>
       </div>
-      <div className="flex-1 flex gap-4 flex-wrap">
+      <div className="flex-1 min-w-0 flex gap-4 flex-wrap">
         {isEmpty ? (
           <div className="flex-1 border-2 border-dashed rounded-2xl flex items-center justify-center bg-surface-container-low/30 py-6 min-h-[120px] border-outline-variant/20">
             <span className="text-xs text-on-surface-variant/50 italic">Sin materias</span>
@@ -52,7 +52,7 @@ export function TimelinePreview({ data }: Props) {
 
   return (
     <section className="overflow-y-auto h-full">
-      <div className="p-margin space-y-xl">
+      <div className="p-sm md:p-margin space-y-xl">
         {timeline.visibleYears.map((yearPlan) => (
           <div key={yearPlan.year} className="flex flex-col gap-6">
             <div className="flex items-center gap-4">

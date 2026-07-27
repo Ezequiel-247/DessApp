@@ -281,7 +281,7 @@ export function PlannerDetailView({
               }
             />
           </div>
-          <div className="pt-gutter overflow-x-auto lg:overflow-x-visible">
+          <div className="pt-gutter overflow-x-hidden lg:overflow-x-visible">
             <TimelineContent
               plan={data}
               activeYear={activeYear}

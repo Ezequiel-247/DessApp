@@ -55,27 +55,27 @@ export function SemesterRow({
         : "";
 
   return (
-    <div className="flex gap-margin">
+    <div className="flex gap-sm md:gap-margin">
       <div
-        className={`w-16 flex-shrink-0 flex flex-col items-center justify-center border-r-2 transition-colors ${
+        className={`w-10 md:w-16 flex-shrink-0 flex flex-col items-center justify-center border-r-2 transition-colors ${
           exceedsLimit ? "border-error" : "border-primary/10"
         }`}
       >
-        <h3 className="font-title-sm text-primary">{name}</h3>
+        <h3 className="font-title-sm text-primary text-sm md:text-base">{name}</h3>
         <span
-          className={`text-[10px] font-label-caps uppercase text-center ${
+          className={`text-[9px] md:text-[10px] font-label-caps uppercase text-center ${
             exceedsLimit ? "text-error font-semibold" : "text-on-surface-variant"
           }`}
         >
           {totalHours}hs
         </span>
         {hoursLimit != null && (
-          <span className="text-[9px] text-on-surface-variant/60">/ {hoursLimit}hs</span>
+          <span className="text-[8px] md:text-[9px] text-on-surface-variant/60">/ {hoursLimit}hs</span>
         )}
       </div>
       <div
         ref={setNodeRef}
-        className={`flex-1 flex gap-4 flex-wrap transition-all relative ${readOnly ? "" : ringClass}`}
+        className={`flex-1 min-w-0 flex gap-4 flex-wrap transition-all relative ${readOnly ? "" : ringClass}`}
       >
         {isEmpty && isSabbatical ? (
           <div className="flex-1 border-2 border-dashed border-sky-300/60 bg-sky-50 rounded-2xl flex flex-col items-center justify-center gap-2 py-6 min-h-[120px]">

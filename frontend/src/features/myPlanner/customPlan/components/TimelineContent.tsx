@@ -167,7 +167,7 @@ export function TimelineContent({
 
   return (
     <section className="bg-slate-50/50">
-      <div className="p-margin space-y-xl">
+      <div className="p-sm md:p-margin space-y-xl">
         {readOnly ? (
           timeline.visibleYears.map(yearPlan => (
             <YearBlock

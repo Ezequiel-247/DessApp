@@ -8,10 +8,9 @@ import { useAuth } from "@/app/AuthContext";
 
 const studentNavItems = [
   { label: "Resumen", to: "/student/dashboard", icon: "dashboard" },
-  { label: "Noved", to: "/student/novelties", icon: "feed" },
   { label: "Calificaciones", to: "/student/academic-record", icon: "grade" },
+  { label: "Materiales", to: "/student/materials", icon: "menu_book" },
   { label: "Mi Progreso", to: "/student/myProgress", icon: "donut_small" },
-  { label: "Mi Planificador", to: "/student/myPlanner", icon: "calendar_month" },
   { label: "Mi Perfil", to: "/student/profile", icon: "account_circle" },
 ];
 
@@ -30,7 +29,8 @@ const adminMoreItems = [
 ];
 
 const studentMoreItems = [
-  { label: "Materiales", to: "/student/materials", icon: "menu_book" },
+  { label: "Novedades", to: "/student/novelties", icon: "feed" },
+  { label: "Mi Planificador", to: "/student/myPlanner", icon: "calendar_month" },
   { label: "Sesiones", to: "/student/sessions", icon: "groups" },
   { label: "Conexiones", to: "/student/connections", icon: "hub" },
 ];

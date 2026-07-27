@@ -16,6 +16,26 @@ import type { CommentTargetType } from '@/entities/Comment';
 import { resolveMediaUrl } from '@/shared/lib/resolveMediaUrl';
 import { useAuth } from '@/app/AuthContext';
 import { useSearchParams } from 'react-router-dom';
+import { ProductTour, type TourStep } from '@/features/onboarding';
+
+const noveltiesTourSteps: TourStep[] = [
+  {
+    target: 'body',
+    placement: 'center',
+    title: 'Novedades',
+    content: 'Es el feed de actividad de tus conexiones: posteos y logros académicos.',
+  },
+  {
+    target: '[data-tour="novelties-create"]',
+    title: 'Crear un posteo',
+    content: 'Compartí una novedad con tus conexiones, con imágenes si querés.',
+  },
+  {
+    target: '[data-tour="novelties-feed"]',
+    title: 'El feed',
+    content: 'Acá vas a ver los posteos y logros académicos de tus conexiones, con opción de comentar y votar.',
+  },
+];
 
 function formatDate(value: string): string {
   const date = new Date(value);
@@ -489,7 +509,7 @@ export function NoveltiesPage() {
           title="Novedades"
         />
 
-        <Card header={<h2 className="font-title-sm text-title-sm text-on-surface">Crear posteo</h2>}>
+        <Card data-tour="novelties-create" header={<h2 className="font-title-sm text-title-sm text-on-surface">Crear posteo</h2>}>
           <form onSubmit={handleSubmit}>
             <Form>
               <Form.Field label="Título" required>
@@ -562,6 +582,7 @@ export function NoveltiesPage() {
           </form>
         </Card>
 
+          <div data-tour="novelties-feed">
           {isLoading ? (
             <p className="text-body-sm text-on-surface-variant">Cargando novedades...</p>
           ) : novelties.length === 0 ? (
@@ -736,6 +757,9 @@ export function NoveltiesPage() {
               ) : null}
             </div>
           )}
+          </div>
+
+        <ProductTour tourId="novelties" steps={noveltiesTourSteps} />
 
         <Modal
           isOpen={editModalData !== null}

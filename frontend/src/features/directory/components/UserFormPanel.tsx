@@ -18,9 +18,10 @@ interface Props {
   onDelete: (id: string) => void;
   onSaved: () => void;
   onCreated: () => void;
+  dataTour?: string;
 }
 
-export function UserFormPanel({ selectedUser, careersOptions, onDelete, onSaved, onCreated }: Props) {
+export function UserFormPanel({ selectedUser, careersOptions, onDelete, onSaved, onCreated, dataTour }: Props) {
   const {
     draft,
     activeTab,
@@ -56,6 +57,7 @@ export function UserFormPanel({ selectedUser, careersOptions, onDelete, onSaved,
 
   return (
     <Card
+      data-tour={dataTour}
       className="xl:col-span-7 flex flex-col h-full"
       bodyClassName="flex-1 overflow-y-auto"
       header={

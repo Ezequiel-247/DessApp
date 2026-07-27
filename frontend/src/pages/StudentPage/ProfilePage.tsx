@@ -9,6 +9,31 @@ import { Button } from '@/widgets/ui/Button';
 import { SegmentedControl } from '@/widgets/ui/SegmentedControl';
 import { PageHeader } from '@/widgets/ui/PageHeader';
 import { StatusBadge } from '@/widgets/ui/StatusBadge';
+import { ProductTour, type TourStep } from '@/features/onboarding';
+
+const profileTourSteps: TourStep[] = [
+  {
+    target: 'body',
+    placement: 'center',
+    title: 'Mi Perfil',
+    content: 'Acá gestionás tus datos personales, tu privacidad y tus carreras.',
+  },
+  {
+    target: '[data-tour="profile-avatar"]',
+    title: 'Foto de perfil',
+    content: 'Tocá este botón para cambiar tu foto de perfil.',
+  },
+  {
+    target: '[data-tour="profile-tabs"]',
+    title: 'Privacidad y carreras',
+    content: 'Alterná entre configurar qué información es visible para otros, o gestionar tus inscripciones a carreras.',
+  },
+  {
+    target: '[data-tour="profile-settings"]',
+    title: 'Configurá tu cuenta',
+    content: 'Activá o desactivá cada opción de privacidad, o agregá una nueva carrera, y guardá los cambios.',
+  },
+];
 
 export function ProfilePage() {
   const { user } = useAuth();
@@ -198,6 +223,7 @@ export function ProfilePage() {
               />
               <button
                 type="button"
+                data-tour="profile-avatar"
                 onClick={() => avatarInputRef.current?.click()}
                 disabled={isUploadingAvatar}
                 className="absolute bottom-0 right-0 bg-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center shadow-md border-2 border-white hover:bg-on-primary-fixed-variant transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-60"
@@ -226,6 +252,7 @@ export function ProfilePage() {
 
         {/* Card 2: Privacy + Enrollments (tabbed) */}
         <Card
+          data-tour="profile-settings"
           className="col-span-12 lg:col-span-8 flex flex-col"
           header={
             <div className="flex-1 flex items-center gap-3">
@@ -235,7 +262,7 @@ export function ProfilePage() {
               <h3 className="font-title-sm text-title-sm text-on-surface">
                 {rightTab === "privacy" ? "Configuración de Privacidad" : "Datos del Estudiante"}
               </h3>
-              <div className="ml-auto">
+              <div data-tour="profile-tabs" className="ml-auto">
               <SegmentedControl
                 value={rightTab}
                 onChange={setRightTab}
@@ -424,6 +451,8 @@ export function ProfilePage() {
         fieldType="legajo"
         onSave={updateLegajo}
       />
+
+      <ProductTour tourId="profile" steps={profileTourSteps} />
       </div>
     </>
   );

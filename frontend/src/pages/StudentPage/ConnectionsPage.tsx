@@ -13,6 +13,31 @@ import { SegmentedControl } from '@/widgets/ui/SegmentedControl';
 import { Tag } from '@/widgets/ui/Tag';
 import { SearchInput } from '@/widgets/ui/SearchInput';
 import { resolveMediaUrl } from '@/shared/lib/resolveMediaUrl';
+import { ProductTour, type TourStep } from '@/features/onboarding';
+
+const connectionsTourSteps: TourStep[] = [
+  {
+    target: 'body',
+    placement: 'center',
+    title: 'Tus conexiones',
+    content: 'Conectate con otros estudiantes para compartir novedades y coordinar sesiones de estudio.',
+  },
+  {
+    target: '[data-tour="connections-tabs"]',
+    title: 'Filtrar conexiones',
+    content: 'Alterná entre todas tus conexiones, las pendientes de aceptar y las ya conectadas.',
+  },
+  {
+    target: '[data-tour="connections-invite"]',
+    title: 'Invitar por email',
+    content: 'Si conocés el email de un compañero, invitalo directamente aunque no aparezca en el directorio.',
+  },
+  {
+    target: '[data-tour="connections-directory"]',
+    title: 'Directorio de estudiantes',
+    content: 'Buscá compañeros por nombre o email y conectate con ellos desde acá.',
+  },
+];
 
 const getInitials = (name?: string) => {
   if (!name) return 'U';
@@ -192,16 +217,18 @@ export function ConnectionsPage() {
           title="Gestión de conexiones"
         />
 
-        <SegmentedControl
-          className="w-fit mb-3"
-          value={statusFilter}
-          onChange={setStatusFilter}
-          options={[
-            { value: 'all', label: `Todas (${connections.length})` },
-            { value: 'pending', label: `Pendientes (${pendingConnections.length})` },
-            { value: 'accepted', label: `Conectados (${acceptedConnections.length})` },
-          ]}
-        />
+        <div data-tour="connections-tabs">
+          <SegmentedControl
+            className="w-fit mb-3"
+            value={statusFilter}
+            onChange={setStatusFilter}
+            options={[
+              { value: 'all', label: `Todas (${connections.length})` },
+              { value: 'pending', label: `Pendientes (${pendingConnections.length})` },
+              { value: 'accepted', label: `Conectados (${acceptedConnections.length})` },
+            ]}
+          />
+        </div>
 
         {visibleConnections.length === 0 ? (
           <Card bodyClassName="text-center p-8" className="mb-lg">
@@ -286,7 +313,7 @@ export function ConnectionsPage() {
           </div>
         )}
 
-        <Card header={<h2 className="font-title-sm text-title-sm text-on-surface">Invitar por email</h2>} className="mb-lg">
+        <Card data-tour="connections-invite" header={<h2 className="font-title-sm text-title-sm text-on-surface">Invitar por email</h2>} className="mb-lg">
           <form onSubmit={handleInviteByEmail} className="space-y-3">
             <FormField label="Email del destinatario" error={inviteError || ''} required>
               <Input
@@ -318,6 +345,7 @@ export function ConnectionsPage() {
         </Card>
 
         <Card
+          data-tour="connections-directory"
           className="mb-lg"
           header={
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
@@ -408,6 +436,8 @@ export function ConnectionsPage() {
           )}
         </Card>
       </div>
+
+      <ProductTour tourId="connections" steps={connectionsTourSteps} />
     </div>
   );
 }

@@ -21,6 +21,36 @@ import { InputToggle } from "@/widgets/ui/InputToggle";
 import { Form } from "@/widgets/ui/Form";
 import { Tag } from "@/widgets/ui/Tag";
 import { FormError } from "@/widgets/ui/FormError";
+import { ProductTour, type TourStep } from "@/features/onboarding";
+
+const materialsTourSteps: TourStep[] = [
+  {
+    target: "body",
+    placement: "center",
+    title: "Repositorio de materiales",
+    content: "Acá encontrás y compartís apuntes, resúmenes y links entre estudiantes.",
+  },
+  {
+    target: '[data-tour="materials-upload"]',
+    title: "Subir material",
+    content: "Compartí un PDF, video o link con el resto de la comunidad.",
+  },
+  {
+    target: '[data-tour="materials-search"]',
+    title: "Buscar",
+    content: "Buscá materiales por título.",
+  },
+  {
+    target: '[data-tour="materials-subjects"]',
+    title: "Filtrar por materia",
+    content: "Marcá una o más materias para ver solo su material asociado.",
+  },
+  {
+    target: '[data-tour="materials-format"]',
+    title: "Filtrar por formato",
+    content: "Filtrá por PDFs, videos o links, y elegí si ordenar por más recientes o mejor valorados.",
+  },
+];
 
 // Definición de interfaces para tipado seguro
 interface Material {
@@ -520,7 +550,7 @@ export function MaterialsPage() {
           eyebrow="Material de estudio"
           title="Repositorio de materiales"
           actions={(
-            <Button variant="primary" onClick={() => setIsUploadModalOpen(true)}>
+            <Button data-tour="materials-upload" variant="primary" onClick={() => setIsUploadModalOpen(true)}>
               <span className="material-symbols-outlined text-[24px]">upload</span>
               Subir Material
             </Button>
@@ -537,7 +567,7 @@ export function MaterialsPage() {
           {/* Sidebar de Filtros */}
           <div className="col-span-12 xl:col-span-3 space-y-6">
             {/* Buscador */}
-            <Card bodyClassName="overflow-visible !bg-surface-bright py-3">
+            <Card data-tour="materials-search" bodyClassName="overflow-visible !bg-surface-bright py-3">
               <SearchInput
                 value={searchTerm}
                 onChange={setSearchTerm}
@@ -545,7 +575,7 @@ export function MaterialsPage() {
               />
             </Card>
 
-            <Card headerClassName="py-3"
+            <Card data-tour="materials-subjects" headerClassName="py-3"
               header={
                 <div className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-[20px] text-primary">menu_book</span>
@@ -611,7 +641,7 @@ export function MaterialsPage() {
               </ul>
             </Card>
 
-            <Card headerClassName="py-3"
+            <Card data-tour="materials-format" headerClassName="py-3"
               header={
                 <div className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-[20px] text-primary">category</span>
@@ -890,6 +920,8 @@ export function MaterialsPage() {
           </Form.Row>
         </Form>
       </Modal>
+
+      <ProductTour tourId="materials" steps={materialsTourSteps} />
     </div>
   );
 }

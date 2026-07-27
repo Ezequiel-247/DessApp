@@ -5,6 +5,36 @@ import { ConfirmDialog } from "@/widgets/ui/ConfirmDialog";
 import { MobileListDrawer } from "@/widgets/ui/MobileListDrawer";
 import { MobileFilterSheet } from "@/widgets/ui/MobileFilterSheet";
 import { useActivitiesData, ActivitiesFilterBar, ActivityListPanel, ActivityFormPanel, ActivitiesMobileFilter } from "@/features/activities";
+import { ProductTour, type TourStep } from "@/features/onboarding";
+
+const activitiesTourSteps: TourStep[] = [
+  {
+    target: "body",
+    placement: "center",
+    title: "Actividades con Créditos",
+    content: "Acá administrás las actividades que otorgan créditos dentro de un plan (UNaHUR, electivas, etc).",
+  },
+  {
+    target: '[data-tour="activities-new"]',
+    title: "Nueva actividad",
+    content: "Creá una actividad nueva para asignarla a un bloque de créditos.",
+  },
+  {
+    target: '[data-tour="activities-filters"]',
+    title: "Filtrar actividades",
+    content: "Buscá por nombre o filtrá por instituto, carrera o sin asignar.",
+  },
+  {
+    target: '[data-tour="activities-list"]',
+    title: "Listado de actividades",
+    content: "Seleccioná una actividad para ver y editar sus datos.",
+  },
+  {
+    target: '[data-tour="activities-form"]',
+    title: "Datos de la actividad",
+    content: "Acá editás el nombre y demás datos de la actividad seleccionada.",
+  },
+];
 
 export function ActivitiesPage() {
   const {
@@ -98,14 +128,14 @@ export function ActivitiesPage() {
           eyebrow="Configuración académica"
           title="Actividades con Créditos"
           actions={
-            <Button variant="primary" onClick={handleNew}>
+            <Button data-tour="activities-new" variant="primary" onClick={handleNew}>
               <span className="material-symbols-outlined text-[24px]">add</span>
               Nueva actividad
             </Button>
           }
         />
 
-        <div className="hidden xl:block">
+        <div data-tour="activities-filters" className="hidden xl:block">
           <ActivitiesFilterBar
             searchTerm={searchTerm}
             onSearchChange={setSearchTerm}
@@ -122,7 +152,7 @@ export function ActivitiesPage() {
         </div>
 
         <div ref={gridRef} className="flex-1 min-h-0 grid grid-cols-1 xl:grid-cols-12 gap-gutter grid-rows-1">
-          <div className="hidden xl:block xl:col-span-5">
+          <div data-tour="activities-list" className="hidden xl:block xl:col-span-5">
             <ActivityListPanel
               activities={filteredActivities}
               selectedId={selectedId}
@@ -131,6 +161,7 @@ export function ActivitiesPage() {
           </div>
 
           <ActivityFormPanel
+            dataTour="activities-form"
             selectedActivity={selectedActivity}
             draft={draft}
             saving={saving}
@@ -157,6 +188,8 @@ export function ActivitiesPage() {
           />
         )}
       </div>
+
+      <ProductTour tourId="admin-activities" steps={activitiesTourSteps} />
 
       <MobileListDrawer
         isOpen={mobileListOpen}

@@ -6,6 +6,36 @@ import { PageHeader } from "@/widgets/ui/PageHeader";
 import { Card } from "@/widgets/ui/Card";
 import { Button } from "@/widgets/ui/Button";
 import { ConfirmDialog } from "@/widgets/ui/ConfirmDialog";
+import { ProductTour, type TourStep } from "@/features/onboarding";
+
+const academicRecordTourSteps: TourStep[] = [
+  {
+    target: "body",
+    placement: "center",
+    title: "Tu historial académico",
+    content: "Acá gestionás todas tus notas, finales y actividades. Te mostramos las herramientas principales.",
+  },
+  {
+    target: '[data-tour="ar-import"]',
+    title: "Importar desde Excel",
+    content: "Cargá tu historial completo de una sola vez subiendo un archivo Excel.",
+  },
+  {
+    target: '[data-tour="ar-add"]',
+    title: "Agregar un registro",
+    content: "O cargá un registro individual: una nota, un final rendido o una actividad.",
+  },
+  {
+    target: '[data-tour="ar-filters"]',
+    title: "Filtrar tu historial",
+    content: "Buscá por materia o filtrá por tipo, estado, año y cuatrimestre para encontrar lo que necesitás.",
+  },
+  {
+    target: '[data-tour="ar-table"]',
+    title: "Detalle completo",
+    content: "Y acá está el detalle de cada registro. Hacé click en una fila para ver más o editarla.",
+  },
+];
 
 export function AcademicRecordPage() {
   const { user } = useAuth();
@@ -45,12 +75,12 @@ export function AcademicRecordPage() {
         title="Carga y gestion de calificaciones"
         actions={
           <div className="flex items-center gap-2">
-            <Button variant="secondary" onClick={() => setIsImportOpen(true)}>
+            <Button data-tour="ar-import" variant="secondary" onClick={() => setIsImportOpen(true)}>
               <span className="material-symbols-outlined">upload_file</span>
               Importar Excel
             </Button>
             <div className="w-px h-5 bg-outline-variant/50" />
-            <Button variant="primary" onClick={handleOpenAdd}>
+            <Button data-tour="ar-add" variant="primary" onClick={handleOpenAdd}>
               <span className="material-symbols-outlined">add</span>
               Agregar registro
             </Button>
@@ -100,24 +130,26 @@ export function AcademicRecordPage() {
 
       <div className="grid grid-cols-12 gap-gutter">
         <div className="col-span-12 min-w-0 space-y-md">
-          <AcademicRecordFilters
-            searchTerm={hook.searchTerm}
-            onSearchChange={hook.setSearchTerm}
-            typeFilter={hook.typeFilter}
-            onTypeFilterChange={hook.setTypeFilter}
-            statusFilter={hook.statusFilter}
-            onStatusFilterChange={hook.setStatusFilter}
-            yearFilter={hook.yearFilter}
-            onYearFilterChange={hook.setYearFilter}
-            semesterFilter={hook.semesterFilter}
-            onSemesterFilterChange={hook.setSemesterFilter}
-            uniqueYears={hook.uniqueYears}
-            enrollmentOptions={hook.enrollmentOptions}
-            selectedEnrollmentId={hook.selectedEnrollmentId}
-            onEnrollmentChange={hook.setSelectedEnrollmentId}
-          />
+          <div data-tour="ar-filters">
+            <AcademicRecordFilters
+              searchTerm={hook.searchTerm}
+              onSearchChange={hook.setSearchTerm}
+              typeFilter={hook.typeFilter}
+              onTypeFilterChange={hook.setTypeFilter}
+              statusFilter={hook.statusFilter}
+              onStatusFilterChange={hook.setStatusFilter}
+              yearFilter={hook.yearFilter}
+              onYearFilterChange={hook.setYearFilter}
+              semesterFilter={hook.semesterFilter}
+              onSemesterFilterChange={hook.setSemesterFilter}
+              uniqueYears={hook.uniqueYears}
+              enrollmentOptions={hook.enrollmentOptions}
+              selectedEnrollmentId={hook.selectedEnrollmentId}
+              onEnrollmentChange={hook.setSelectedEnrollmentId}
+            />
+          </div>
 
-          <Card bodyClassName="overflow-x-auto px-0 py-0">
+          <Card data-tour="ar-table" bodyClassName="overflow-x-auto px-0 py-0">
             <AcademicRecordTable
               displayRows={hook.displayRows}
               records={hook.records}
@@ -132,6 +164,8 @@ export function AcademicRecordPage() {
           </Card>
         </div>
       </div>
+
+      <ProductTour tourId="academic-record" steps={academicRecordTourSteps} />
 
       {hook.isConfirmOpen && hook.confirmOptions && (
         <ConfirmDialog

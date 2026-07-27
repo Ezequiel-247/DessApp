@@ -17,6 +17,7 @@ export function SectionCard({
   className = "",
   headerClassName = "",
   bodyClassName = "",
+  ...props
 }) {
   const resolvedHeader = header || (title
     ? (
@@ -30,6 +31,7 @@ export function SectionCard({
   return (
     <section
       className={`rounded-xl border border-outline-variant bg-surface-container-lowest shadow-[0_4px_20px_rgba(15,76,92,0.03)] overflow-hidden ${className}`}
+      {...props}
     >
       {resolvedHeader ? (
         <div className={`border-b border-outline-variant bg-surface-bright p-gutter ${headerClassName}`}>

@@ -5,6 +5,36 @@ import { ConfirmDialog } from "@/widgets/ui/ConfirmDialog";
 import { MobileListDrawer } from "@/widgets/ui/MobileListDrawer";
 import { MobileFilterSheet } from "@/widgets/ui/MobileFilterSheet";
 import { useInstitutesData, InstitutesFilterBar, InstituteListPanel, InstituteFormPanel, InstitutesMobileFilter } from "@/features/institutes";
+import { ProductTour, type TourStep } from "@/features/onboarding";
+
+const institutesTourSteps: TourStep[] = [
+  {
+    target: "body",
+    placement: "center",
+    title: "Gestión de Institutos",
+    content: "Acá administrás los institutos que dictan las carreras.",
+  },
+  {
+    target: '[data-tour="institutes-new"]',
+    title: "Nuevo instituto",
+    content: "Creá un instituto nuevo.",
+  },
+  {
+    target: '[data-tour="institutes-filters"]',
+    title: "Filtrar institutos",
+    content: "Buscá por nombre o filtrá por estado.",
+  },
+  {
+    target: '[data-tour="institutes-list"]',
+    title: "Listado de institutos",
+    content: "Seleccioná un instituto para ver y editar sus datos.",
+  },
+  {
+    target: '[data-tour="institutes-form"]',
+    title: "Datos del instituto",
+    content: "Acá editás el nombre y demás datos del instituto seleccionado.",
+  },
+];
 
 export function InstitutesPage() {
   const {
@@ -66,14 +96,14 @@ export function InstitutesPage() {
           eyebrow="Configuración académica"
           title="Gestión de Institutos"
           actions={
-            <Button variant="primary" onClick={handleNew}>
+            <Button data-tour="institutes-new" variant="primary" onClick={handleNew}>
               <span className="material-symbols-outlined text-[24px]">add</span>
               Nuevo instituto
             </Button>
           }
         />
 
-        <div className="hidden xl:block">
+        <div data-tour="institutes-filters" className="hidden xl:block">
           <InstitutesFilterBar
             searchTerm={searchTerm}
             onSearchChange={setSearchTerm}
@@ -85,7 +115,7 @@ export function InstitutesPage() {
         </div>
 
         <div ref={gridRef} className="flex-1 min-h-0 grid grid-cols-1 xl:grid-cols-12 gap-gutter grid-rows-1">
-          <div className="hidden xl:block xl:col-span-5">
+          <div data-tour="institutes-list" className="hidden xl:block xl:col-span-5">
             <InstituteListPanel
               filteredRecords={filteredRecords}
               selectedRecordId={selectedRecordId}
@@ -95,6 +125,7 @@ export function InstitutesPage() {
           </div>
 
           <InstituteFormPanel
+            dataTour="institutes-form"
             selectedRecord={selectedRecord}
             draft={draft}
             errors={errors}
@@ -120,6 +151,8 @@ export function InstitutesPage() {
           />
         )}
       </div>
+
+      <ProductTour tourId="admin-institutes" steps={institutesTourSteps} />
 
       <MobileListDrawer
         isOpen={mobileListOpen}

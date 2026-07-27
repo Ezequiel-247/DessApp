@@ -5,6 +5,36 @@ import { ConfirmDialog } from "@/widgets/ui/ConfirmDialog";
 import { MobileListDrawer } from "@/widgets/ui/MobileListDrawer";
 import { MobileFilterSheet } from "@/widgets/ui/MobileFilterSheet";
 import { useCareersData, useCareersFilter, useCareerForm, CareersFilterBar, CareerListPanel, CareerFormPanel, CareersMobileFilter } from "@/features/careers";
+import { ProductTour, type TourStep } from "@/features/onboarding";
+
+const careersTourSteps: TourStep[] = [
+  {
+    target: "body",
+    placement: "center",
+    title: "Gestión de Carreras",
+    content: "Acá administrás las carreras que ofrece cada instituto.",
+  },
+  {
+    target: '[data-tour="careers-new"]',
+    title: "Nueva carrera",
+    content: "Creá una carrera nueva y asignale un instituto.",
+  },
+  {
+    target: '[data-tour="careers-filters"]',
+    title: "Filtrar carreras",
+    content: "Buscá por nombre o filtrá por instituto.",
+  },
+  {
+    target: '[data-tour="careers-list"]',
+    title: "Listado de carreras",
+    content: "Seleccioná una carrera de la lista para ver y editar sus datos.",
+  },
+  {
+    target: '[data-tour="careers-form"]',
+    title: "Datos de la carrera",
+    content: "Acá editás el nombre, instituto y demás datos de la carrera seleccionada.",
+  },
+];
 
 export function CareersPage() {
   const { careers, setCareers, institutes, selectedCareerId, setSelectedCareerId } = useCareersData();
@@ -52,14 +82,14 @@ export function CareersPage() {
           eyebrow="Configuración académica"
           title="Gestión de Carreras"
           actions={
-            <Button variant="primary" onClick={handleNew}>
+            <Button data-tour="careers-new" variant="primary" onClick={handleNew}>
               <span className="material-symbols-outlined text-[24px]">add</span>
               Nueva carrera
             </Button>
           }
         />
 
-        <div className="hidden xl:block">
+        <div data-tour="careers-filters" className="hidden xl:block">
           <CareersFilterBar
             searchTerm={searchTerm}
             onSearchChange={setSearchTerm}
@@ -74,7 +104,7 @@ export function CareersPage() {
         </div>
 
         <div ref={gridRef} className="flex-1 min-h-0 grid grid-cols-1 xl:grid-cols-12 gap-gutter grid-rows-1">
-          <div className="hidden xl:block xl:col-span-5">
+          <div data-tour="careers-list" className="hidden xl:block xl:col-span-5">
             <CareerListPanel
               filteredCareers={filteredCareers}
               selectedCareerId={selectedCareerId}
@@ -84,6 +114,7 @@ export function CareersPage() {
           </div>
 
           <CareerFormPanel
+            dataTour="careers-form"
             selectedCareer={selectedCareer}
             draft={draft}
             validationErrors={validationErrors}
@@ -110,6 +141,8 @@ export function CareersPage() {
           />
         )}
       </div>
+
+      <ProductTour tourId="admin-careers" steps={careersTourSteps} />
 
       <MobileListDrawer
         isOpen={mobileListOpen}

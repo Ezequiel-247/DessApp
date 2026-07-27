@@ -12,11 +12,13 @@ interface Props {
   onDelete: (id: string) => void;
   onNew: () => void;
   institutes: Institute[];
+  dataTour?: string;
 }
 
-export function CareerFormPanel({ selectedCareer, draft, validationErrors, onFieldChange, onSave, onDelete, onNew, institutes }: Props) {
+export function CareerFormPanel({ selectedCareer, draft, validationErrors, onFieldChange, onSave, onDelete, onNew, institutes, dataTour }: Props) {
   return (
     <Card
+      data-tour={dataTour}
       className="xl:col-span-7 flex flex-col h-full"
       bodyClassName="flex-1"
       header={

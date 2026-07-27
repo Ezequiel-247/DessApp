@@ -13,11 +13,13 @@ interface Props {
   onSave: () => void;
   onDelete: (id: string) => void;
   onNew: () => void;
+  dataTour?: string;
 }
 
-export function InstituteFormPanel({ selectedRecord, draft, errors, onFieldChange, onSave, onDelete, onNew }: Props) {
+export function InstituteFormPanel({ selectedRecord, draft, errors, onFieldChange, onSave, onDelete, onNew, dataTour }: Props) {
   return (
     <Card
+      data-tour={dataTour}
       className="xl:col-span-7 flex flex-col h-full"
       bodyClassName="flex-1 overflow-y-auto"
       header={

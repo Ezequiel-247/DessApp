@@ -6,7 +6,27 @@ import { Dropdown } from "@/widgets/ui/Dropdown";
 import { TimelinePreview } from "@/features/myPlanner/customPlan/components/TimelinePreview";
 import { SavePlanModal } from "@/features/myPlanner/customPlan/components/SavePlanModal";
 import { DeletePlanModal } from "@/features/myPlanner/customPlan/components/DeletePlanModal";
+import { ProductTour, type TourStep } from "@/features/onboarding";
 import type { SavedPlan, Plan } from "@/features/myPlanner/customPlan/model/planner";
+
+const plannerTourSteps: TourStep[] = [
+  {
+    target: "body",
+    placement: "center",
+    title: "Mi Planificador",
+    content: "Acá armás y visualizás tu proyección de carrera cuatrimestre a cuatrimestre.",
+  },
+  {
+    target: '[data-tour="planner-main"]',
+    title: "Tu plan actual",
+    content: "Vista previa de tu plan seleccionado. Hacé click para entrar y editarlo con el detalle completo.",
+  },
+  {
+    target: '[data-tour="planner-simulator"]',
+    title: "Simulador de Correlativas",
+    content: "¿Qué pasa si apruebo tal materia? Este simulador te muestra qué otras se desbloquean.",
+  },
+];
 
 interface Props {
   plans: SavedPlan[];
@@ -150,7 +170,7 @@ export function PlannerDashboard({
       )}
 
       <div className="flex flex-col gap-6">
-        <div className="flex flex-col">
+        <div data-tour="planner-main" className="flex flex-col">
           <Card
             className="flex-1"
             header={hasPlans ? (
@@ -205,7 +225,7 @@ export function PlannerDashboard({
           </Card>
         </div>
 
-        <div className="w-full sm:max-w-xs">
+        <div data-tour="planner-simulator" className="w-full sm:max-w-xs">
           <Card
             onClick={onOpenSimulator}
             className="w-full cursor-pointer hover:shadow-md hover:border-primary/30 transition-all text-left"
@@ -237,6 +257,8 @@ export function PlannerDashboard({
         onConfirm={confirmDelete}
         onCancel={() => setDeletingPlan(null)}
       />
+
+      <ProductTour tourId="my-planner" steps={plannerTourSteps} />
     </div>
   );
 }

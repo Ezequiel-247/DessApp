@@ -21,6 +21,36 @@ import { getEnrollments } from "@/entities/StudentCareerEnrollment/api/studentCa
 import { getAcademicRecords } from "@/entities/AcademicRecord";
 import { Modal } from "@/widgets/ui/Modal";
 import { FormError } from "@/widgets/ui/FormError";
+import { ProductTour, type TourStep } from "@/features/onboarding";
+
+const sessionsTourSteps: TourStep[] = [
+  {
+    target: "body",
+    placement: "center",
+    title: "Sesiones de estudio",
+    content: "Organizá o sumate a sesiones de estudio con otros estudiantes.",
+  },
+  {
+    target: '[data-tour="sessions-create"]',
+    title: "Crear una sesión",
+    content: "Armá tu propia sesión de estudio: elegí materia, modalidad, fecha y cupos.",
+  },
+  {
+    target: '[data-tour="sessions-subjects-filter"]',
+    title: "Filtrar por materia",
+    content: "Mostrá solo las sesiones de una materia puntual.",
+  },
+  {
+    target: '[data-tour="sessions-filters"]',
+    title: "Más filtros",
+    content: "Filtrá por modalidad, mostrá solo en las que estás inscripto, las tuyas propias, u ocultá las que ya no tienen cupo.",
+  },
+  {
+    target: '[data-tour="sessions-list"]',
+    title: "Sesiones disponibles",
+    content: "Acá aparecen todas las sesiones. Uníte, o si sos el organizador, gestioná las solicitudes.",
+  },
+];
 
 interface SubjectOption {
   id: number;
@@ -286,7 +316,7 @@ export function SessionsPage() {
           eyebrow="Tutoria estudiantil"
           title="Sesiones de estudio"
           actions={
-            <Button variant="primary" onClick={() => setIsModalOpen(true)}>
+            <Button data-tour="sessions-create" variant="primary" onClick={() => setIsModalOpen(true)}>
               <span className="material-symbols-outlined text-[24px]">add</span>
               Crear sesión
             </Button>
@@ -296,7 +326,7 @@ export function SessionsPage() {
         <div className="grid grid-cols-12 gap-gutter">
           {/* Sidebar de filtros */}
           <div className="col-span-12 lg:col-span-3 space-y-6">
-            <Card headerClassName="py-3"
+            <Card data-tour="sessions-subjects-filter" headerClassName="py-3"
               header={
                 <div className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-[20px] text-primary">menu_book</span>
@@ -312,7 +342,7 @@ export function SessionsPage() {
               </div>
             </Card>
 
-            <Card headerClassName="py-3"
+            <Card data-tour="sessions-filters" headerClassName="py-3"
               header={
                 <div className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-[20px] text-primary">filter_list</span>
@@ -431,6 +461,7 @@ export function SessionsPage() {
               </div>
             )}
 
+            <div data-tour="sessions-list">
             {sessions.length === 0 ? (
               <EmptyState>No hay sesiones disponibles en este momento.</EmptyState>
             ) : filteredSessions.length === 0 ? (
@@ -571,9 +602,12 @@ export function SessionsPage() {
             })}
           </div>
         )}
+            </div>
       </div>
       </div>
       </div>
+
+      <ProductTour tourId="sessions" steps={sessionsTourSteps} />
 
       <Modal
         isOpen={isModalOpen}

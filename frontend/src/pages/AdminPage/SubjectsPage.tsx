@@ -5,6 +5,36 @@ import { ConfirmDialog } from "@/widgets/ui/ConfirmDialog";
 import { MobileListDrawer } from "@/widgets/ui/MobileListDrawer";
 import { MobileFilterSheet } from "@/widgets/ui/MobileFilterSheet";
 import { useSubjectsData, SubjectsFilterBar, SubjectListPanel, SubjectFormPanel, SubjectsMobileFilter } from "@/features/subjects";
+import { ProductTour, type TourStep } from "@/features/onboarding";
+
+const subjectsTourSteps: TourStep[] = [
+  {
+    target: "body",
+    placement: "center",
+    title: "Gestión de Materias",
+    content: "Acá administrás las materias de los planes de estudio.",
+  },
+  {
+    target: '[data-tour="subjects-new"]',
+    title: "Nueva materia",
+    content: "Creá una materia nueva para asignarla luego a un plan.",
+  },
+  {
+    target: '[data-tour="subjects-filters"]',
+    title: "Filtrar materias",
+    content: "Buscá por nombre o filtrá por instituto, carrera, UNaHUR o sin asignar.",
+  },
+  {
+    target: '[data-tour="subjects-list"]',
+    title: "Listado de materias",
+    content: "Seleccioná una materia para ver y editar sus datos.",
+  },
+  {
+    target: '[data-tour="subjects-form"]',
+    title: "Datos de la materia",
+    content: "Acá editás el nombre, horas semanales y demás datos de la materia seleccionada.",
+  },
+];
 
 export function SubjectsPage() {
   const {
@@ -101,14 +131,14 @@ export function SubjectsPage() {
           eyebrow="Configuración académica"
           title="Gestión de Materias"
           actions={
-            <Button variant="primary" onClick={handleNew}>
+            <Button data-tour="subjects-new" variant="primary" onClick={handleNew}>
               <span className="material-symbols-outlined text-[24px]">add</span>
               Nueva materia
             </Button>
           }
         />
 
-        <div className="hidden xl:block">
+        <div data-tour="subjects-filters" className="hidden xl:block">
           <SubjectsFilterBar
             searchTerm={searchTerm}
             onSearchChange={setSearchTerm}
@@ -127,7 +157,7 @@ export function SubjectsPage() {
         </div>
 
         <div ref={gridRef} className="flex-1 min-h-0 grid grid-cols-1 xl:grid-cols-12 gap-gutter grid-rows-1">
-          <div className="hidden xl:block xl:col-span-5">
+          <div data-tour="subjects-list" className="hidden xl:block xl:col-span-5">
             <SubjectListPanel
               subjects={filteredSubjects}
               selectedId={selectedId}
@@ -136,6 +166,7 @@ export function SubjectsPage() {
           </div>
 
           <SubjectFormPanel
+            dataTour="subjects-form"
             selectedSubject={selectedSubject}
             draft={draft}
             saving={saving}
@@ -162,6 +193,8 @@ export function SubjectsPage() {
           />
         )}
       </div>
+
+      <ProductTour tourId="admin-subjects" steps={subjectsTourSteps} />
 
       <MobileListDrawer
         isOpen={mobileListOpen}

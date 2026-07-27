@@ -11,6 +11,31 @@ import { StatusBadge } from "@/widgets/ui/StatusBadge";
 import { Tag } from "@/widgets/ui/Tag";
 import { getModerationStats } from "@/shared/api/adminReportApi";
 import type { ModerationStats } from "@/shared/api/adminReportApi";
+import { ProductTour, type TourStep } from "@/features/onboarding";
+
+const moderationTourSteps: TourStep[] = [
+  {
+    target: "body",
+    placement: "center",
+    title: "Moderación de Contenidos",
+    content: "Acá revisás y resolvés las denuncias que hacen los estudiantes sobre materiales.",
+  },
+  {
+    target: '[data-tour="moderation-stats"]',
+    title: "Estadísticas de moderación",
+    content: "Desplegá esta sección para ver la tasa de resolución y el desglose por motivo y tipo de contenido.",
+  },
+  {
+    target: '[data-tour="moderation-tabs"]',
+    title: "Pendientes e historial",
+    content: "Alterná entre las denuncias que todavía necesitan revisión y el historial de las ya resueltas.",
+  },
+  {
+    target: '[data-tour="moderation-list"]',
+    title: "Materiales denunciados",
+    content: "Expandí un material para ver el detalle de cada denuncia y confirmarla o rechazarla.",
+  },
+];
 
 function DonutChart({ title, data }: { title: string; data: { label: string; value: number; color: string }[] }) {
   const total = data.reduce((s, d) => s + d.value, 0);
@@ -171,6 +196,7 @@ export function AdminModerationPage() {
 
       {/* Moderation stats collapsible */}
       <Card
+        data-tour="moderation-stats"
         headerClassName="!px-0 !py-0"
         header={
           <button
@@ -261,7 +287,7 @@ export function AdminModerationPage() {
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-outline-variant">
+      <div data-tour="moderation-tabs" className="flex border-b border-outline-variant">
         <button
           type="button"
           onClick={() => setActiveTab("pending")}
@@ -308,6 +334,7 @@ export function AdminModerationPage() {
         </Card>
       )}
 
+      <div data-tour="moderation-list">
       {isLoading && materials.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-20 space-y-4">
           <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
@@ -494,7 +521,10 @@ export function AdminModerationPage() {
           })}
         </div>
       )}
+      </div>
     </div>
+
+    <ProductTour tourId="admin-moderation" steps={moderationTourSteps} />
 
     <Modal
       isOpen={Boolean(bulkAction)}

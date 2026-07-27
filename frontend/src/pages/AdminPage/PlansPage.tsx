@@ -6,6 +6,36 @@ import { MobileListDrawer } from "@/widgets/ui/MobileListDrawer";
 import { MobileFilterSheet } from "@/widgets/ui/MobileFilterSheet";
 import { PlanCreationWizard } from "@/features/study-plan";
 import { usePlansData, PlansFilterBar, PlanListPanel, PlanInfoPanel, PlanBreakdown, PlansMobileFilter } from "@/features/plans";
+import { ProductTour, type TourStep } from "@/features/onboarding";
+
+const plansTourSteps: TourStep[] = [
+  {
+    target: "body",
+    placement: "center",
+    title: "Gestión de Planes de Estudio",
+    content: "Acá armás y publicás los planes de estudio de cada carrera.",
+  },
+  {
+    target: '[data-tour="plans-new"]',
+    title: "Crear un plan",
+    content: "Abre el asistente para armar un plan de estudio nuevo, paso a paso.",
+  },
+  {
+    target: '[data-tour="plans-filters"]',
+    title: "Filtrar planes",
+    content: "Buscá por nombre o filtrá por instituto y carrera.",
+  },
+  {
+    target: '[data-tour="plans-list"]',
+    title: "Listado de planes",
+    content: "Seleccioná un plan para ver su información y el desglose de materias.",
+  },
+  {
+    target: '[data-tour="plans-info"]',
+    title: "Detalle del plan",
+    content: "Acá ves la información general del plan seleccionado y podés editarlo o eliminarlo.",
+  },
+];
 
 export function PlansPage() {
   const {
@@ -99,14 +129,14 @@ export function PlansPage() {
           eyebrow="Configuración académica"
           title="Gestión de Planes de Estudio"
           actions={
-            <Button variant="primary" onClick={handleNewPlan}>
+            <Button data-tour="plans-new" variant="primary" onClick={handleNewPlan}>
               <span className="material-symbols-outlined text-[24px]">add</span>
               Crear nueva
             </Button>
           }
         />
 
-        <div className="hidden xl:block">
+        <div data-tour="plans-filters" className="hidden xl:block">
           <PlansFilterBar
             searchTerm={searchTerm}
             onSearchChange={setSearchTerm}
@@ -121,7 +151,7 @@ export function PlansPage() {
         </div>
 
         <div ref={gridRef} className="flex-1 min-h-0 grid grid-cols-1 xl:grid-cols-12 gap-gutter grid-rows-1">
-          <div className="hidden xl:block xl:col-span-5">
+          <div data-tour="plans-list" className="hidden xl:block xl:col-span-5">
             <PlanListPanel
               filteredPlans={filteredPlans}
               selectedPlanId={selectedPlanId}
@@ -133,7 +163,7 @@ export function PlansPage() {
             />
           </div>
 
-          <div className="xl:col-span-7 flex flex-col gap-gutter xl:h-full xl:overflow-y-auto">
+          <div data-tour="plans-info" className="xl:col-span-7 flex flex-col gap-gutter xl:h-full xl:overflow-y-auto">
             <PlanInfoPanel
               selectedPlan={selectedPlan}
               formatCareerName={formatCareerName}
@@ -177,6 +207,8 @@ export function PlansPage() {
           </Modal>
         )}
       </div>
+
+      <ProductTour tourId="admin-plans" steps={plansTourSteps} />
 
       <MobileListDrawer
         isOpen={mobileListOpen}

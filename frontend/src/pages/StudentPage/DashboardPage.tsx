@@ -12,6 +12,41 @@ import { useNavigate } from "react-router-dom";
 import { resolveMediaUrl } from "@/shared/lib/resolveMediaUrl";
 import { PageHeader } from "@/widgets/ui/PageHeader";
 import { SectionCard } from "@/widgets/ui/SectionCard";
+import { ProductTour, type TourStep } from "@/features/onboarding";
+
+const dashboardTourSteps: TourStep[] = [
+  {
+    target: "body",
+    placement: "center",
+    title: "¡Bienvenido a Nexo!",
+    content: "Te mostramos rápidamente las secciones principales del Resumen. Podés salir cuando quieras.",
+  },
+  {
+    target: '[data-tour="db-progress"]',
+    title: "Progreso de Carrera",
+    content: "Acá ves tu avance actualizado en tiempo real: porcentaje completado, promedio actual y materias pendientes.",
+  },
+  {
+    target: '[data-tour="db-sessions-add"]',
+    title: "Crear sesión de estudio",
+    content: "Con este botón podés organizar una nueva sesión de estudio.",
+  },
+  {
+    target: '[data-tour="db-sessions-list"]',
+    title: "Próximas sesiones",
+    content: "Acá vas a ver las sesiones de estudio en las que participás, ordenadas por fecha.",
+  },
+  {
+    target: '[data-tour="db-history"]',
+    title: "Historial académico",
+    content: "Este botón te lleva a tu historial completo de notas, finales y actividades.",
+  },
+  {
+    target: '[data-tour="db-connections"]',
+    title: "Tus conexiones",
+    content: "Y acá podés ver y gestionar tus conexiones con otros estudiantes.",
+  },
+];
 
 const getInitials = (name?: string) => {
   if (!name) return 'U';
@@ -111,7 +146,7 @@ export function DashboardPage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
 
         {/* Progreso Académico (Bento Main) */}
-        <SectionCard className="lg:col-span-8" bodyClassName="p-gutter flex flex-col justify-between">
+        <SectionCard data-tour="db-progress" className="lg:col-span-8" bodyClassName="p-gutter flex flex-col justify-between">
           <div className="flex justify-between items-start mb-6">
             <div>
               <h3 className="font-title-sm text-title-sm text-on-surface">
@@ -183,15 +218,16 @@ export function DashboardPage() {
             <h3 className="font-title-sm text-title-sm text-on-surface">
               Próximas Sesiones
             </h3>
-            <button 
-              onClick={() => navigate('/student/sessions')} 
+            <button
+              data-tour="db-sessions-add"
+              onClick={() => navigate('/student/sessions')}
               className="text-primary-container hover:bg-surface-container p-1 rounded transition-colors"
             >
               <span className="material-symbols-outlined">add</span>
             </button>
           </div>
-          
-          <div className="flex flex-col gap-4 flex-1">
+
+          <div data-tour="db-sessions-list" className="flex flex-col gap-4 flex-1">
             {isSessionsLoading ? (
                <p className="text-body-sm text-on-surface-variant text-center py-4">Cargando sesiones...</p>
             ) : upcomingSessions.length === 0 ? (
@@ -250,7 +286,8 @@ export function DashboardPage() {
               <h3 className="font-title-sm text-title-sm text-on-surface">
                 Últimos Registros Académicos
               </h3>
-              <button 
+              <button
+                data-tour="db-history"
                 onClick={() => navigate('/student/academic-record')}
                 className="font-body-sm text-body-sm text-primary hover:underline"
               >
@@ -387,7 +424,8 @@ export function DashboardPage() {
               })
             )}
           </div>
-          <button 
+          <button
+            data-tour="db-connections"
             onClick={() => navigate('/student/connections')}
             className="mt-4 w-full py-2 font-label-caps text-label-caps text-primary-container border border-primary-container rounded hover:bg-primary-container hover:text-on-primary transition-colors"
           >
@@ -395,6 +433,8 @@ export function DashboardPage() {
           </button>
         </SectionCard>
       </div>
+
+      <ProductTour tourId="dashboard" steps={dashboardTourSteps} />
     </>
   );
 }

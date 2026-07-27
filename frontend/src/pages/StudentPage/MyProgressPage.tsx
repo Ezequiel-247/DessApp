@@ -17,6 +17,36 @@ import { Dropdown } from "@/widgets/ui/Dropdown";
 import { SegmentedControl } from "@/widgets/ui/SegmentedControl";
 import { getStudent } from "@/entities/Student";
 import { useAuth } from "@/app/AuthContext";
+import { ProductTour, type TourStep } from "@/features/onboarding";
+
+const myProgressTourSteps: TourStep[] = [
+  {
+    target: "body",
+    placement: "center",
+    title: "Mi Progreso Académico",
+    content: "Acá seguís tu avance en la carrera con estadísticas detalladas. Te mostramos las secciones principales.",
+  },
+  {
+    target: '[data-tour="progress-carousel"]',
+    title: "Tu avance general",
+    content: "Deslizá para alternar entre la vista detallada y la simplificada de tu porcentaje de avance.",
+  },
+  {
+    target: '[data-tour="progress-viewmode"]',
+    title: "Materias o actividades",
+    content: "Cambiá entre ver el desglose por año de tus materias o las actividades con créditos.",
+  },
+  {
+    target: '[data-tour="progress-accordions"]',
+    title: "Desglose por año",
+    content: "Expandí cada año para ver el detalle de tus materias y su estado.",
+  },
+  {
+    target: '[data-tour="progress-finals"]',
+    title: "Finales pendientes",
+    content: "Acá tenés a mano los finales que todavía te quedan por rendir.",
+  },
+];
 
 export function MyProgressPage() {
   const { user } = useAuth();
@@ -135,7 +165,7 @@ export function MyProgressPage() {
       />
 
       <div className="grid grid-cols-1 xl:grid-cols-4 gap-gutter">
-        <div className="col-span-1 xl:col-span-2">
+        <div data-tour="progress-carousel" className="col-span-1 xl:col-span-2">
           <CarouselContainer
             storageKey="my-progress:carousel:progress"
             minHeight="160px"
@@ -173,23 +203,25 @@ export function MyProgressPage() {
             <h3 className="font-title-sm text-title-sm text-on-surface">
               {viewMode === "materias" ? "Desglose por año" : "Actividades con créditos"}
             </h3>
-            <SegmentedControl
-              value={viewMode}
-              onChange={handleViewModeChange}
-              options={[
-                { value: "materias", label: "Ver materias" },
-                {
-                  value: "actividades",
-                  label: "Ver actividades",
-                  disabled: creditBlocks.length === 0,
-                  title: creditBlocks.length === 0 ? "No hay bloques de créditos disponibles" : undefined,
-                },
-              ]}
-            />
+            <div data-tour="progress-viewmode">
+              <SegmentedControl
+                value={viewMode}
+                onChange={handleViewModeChange}
+                options={[
+                  { value: "materias", label: "Ver materias" },
+                  {
+                    value: "actividades",
+                    label: "Ver actividades",
+                    disabled: creditBlocks.length === 0,
+                    title: creditBlocks.length === 0 ? "No hay bloques de créditos disponibles" : undefined,
+                  },
+                ]}
+              />
+            </div>
           </div>
 
           {viewMode === "materias" ? (
-            <div className="space-y-3">
+            <div data-tour="progress-accordions" className="space-y-3">
               {regularYears.map((yr) => (
                 <YearAccordion
                   key={yr.year}
@@ -212,10 +244,12 @@ export function MyProgressPage() {
             </div>
           )}
         </div>
-        <div className="xl:col-span-4 space-y-gutter">
+        <div data-tour="progress-finals" className="xl:col-span-4 space-y-gutter">
           <PendingFinalsSection finals={data.pendingFinals} />
         </div>
       </div>
+
+      <ProductTour tourId="my-progress" steps={myProgressTourSteps} />
     </div>
   );
 }

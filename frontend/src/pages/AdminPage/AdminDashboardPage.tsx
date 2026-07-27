@@ -2,6 +2,26 @@ import { useState } from "react";
 import { PageHeader } from "@/widgets/ui/PageHeader";
 import { SegmentedControl } from "@/widgets/ui/SegmentedControl";
 import { useReports, SummarySection, MaterialsTable, TopRatedSection, ActiveCareersSection, ActiveUsersSection, SubjectsApprovedByStudentSection, SubjectsApprovedByCareerSection, SubjectsByCareerSection, SubjectsByStudentSection, StudySessionsUsageSection, SocialConnectionsSection, ModerationStatsSection } from "@/features/reports";
+import { ProductTour, type TourStep } from "@/features/onboarding";
+
+const adminDashboardTourSteps: TourStep[] = [
+  {
+    target: "body",
+    placement: "center",
+    title: "Panel de Administración",
+    content: "Acá tenés las estadísticas y reportes de toda la plataforma.",
+  },
+  {
+    target: '[data-tour="dashboard-tabs"]',
+    title: "Categorías de reportes",
+    content: "Cambiá de pestaña para ver estadísticas de usuarios, materias, valoraciones, sesiones y comunidad.",
+  },
+  {
+    target: '[data-tour="dashboard-content"]',
+    title: "El detalle",
+    content: "Cada pestaña muestra tablas y gráficos con el detalle de esa categoría.",
+  },
+];
 
 const TAB_OPTIONS = [
   { value: "general", label: "General" },
@@ -25,11 +45,11 @@ export function AdminDashboardPage() {
         title="Dashboard"
       />
 
-      <div className="w-full overflow-x-auto pb-2">
+      <div data-tour="dashboard-tabs" className="w-full overflow-x-auto pb-2">
         <SegmentedControl value={activeTab} onChange={setActiveTab} options={TAB_OPTIONS} className="flex-shrink-0" />
       </div>
 
-
+      <div data-tour="dashboard-content">
       {loading ? (
         <div className="flex items-center justify-center py-12 text-on-surface-variant">
           <span className="material-symbols-outlined animate-spin mr-2">refresh</span> Cargando dashboard...
@@ -73,6 +93,9 @@ export function AdminDashboardPage() {
           )}
         </>
       )}
+      </div>
+
+      <ProductTour tourId="admin-dashboard" steps={adminDashboardTourSteps} />
     </div>
   );
 }

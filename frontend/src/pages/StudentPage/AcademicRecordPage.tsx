@@ -165,7 +165,11 @@ export function AcademicRecordPage() {
         </div>
       </div>
 
-      <ProductTour tourId="academic-record" steps={academicRecordTourSteps} />
+      <ProductTour
+        tourId="academic-record"
+        steps={academicRecordTourSteps}
+        forceStop={isImportOpen || modalMode !== null}
+      />
 
       {hook.isConfirmOpen && hook.confirmOptions && (
         <ConfirmDialog

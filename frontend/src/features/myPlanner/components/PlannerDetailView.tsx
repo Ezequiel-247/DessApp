@@ -10,6 +10,7 @@ import { ElectiveModal } from "@/features/myPlanner/customPlan/components/Electi
 import { UnahurModal } from "@/features/myPlanner/customPlan/components/UnahurModal";
 import { PlannerActions } from "@/features/myPlanner/components/PlannerActions";
 import { FloatingAddButton } from "@/features/myPlanner/components/FloatingAddButton";
+import { ProductTour, type TourStep } from "@/features/onboarding";
 import type {
   SavedPlan,
   Plan,
@@ -98,6 +99,25 @@ interface Props {
   onSelectEnrollment?: (id: string) => void;
   isLoadingCareerData?: boolean;
 }
+
+const plannerEditTourSteps: TourStep[] = [
+  {
+    target: "body",
+    placement: "center",
+    title: "Estás editando tu plan",
+    content: "Te mostramos rápido cómo reorganizar tu plan de estudio.",
+  },
+  {
+    target: '[data-tour="planner-edit-actions"]',
+    title: "Guardá o gestioná el plan",
+    content: "Guardá los cambios cuando termines, o desde acá marcá un cuatrimestre sabático y elegí tus electivas o materia UNAHUR. En pantallas chicas estas opciones se agrupan en el menú \"⋮\".",
+  },
+  {
+    target: '[data-tour="planner-edit-timeline"]',
+    title: "Arrastrá las materias",
+    content: "Arrastrá una materia de un cuatrimestre a otro para reorganizar tu cursada. El plan revisa las correlativas y el límite de horas automáticamente.",
+  },
+];
 
 export function PlannerDetailView({
   data,
@@ -261,7 +281,7 @@ export function PlannerDetailView({
               title={activePlanName}
               titleClassName="truncate max-w-[150px] sm:max-w-xs md:max-w-sm lg:max-w-[500px]"
               actions={
-                <div className="flex items-center gap-2 flex-wrap w-full xl:w-auto">
+                <div data-tour="planner-edit-actions" className="flex items-center gap-2 flex-wrap w-full xl:w-auto">
                   <PlannerActions
                     isEditing={isEditing}
                     plans={plans}
@@ -281,7 +301,7 @@ export function PlannerDetailView({
               }
             />
           </div>
-          <div className="pt-gutter overflow-x-hidden lg:overflow-x-visible">
+          <div data-tour="planner-edit-timeline" className="pt-gutter overflow-x-hidden lg:overflow-x-visible">
             <TimelineContent
               plan={data}
               activeYear={activeYear}
@@ -310,6 +330,13 @@ export function PlannerDetailView({
           </div>
         )}
       </div>
+
+      {/* Tour de edición: solo montado mientras isEditing es true — además de ser el
+          momento al que aplica, evita que el botón "?" de reinicio choque con el
+          FloatingAddButton de arriba, que ocupa la misma esquina cuando no se está editando. */}
+      {isEditing && (
+        <ProductTour tourId="my-planner-edit" steps={plannerEditTourSteps} />
+      )}
 
       {setupOpen && (
         <SetupModal

@@ -30,10 +30,22 @@ const profileTourSteps: TourStep[] = [
   },
   {
     target: '[data-tour="profile-settings"]',
-    title: 'Configurá tu cuenta',
-    content: 'Activá o desactivá cada opción de privacidad, o agregá una nueva carrera, y guardá los cambios.',
+    title: 'Configurá tu privacidad',
+    content: 'Activá o desactivá cada opción para controlar qué información es visible para otros, y guardá los cambios.',
+  },
+  {
+    target: '[data-tour="profile-add-career"]',
+    title: 'Agregar otra carrera',
+    content: 'Si cursás más de una carrera, sumala acá con su plan de estudio y fecha de inicio.',
   },
 ];
+
+// Índices (0-based) de los pasos de arriba que necesitan una pestaña puntual activa
+// antes de que el tour busque el elemento a resaltar.
+const PROFILE_TOUR_TAB_BY_STEP: Record<number, 'privacy' | 'enrollments'> = {
+  3: 'privacy',
+  4: 'enrollments',
+};
 
 export function ProfilePage() {
   const { user } = useAuth();
@@ -278,8 +290,13 @@ export function ProfilePage() {
           headerClassName="flex items-center"
           bodyClassName="flex flex-col flex-1"
           footer={
-            rightTab === "privacy" ? (
-              <div className="flex flex-col gap-3">
+            // Los dos footers quedan siempre montados (solo se oculta el que no corresponde a
+            // la pestaña activa) para que el botón "Agregar carrera" exista en el DOM incluso
+            // antes de que el tour cambie de pestaña — si no, react-joyride no lo encuentra a
+            // tiempo (busca el target del próximo paso en el mismo tick en que termina el
+            // paso anterior, antes de que React llegue a re-renderizar el cambio de pestaña).
+            <>
+              <div className={rightTab === "privacy" ? "flex flex-col gap-3" : "hidden"}>
                 {saveFeedback && (
                   <span
                     className={`text-body-sm flex items-center gap-1 rounded-full px-3 py-1 ${
@@ -307,12 +324,16 @@ export function ProfilePage() {
                   </Button>
                 </div>
               </div>
-            ) : (
-              <Button variant="primary" className="w-full" onClick={() => setManageEnrollment({ open: true, enrollment: null })}>
+              <Button
+                data-tour="profile-add-career"
+                variant="primary"
+                className={rightTab === "enrollments" ? "w-full" : "hidden"}
+                onClick={() => setManageEnrollment({ open: true, enrollment: null })}
+              >
                 <span className="material-symbols-outlined text-[24px]">add</span>
                 Agregar carrera
               </Button>
-            )
+            </>
           }
         >
           {rightTab === "privacy" && (
@@ -452,7 +473,14 @@ export function ProfilePage() {
         onSave={updateLegajo}
       />
 
-      <ProductTour tourId="profile" steps={profileTourSteps} />
+      <ProductTour
+        tourId="profile"
+        steps={profileTourSteps}
+        onStepChange={(index) => {
+          const tab = PROFILE_TOUR_TAB_BY_STEP[index];
+          if (tab) setRightTab(tab);
+        }}
+      />
       </div>
     </>
   );

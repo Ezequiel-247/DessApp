@@ -190,7 +190,7 @@ export function MyProgressPage() {
             storageKey="my-progress:carousel:efficiency-streak"
             minHeight="160px"
             items={[
-              { id: "efficiency", component: <TextStatItem title="Efectividad" subtitle={`Tu efectividad histórica de cursada (con aplazos) es del ${data.efficiencyPercentage.toFixed(1)}%`} subtext={`${data.completedUnits} finalizadas de ${data.totalAttempted} cursadas`} icon="bolt" /> },
+              { id: "efficiency", component: <TextStatItem title="Efectividad" subtitle={`Tu efectividad histórica de cursada (con aplazos) es del ${data.efficiencyPercentage.toFixed(1)}%`} subtext={`${data.approvedCount} finalizadas de ${data.totalAttempted} cursadas`} icon="bolt" /> },
               { id: "streak", component: <TextStatItem title="Racha" subtitle={data.streakCount > 1 ? `${data.streakCount} cuatrimestres consecutivos sin materias reprobadas` : data.streakCount === 1 ? "1 cuatrimestre sin materias reprobadas" : "Buen momento para iniciar una nueva serie invicta. ¡A seguir adelante!"} icon="whatshot" /> },
             ]}
           />

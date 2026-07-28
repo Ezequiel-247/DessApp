@@ -15,8 +15,8 @@ export function useMyProgress(enrollmentId?: string) {
     setError(null);
 
     try {
-      const [{ progressPercent, completedUnits, totalUnits, conditions, accumulatedCredits, totalCredits, averageWithFailures, totalAttempted, efficiencyPercentage, streakCount, average, currentAcademicYear, mandatory, unahur, elective, credit, enrollmentYear }, years, pendingFinals] = await Promise.all([
-        fetchAcademicSummary(Number(user.id)),
+      const [{ progressPercent, completedUnits, totalUnits, conditions, accumulatedCredits, totalCredits, averageWithFailures, totalAttempted, approvedCount, efficiencyPercentage, streakCount, average, currentAcademicYear, mandatory, unahur, elective, credit, enrollmentYear }, years, pendingFinals] = await Promise.all([
+        fetchAcademicSummary(Number(user.id), enrollmentId),
         fetchAcademicYearBreakdown(Number(user.id), enrollmentId),
         fetchPendingFinals(Number(user.id), enrollmentId),
       ]);
@@ -32,6 +32,7 @@ export function useMyProgress(enrollmentId?: string) {
         totalCredits,
         averageWithFailures,
         totalAttempted,
+        approvedCount,
         efficiencyPercentage,
         streakCount,
         average,

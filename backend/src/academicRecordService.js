@@ -155,20 +155,31 @@ class AcademicRecordService {
   /**
    * Obtiene el resumen académico
    */
-  async getAcademicSummary(userId) {
-    const student = await Student.findOne({
-      where: { user_id: userId },
-      include: [{
-        model: StudentCareerEnrollment,
-        as: 'enrollments',
-        where: { is_active: true, status: 'active' },
-        required: false,
-        include: [{ model: StudyPlan, as: 'studyPlan' }]
-      }]
-    });
-    if (!student) throw new Error('Student not found');
+  async getAcademicSummary(userId, enrollmentId = null) {
+    let enrollment;
+    if (enrollmentId) {
+      // Misma validación que getAcademicYearBreakdown: la inscripción pedida tiene que
+      // ser del propio alumno, si no cualquiera podría ver el resumen de otro pasándole
+      // un enrollmentId ajeno por query string.
+      enrollment = await StudentCareerEnrollment.findByPk(enrollmentId);
+      if (!enrollment || String(enrollment.student_id) !== String(userId)) {
+        enrollment = null;
+      }
+    } else {
+      const student = await Student.findOne({
+        where: { user_id: userId },
+        include: [{
+          model: StudentCareerEnrollment,
+          as: 'enrollments',
+          where: { is_active: true, status: 'active' },
+          required: false,
+          include: [{ model: StudyPlan, as: 'studyPlan' }]
+        }]
+      });
+      if (!student) throw new Error('Student not found');
+      enrollment = student.enrollments?.[0];
+    }
 
-    const enrollment = student.enrollments?.[0];
     if (!enrollment || !enrollment.study_plan_id) {
       return {
         average: 0,
@@ -193,8 +204,22 @@ class AcademicRecordService {
 
     const planSubjects = await PlanSubject.findAll({
       where: { id_study_plan: planId },
-      attributes: ['id', 'credits'],
+      attributes: ['id', 'credits', 'id_subject'],
     });
+
+    // Un registro académico "pertenece" a este plan si su plan_subject apunta a una materia
+    // de este plan, o —para registros que quedaron atados a otro plan (ej. el alumno cambió
+    // de carrera)— si la materia subyacente también existe en este plan. Mismo criterio de
+    // equivalencia por materia que ya usa getAcademicYearBreakdown. Sin este filtro, el
+    // promedio y la efectividad mezclaban notas de todas las carreras del alumno sin importar
+    // cuál estuviera seleccionada.
+    const planSubjectIdSet = new Set(planSubjects.map((ps) => ps.id));
+    const planSubjectBySubjectIdSet = new Set(planSubjects.map((ps) => ps.id_subject));
+    const belongsToPlan = (record) => {
+      if (record.plan_subject_id) return planSubjectIdSet.has(record.plan_subject_id);
+      if (record.id_subject) return planSubjectBySubjectIdSet.has(record.id_subject);
+      return false;
+    };
 
     const mandatoryTotal = await PlanSubject.count({ where: { id_study_plan: planId, is_elective: false } });
 
@@ -258,10 +283,15 @@ class AcademicRecordService {
         unahurSubjectIds.add(subject.id);
       }
 
-      const grade = parseFloat(record.grade);
-      if (record.grade !== null && record.grade !== undefined && !isNaN(grade)) {
-        totalGrade += grade;
-        gradedCount++;
+      // El promedio sí tiene que ser específico de esta carrera (a diferencia de
+      // mandatoryApproved/unahurSubjectIds arriba, que cuentan avance de plan y no
+      // deberían cambiar de criterio acá).
+      if (belongsToPlan(record)) {
+        const grade = parseFloat(record.grade);
+        if (record.grade !== null && record.grade !== undefined && !isNaN(grade)) {
+          totalGrade += grade;
+          gradedCount++;
+        }
       }
     }
 
@@ -339,8 +369,11 @@ class AcademicRecordService {
       accumulatedCredits += Number(record.plan_subject?.credits) || 0;
     }
 
-    // average_with_failures — todos los records con nota (aprobados + desaprobados)
-    const allRawRecords = await AcademicRecord.findAll({ where: { id_student: userId } });
+    // average_with_failures / efficiency / streak — solo con los registros de la carrera
+    // seleccionada (ver belongsToPlan más arriba). Antes se calculaban con TODOS los
+    // registros del alumno sin importar la carrera, por eso no cambiaban al filtrar.
+    const allRawRecords = (await AcademicRecord.findAll({ where: { id_student: userId } }))
+      .filter(belongsToPlan);
     let totalGradeAll = 0;
     let gradedCountAll = 0;
     for (const record of allRawRecords) {
@@ -354,21 +387,24 @@ class AcademicRecordService {
       ? Number((totalGradeAll / gradedCountAll).toFixed(1))
       : 0;
 
-    // efficiency_percentage
+    // efficiency_percentage — finalizedCountForEfficiency se recalcula acá (en vez de
+    // reusar finalizedCount de más arriba) porque ese ya está deduplicado por plan_subject
+    // para otro propósito (avance de plan) y no está filtrado por belongsToPlan.
+    const finalizedCountForEfficiency = allRawRecords.filter(r => this._isFinalizada(r)).length;
     const failedCount = allRawRecords.filter(r => r.status === 'desaprobado').length;
     const expiredCount = allRawRecords.filter(r =>
       r.status === 'pendiente' && r.regularity_expires_at && r.regularity_expires_at < hoyString
     ).length;
-    const totalAttempted = finalizedCount + failedCount + expiredCount;
+    const totalAttempted = finalizedCountForEfficiency + failedCount + expiredCount;
     const efficiencyPercentage = totalAttempted > 0
-      ? Number(((finalizedCount / totalAttempted) * 100).toFixed(2))
+      ? Number(((finalizedCountForEfficiency / totalAttempted) * 100).toFixed(2))
       : 0;
 
     // streak_count
-    const allForStreak = await AcademicRecord.findAll({
+    const allForStreak = (await AcademicRecord.findAll({
       where: { id_student: userId },
       order: [['year', 'DESC'], ['semester', 'DESC']],
-    });
+    })).filter(belongsToPlan);
     const semesterMap = new Map();
     for (const r of allForStreak) {
       const key = `${r.year}-${r.semester}`;
@@ -392,7 +428,10 @@ class AcademicRecordService {
 
     return {
       average: gradedCount > 0 ? Number((totalGrade / gradedCount).toFixed(2)) : 0,
-      approved_count: finalizedCount,
+      // finalizedCountForEfficiency (no finalizedCount) — tiene que ser el mismo número
+      // que ya se usó para el numerador de efficiency_percentage/total_attempted, si no
+      // el frontend termina mostrando "X finalizadas de Y cursadas" con X > Y.
+      approved_count: finalizedCountForEfficiency,
       current_academic_year: currentYear,
       total_units: totalUnits,
       completed_units: completedUnits,

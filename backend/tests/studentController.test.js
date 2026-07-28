@@ -468,6 +468,7 @@ describe('Student Controller', () => {
   describe('getAcademicSummary', () => {
     it('should return academic summary with status 200', async () => {
       req.params.id = 2;
+      req.query = {};
       const summary = {
         average: 8,
         approved_count: 1,
@@ -485,13 +486,26 @@ describe('Student Controller', () => {
 
       await studentController.getAcademicSummary(req, res);
 
-      expect(academicRecordService.getAcademicSummary).toHaveBeenCalledWith(2);
+      expect(academicRecordService.getAcademicSummary).toHaveBeenCalledWith(2, null);
       expect(res.status).toHaveBeenCalledWith(200);
       expect(res.json).toHaveBeenCalledWith({ data: summary });
     });
 
+    it('should forward enrollmentId from the query string when present', async () => {
+      req.params.id = 2;
+      req.query = { enrollmentId: '5' };
+      Student.findOne.mockResolvedValue(studentsMock[0]);
+      academicRecordService.getAcademicSummary.mockResolvedValue({});
+
+      await studentController.getAcademicSummary(req, res);
+
+      expect(academicRecordService.getAcademicSummary).toHaveBeenCalledWith(2, '5');
+      expect(res.status).toHaveBeenCalledWith(200);
+    });
+
     it('should return 404 if student not found', async () => {
       req.params.id = 999;
+      req.query = {};
       Student.findOne.mockResolvedValue(null);
 
       await studentController.getAcademicSummary(req, res);
@@ -502,6 +516,7 @@ describe('Student Controller', () => {
 
     it('should return 500 on service error', async () => {
       req.params.id = 2;
+      req.query = {};
       Student.findOne.mockResolvedValue(studentsMock[0]);
       academicRecordService.getAcademicSummary.mockRejectedValue(new Error('DB error'));
 

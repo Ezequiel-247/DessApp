@@ -74,6 +74,8 @@ export interface MyProgressData {
   totalCredits: number;
   averageWithFailures: number;
   totalAttempted: number;
+  /** Cursadas finalizadas dentro de totalAttempted — es el numerador correcto para "X de Y cursadas", a diferencia de completedUnits (que cuenta avance de plan, no intentos). */
+  approvedCount: number;
   efficiencyPercentage: number;
   streakCount: number;
   average: number;

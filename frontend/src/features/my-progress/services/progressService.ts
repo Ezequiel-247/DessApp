@@ -176,8 +176,10 @@ function mapPendingToFinals(pending: any[]): PendingFinal[] {
   });
 }
 
-export async function fetchAcademicSummary(studentId: number) {
-  const res = await apiClient.get(`/api/students/${studentId}/academic-summary`);
+export async function fetchAcademicSummary(studentId: number, enrollmentId?: string) {
+  let url = `/api/students/${studentId}/academic-summary`;
+  if (enrollmentId) url += `?enrollmentId=${enrollmentId}`;
+  const res = await apiClient.get(url);
   const summary = res.data;
 
   return {
@@ -189,6 +191,7 @@ export async function fetchAcademicSummary(studentId: number) {
     totalCredits: summary?.total_credits ?? 0,
     averageWithFailures: summary?.average_with_failures ?? 0,
     totalAttempted: summary?.total_attempted ?? 0,
+    approvedCount: summary?.approved_count ?? 0,
     efficiencyPercentage: summary?.efficiency_percentage ?? 0,
     streakCount: summary?.streak_count ?? 0,
     average: summary?.average ?? 0,

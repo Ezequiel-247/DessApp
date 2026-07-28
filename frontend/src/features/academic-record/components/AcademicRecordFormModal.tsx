@@ -17,6 +17,26 @@ import { FormError } from "@/widgets/ui/FormError";
 import { InputToggle } from "@/widgets/ui/InputToggle";
 import { SegmentedControl } from "@/widgets/ui/SegmentedControl";
 import { Form } from "@/widgets/ui/Form";
+import { ProductTour, type TourStep } from "@/features/onboarding";
+
+const addRecordTourSteps: TourStep[] = [
+  {
+    target: "body",
+    placement: "center",
+    title: "Agregar un registro",
+    content: "Acá cargás tu actividad académica: una cursada, un final rendido, o una actividad con créditos.",
+  },
+  {
+    target: '[data-tour="record-type-pills"]',
+    title: "¿Qué querés registrar?",
+    content: "Materia: una cursada, en curso o ya cerrada. Examen Final: un final que rendiste. Actividad con créditos: una actividad UNaHUR o electiva.",
+  },
+  {
+    target: '[data-tour="record-form-fields"]',
+    title: "Completá los datos",
+    content: "Elegí la materia (o actividad), el año y cuatrimestre, y el estado. Según lo que elijas arriba, te vamos a pedir la nota si corresponde.",
+  },
+];
 
 export interface AcademicRecordFormModalProps {
   isOpen: boolean;
@@ -124,6 +144,7 @@ export function AcademicRecordFormModal(props: AcademicRecordFormModalProps) {
   const activityLabel = `Actividad ${props.mode === "edit" ? "(No se puede cambiar)" : ""}`;
 
   return (
+    <>
     <Modal
       isOpen={props.isOpen}
       onClose={handleClose}
@@ -165,35 +186,38 @@ export function AcademicRecordFormModal(props: AcademicRecordFormModalProps) {
       <FormError errors={props.validationErrors} />
 
       {showPills && (
-        <SegmentedControl
-          value={props.draft._type}
-          onChange={(type) => props.onFieldChange("_type", type)}
-          className="w-full [&>button]:flex-1"
-          options={[
-            {
-              value: "regularidad",
-              label: RECORD_TYPE_LABELS.regularidad,
-              disabled: isPillDisabled("regularidad", props.hasExamEligibleSubjects, props.availableActivities.length, props.hasAnySubject),
-              title: isPillDisabled("regularidad", props.hasExamEligibleSubjects, props.availableActivities.length, props.hasAnySubject) ? getPillDisabledTitle("regularidad") : undefined,
-            },
-            {
-              value: "examen",
-              label: RECORD_TYPE_LABELS.examen,
-              disabled: isPillDisabled("examen", props.hasExamEligibleSubjects, props.availableActivities.length, props.hasAnySubject),
-              title: isPillDisabled("examen", props.hasExamEligibleSubjects, props.availableActivities.length, props.hasAnySubject) ? getPillDisabledTitle("examen") : undefined,
-            },
-            {
-              value: "actividad",
-              label: RECORD_TYPE_LABELS.actividad,
-              disabled: isPillDisabled("actividad", props.hasExamEligibleSubjects, props.availableActivities.length, props.hasAnySubject),
-              title: isPillDisabled("actividad", props.hasExamEligibleSubjects, props.availableActivities.length, props.hasAnySubject) ? getPillDisabledTitle("actividad") : undefined,
-            },
-          ]}
-        />
+        <div data-tour="record-type-pills">
+          <SegmentedControl
+            value={props.draft._type}
+            onChange={(type) => props.onFieldChange("_type", type)}
+            className="w-full [&>button]:flex-1"
+            options={[
+              {
+                value: "regularidad",
+                label: RECORD_TYPE_LABELS.regularidad,
+                disabled: isPillDisabled("regularidad", props.hasExamEligibleSubjects, props.availableActivities.length, props.hasAnySubject),
+                title: isPillDisabled("regularidad", props.hasExamEligibleSubjects, props.availableActivities.length, props.hasAnySubject) ? getPillDisabledTitle("regularidad") : undefined,
+              },
+              {
+                value: "examen",
+                label: RECORD_TYPE_LABELS.examen,
+                disabled: isPillDisabled("examen", props.hasExamEligibleSubjects, props.availableActivities.length, props.hasAnySubject),
+                title: isPillDisabled("examen", props.hasExamEligibleSubjects, props.availableActivities.length, props.hasAnySubject) ? getPillDisabledTitle("examen") : undefined,
+              },
+              {
+                value: "actividad",
+                label: RECORD_TYPE_LABELS.actividad,
+                disabled: isPillDisabled("actividad", props.hasExamEligibleSubjects, props.availableActivities.length, props.hasAnySubject),
+                title: isPillDisabled("actividad", props.hasExamEligibleSubjects, props.availableActivities.length, props.hasAnySubject) ? getPillDisabledTitle("actividad") : undefined,
+              },
+            ]}
+          />
+        </div>
       )}
 
       {showCelebration && <CelebrationComplete />}
 
+      <div data-tour="record-form-fields">
       <Form>
         <Form.Row cols={2} className="grid-cols-1 sm:grid-cols-[1fr_auto] mt-5">
           <Form.Field label={props.draft._type === "actividad" ? activityLabel : "Materia"} required error={props.validationErrors.subjectId}>
@@ -379,6 +403,12 @@ export function AcademicRecordFormModal(props: AcademicRecordFormModalProps) {
           </Form.Field>
         </Form.Row>
       </Form>
+      </div>
     </Modal>
+
+    {props.isOpen && showPills && (
+      <ProductTour tourId="academic-record-add" steps={addRecordTourSteps} />
+    )}
+    </>
   );
 }

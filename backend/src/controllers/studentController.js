@@ -403,13 +403,14 @@ const studentController = {
   getAcademicSummary: async (req, res) => {
     try {
       const studentId = req.params.id; // user_id in this context because the routes use user.id
-      
+      const enrollmentId = req.query.enrollmentId || null;
+
       const student = await Student.findOne({ where: { user_id: studentId } });
       if (!student) {
         return res.status(404).json({ error: 'Student not found' });
       }
 
-      const summary = await academicRecordService.getAcademicSummary(studentId);
+      const summary = await academicRecordService.getAcademicSummary(studentId, enrollmentId);
       return res.status(200).json({ data: summary });
     } catch (error) {
       return res.status(500).json({ error: 'Error fetching academic summary', details: error.message });
